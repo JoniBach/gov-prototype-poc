@@ -33,11 +33,13 @@
 	import TextInput from '../gds/TextInput.svelte';
 	import Textarea from '../gds/Textarea.svelte';
 	import WarningText from '../gds/WarningText.svelte';
+	import { ComponentSchema } from '../schema';
 
 	let { component }: { component: { component: string; config: any } } = $props();
 
 	let Component = $derived.by(() => {
-		switch (component.component) {
+		const validated = ComponentSchema.parse(component);
+		switch (validated.component as string) {
 			case 'Accordion':
 				return Accordion;
 			case 'BackLink':

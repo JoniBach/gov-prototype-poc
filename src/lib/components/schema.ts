@@ -213,6 +213,12 @@ export const ComponentTypeEnum = z.enum([
 	'Checkboxes',
 	'CookieBanner',
 	'DateInput',
+	'Details',
+	'ErrorMessage',
+	'ErrorSummary',
+	'ExitThisPage',
+	'Fieldset',
+	'FileUpload',
 	'GOVUKFooter',
 	'GOVUKHeader',
 	'InsetText',
@@ -222,6 +228,11 @@ export const ComponentTypeEnum = z.enum([
 	'PasswordInput',
 	'PhaseBanner',
 	'Radios',
+	'Select',
+	'ServiceNavigation',
+	'SkipLink',
+	'SummaryList',
+	'Table',
 	'Tabs',
 	'Tag',
 	'TaskList',
@@ -229,3 +240,20 @@ export const ComponentTypeEnum = z.enum([
 	'Textarea',
 	'WarningText',
 ]);
+
+export const ComponentSchema = z.object({
+	component: ComponentTypeEnum,
+	config: z.any(),
+});
+
+export const ComponentsSchema = z.array(ComponentSchema);
+
+export const PageSchema = z.object({
+	title: z.string(),
+	components: ComponentsSchema,
+});
+
+export const MultiPageSchema = z.object({
+	pages: z.array(PageSchema),
+	currentPage: z.number(),
+});
