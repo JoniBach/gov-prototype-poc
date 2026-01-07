@@ -9,7 +9,7 @@ The schema for the config is defined in schema.ts - Make sure to update this fil
 
 ## Reference
 
-- [ ] [Accordion](https://design-system.service.gov.uk/components/accordion/)
+- [x] [Accordion](https://design-system.service.gov.uk/components/accordion/)
 - [ ] [Back link](https://design-system.service.gov.uk/components/back-link/)
 - [ ] [Breadcrumbs](https://design-system.service.gov.uk/components/breadcrumbs/)
 - [ ] [Button](https://design-system.service.gov.uk/components/button/)

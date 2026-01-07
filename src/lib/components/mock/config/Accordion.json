@@ -1,0 +1,20 @@
+[
+    {
+       
+                    "id": "accordion-1",
+                    "sections": [
+                        {
+                            "heading": "Writing well for the web",
+                            "content": "This is the content for Writing well for the web."
+                        },
+                        {
+                            "heading": "Writing well for specialists",
+                            "content": "This is the content for Writing well for specialists."
+                        },
+                        {
+                            "heading": "Know your audience",
+                            "content": "This is the content for Know your audience."
+                        }
+                    ]
+                }
+]

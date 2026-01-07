@@ -2,7 +2,12 @@ import { z } from 'zod';
 
 export const AccordionSchema = z.object({
 	config: z.object({
-		placeholder: z.string(),
+		id: z.string(),
+		sections: z.array(z.object({
+			heading: z.string(),
+			content: z.string(),
+			expanded: z.boolean().optional(),
+		})),
 	}),
 });
 
