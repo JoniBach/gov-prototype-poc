@@ -36,11 +36,9 @@
 	import TextareaConfig from '$lib/components/mock/config/Textarea.json';
 	import TypographyConfig from '$lib/components/mock/config/Typography.json';
 	import WarningTextConfig from '$lib/components/mock/config/WarningText.json';
+	import ComponentShowcase from '$lib/components/prototype/ComponentShowcase.svelte';
 
-	let pages = [
-		{
-			title: 'Components',
-			components: [
+	let components = [
 				{ component: 'Accordion', config: AccordionConfig[0] },
 				{ component: 'BackLink', config: BackLinkConfig[0] },
 				{ component: 'Breadcrumbs', config: BreadcrumbsConfig[0] },
@@ -77,8 +75,8 @@
 				{ component: 'Typography', config: TypographyConfig[0] },
 				{ component: 'WarningText', config: WarningTextConfig[0] },
 			]
-		}
-	]
 </script>
 
-<MultiPage {pages} currentPage={0} />
+<GovUKPage title="Components">
+	<ComponentShowcase components={components}  />
+</GovUKPage>
