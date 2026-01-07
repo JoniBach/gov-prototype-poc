@@ -230,6 +230,7 @@ export const RadiosSchema = z.object({
 			id: z.string().optional(),
 			checked: z.boolean().optional(),
 		})),
+		validation: z.array(z.string()).optional(),
 	}),
 });
 
@@ -245,6 +246,7 @@ export const SelectSchema = z.object({
 			value: z.string(),
 			selected: z.boolean().optional(),
 		})),
+		validation: z.array(z.string()).optional(),
 	}),
 });
 
@@ -347,6 +349,7 @@ export const TextInputSchema = z.object({
 		id: z.string(),
 		name: z.string(),
 		type: z.string().optional().default("text"),
+		validation: z.array(z.string()).optional(),
 	}),
 });
 
@@ -363,6 +366,7 @@ export const TextareaSchema = z.object({
 		id: z.string(),
 		name: z.string(),
 		rows: z.number().optional().default(5),
+		validation: z.array(z.string()).optional(),
 	}),
 });
 
