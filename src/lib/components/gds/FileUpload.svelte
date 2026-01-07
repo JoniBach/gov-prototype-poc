@@ -1,11 +1,8 @@
 <script lang="ts">
-	interface config {
-		config: {
-			placeholder: string;
-		};
-	}
+	import { FileUploadSchema } from '../schema.js';
 
-	let { config }: config = $props();
+	let raw = $props();
+	const { config } = FileUploadSchema.parse(raw);
 </script>
 
 <h2>File upload</h2>

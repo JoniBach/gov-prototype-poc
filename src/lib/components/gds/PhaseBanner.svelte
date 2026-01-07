@@ -1,11 +1,8 @@
 <script lang="ts">
-	interface config {
-		config: {
-			placeholder: string;
-		};
-	}
+	import { PhaseBannerSchema } from '../schema.js';
 
-	let { config }: config = $props();
+	let raw = $props();
+	const { config } = PhaseBannerSchema.parse(raw);
 </script>
 
 <h2>Phase banner</h2>

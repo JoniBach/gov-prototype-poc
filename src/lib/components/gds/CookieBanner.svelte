@@ -1,11 +1,8 @@
 <script lang="ts">
-	interface config {
-		config: {
-			placeholder: string;
-		};
-	}
+	import { CookieBannerSchema } from '../schema.js';
 
-	let { config }: config = $props();
+	let raw = $props();
+	const { config } = CookieBannerSchema.parse(raw);
 </script>
 
 <h2>Cookie banner</h2>

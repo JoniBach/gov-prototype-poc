@@ -1,11 +1,8 @@
 <script lang="ts">
-	interface config {
-		config: {
-			placeholder: string;
-		};
-	}
+	import { TextInputSchema } from '../schema.js';
 
-	let { config }: config = $props();
+	let raw = $props();
+	const { config } = TextInputSchema.parse(raw);
 </script>
 
 <h2>Text input</h2>

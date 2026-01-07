@@ -1,11 +1,8 @@
 <script lang="ts">
-	interface config {
-		config: {
-			placeholder: string;
-		};
-	}
+	import { TableSchema } from '../schema.js';
 
-	let { config }: config = $props();
+	let raw = $props();
+	const { config } = TableSchema.parse(raw);
 </script>
 
 <h2>Table</h2>

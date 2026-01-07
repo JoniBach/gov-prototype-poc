@@ -1,11 +1,8 @@
 <script lang="ts">
-	interface config {
-		config: {
-			placeholder: string;
-		};
-	}
+	import { GOVUKFooterSchema } from '../schema.js';
 
-	let { config }: config = $props();
+	let raw = $props();
+	const { config } = GOVUKFooterSchema.parse(raw);
 </script>
 
 <h2>GOV.UK footer</h2>

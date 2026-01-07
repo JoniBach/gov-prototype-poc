@@ -1,11 +1,8 @@
 <script lang="ts">
-	interface config {
-		config: {
-			placeholder: string;
-		};
-	}
+	import { CheckboxesSchema } from '../schema.js';
 
-	let { config }: config = $props();
+	let raw = $props();
+	const { config } = CheckboxesSchema.parse(raw);
 </script>
 
 <h2>Checkboxes</h2>

@@ -1,11 +1,8 @@
 <script lang="ts">
-	interface config {
-		config: {
-			placeholder: string;
-		};
-	}
+	import { ErrorSummarySchema } from '../schema.js';
 
-	let { config }: config = $props();
+	let raw = $props();
+	const { config } = ErrorSummarySchema.parse(raw);
 </script>
 
 <h2>Error summary</h2>

@@ -1,11 +1,8 @@
 <script lang="ts">
-	interface config {
-		config: {
-			placeholder: string;
-		};
-	}
+	import { BreadcrumbsSchema } from '../schema.js';
 
-	let { config }: config = $props();
+	let raw = $props();
+	const { config } = BreadcrumbsSchema.parse(raw);
 </script>
 
 <h2>Breadcrumbs</h2>

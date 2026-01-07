@@ -1,11 +1,8 @@
 <script lang="ts">
-	interface config {
-		config: {
-			placeholder: string;
-		};
-	}
+	import { ServiceNavigationSchema } from '../schema.js';
 
-	let { config }: config = $props();
+	let raw = $props();
+	const { config } = ServiceNavigationSchema.parse(raw);
 </script>
 
 <h2>Service navigation</h2>

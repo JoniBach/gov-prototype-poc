@@ -1,11 +1,8 @@
 <script lang="ts">
-	interface config {
-		config: {
-			placeholder: string;
-		};
-	}
+	import { NotificationBannerSchema } from '../schema.js';
 
-	let { config }: config = $props();
+	let raw = $props();
+	const { config } = NotificationBannerSchema.parse(raw);
 </script>
 
 <h2>Notification banner</h2>

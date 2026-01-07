@@ -1,11 +1,8 @@
 <script lang="ts">
-	interface config {
-		config: {
-			placeholder: string;
-		};
-	}
+	import { GOVUKHeaderSchema } from '../schema.js';
 
-	let { config }: config = $props();
+	let raw = $props();
+	const { config } = GOVUKHeaderSchema.parse(raw);
 </script>
 
 <h2>GOV.UK header</h2>
