@@ -51,3 +51,4 @@ Each component should have a single prop called `config`. The schema for configs
 - [x] [Text input](https://design-system.service.gov.uk/components/text-input/)
 - [x] [Textarea](https://design-system.service.gov.uk/components/textarea/)
 - [x] [Warning text](https://design-system.service.gov.uk/components/warning-text/)
+- [x] [Typography](https://design-system.service.gov.uk/styles/typography/)

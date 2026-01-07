@@ -34,6 +34,7 @@
 	import TaskListConfig from '$lib/components/mock/config/TaskList.json';
 	import TextInputConfig from '$lib/components/mock/config/TextInput.json';
 	import TextareaConfig from '$lib/components/mock/config/Textarea.json';
+	import TypographyConfig from '$lib/components/mock/config/Typography.json';
 	import WarningTextConfig from '$lib/components/mock/config/WarningText.json';
 
 	let pages = [
@@ -73,6 +74,7 @@
 				{ component: 'TaskList', config: TaskListConfig[0] },
 				{ component: 'TextInput', config: TextInputConfig[0] },
 				{ component: 'Textarea', config: TextareaConfig[0] },
+				{ component: 'Typography', config: TypographyConfig[0] },
 				{ component: 'WarningText', config: WarningTextConfig[0] },
 			]
 		}

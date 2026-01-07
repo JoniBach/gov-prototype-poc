@@ -370,6 +370,13 @@ export const TextareaSchema = z.object({
 	}),
 });
 
+export const TypographySchema = z.object({
+	config: z.object({
+		text: z.string(),
+		variant: z.string(),
+	}),
+});
+
 export const WarningTextSchema = z.object({
 	config: z.object({
 		text: z.string(),
@@ -411,6 +418,7 @@ export const ComponentTypeEnum = z.enum([
 	'TaskList',
 	'TextInput',
 	'Textarea',
+	'Typography',
 	'WarningText',
 ]);
 
