@@ -5,5 +5,7 @@
 	const { config } = ErrorMessageSchema.parse(raw);
 </script>
 
-<h2>Error message</h2>
-<p>{config.placeholder}</p>
+<p class="govuk-error-message">
+	<span class="govuk-visually-hidden">{config.visuallyHiddenText}:</span>
+	{config.text}
+</p>

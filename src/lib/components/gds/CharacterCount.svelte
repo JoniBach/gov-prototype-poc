@@ -5,5 +5,13 @@
 	const { config } = CharacterCountSchema.parse(raw);
 </script>
 
-<h2>Character count</h2>
-<p>{config.placeholder}</p>
+<div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength={config.maxlength}>
+	<h1 class="govuk-label-wrapper">
+		<label class="govuk-label govuk-label--l" for={config.id}>{config.label}</label>
+	</h1>
+	{#if config.hint}
+		<div id="{config.id}-hint" class="govuk-hint">{config.hint}</div>
+	{/if}
+	<textarea class="govuk-textarea govuk-js-character-count" id={config.id} name={config.name} rows={config.rows} aria-describedby="{config.id}-info{(config.hint ? ' ' + config.id + '-hint' : '')}"></textarea>
+	<div id="{config.id}-info" class="govuk-hint govuk-character-count__message">You can enter up to {config.maxlength} characters</div>
+</div>

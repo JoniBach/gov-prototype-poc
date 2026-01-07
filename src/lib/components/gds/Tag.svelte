@@ -5,5 +5,4 @@
 	const { config } = TagSchema.parse(raw);
 </script>
 
-<h2>Tag</h2>
-<p>{config.placeholder}</p>
+<strong class="govuk-tag {config.classes || ''}">{config.text}</strong>

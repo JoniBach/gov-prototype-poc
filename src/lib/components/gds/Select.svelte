@@ -5,5 +5,11 @@
 	const { config } = SelectSchema.parse(raw);
 </script>
 
-<h2>Select</h2>
-<p>{config.placeholder}</p>
+<div class="govuk-form-group">
+	<label class="govuk-label" for={config.id}>{config.label.text}</label>
+	<select class="govuk-select" id={config.id} name={config.name}>
+		{#each config.items as item}
+			<option value={item.value} selected={item.selected}>{item.text}</option>
+		{/each}
+	</select>
+</div>

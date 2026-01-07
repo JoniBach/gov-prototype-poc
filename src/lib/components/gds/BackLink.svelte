@@ -5,5 +5,4 @@
 	const { config } = BackLinkSchema.parse(raw);
 </script>
 
-<h2>Back link</h2>
-<p>{config.placeholder}</p>
+<a href={config.href} class="govuk-back-link">{config.text}</a>

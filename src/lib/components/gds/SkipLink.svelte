@@ -5,5 +5,4 @@
 	const { config } = SkipLinkSchema.parse(raw);
 </script>
 
-<h2>Skip link</h2>
-<p>{config.placeholder}</p>
+<a href={config.href} class="govuk-skip-link" data-module="govuk-skip-link">{config.text}</a>

@@ -1,5 +1,6 @@
 [
   {
-    "placeholder": "Exit this page"
+    "text": "Exit this page",
+    "href": "https://www.bbc.co.uk/weather"
   }
 ]

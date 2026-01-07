@@ -5,5 +5,9 @@
 	const { config } = FileUploadSchema.parse(raw);
 </script>
 
-<h2>File upload</h2>
-<p>{config.placeholder}</p>
+<div class="govuk-form-group">
+	<label class="govuk-label" for={config.id}>{config.label.text}</label>
+	<div class="govuk-drop-zone" data-module="govuk-file-upload">
+		<input class="govuk-file-upload" id={config.id} name={config.name} type="file">
+	</div>
+</div>

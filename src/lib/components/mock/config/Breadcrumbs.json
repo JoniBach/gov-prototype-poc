@@ -1,5 +1,17 @@
 [
   {
-    "placeholder": "Home > Section > Page"
+    "items": [
+      {
+        "text": "Home",
+        "href": "#"
+      },
+      {
+        "text": "Section",
+        "href": "#"
+      },
+      {
+        "text": "Current page"
+      }
+    ]
   }
 ]

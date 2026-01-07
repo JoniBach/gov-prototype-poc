@@ -5,5 +5,10 @@
 	const { config } = WarningTextSchema.parse(raw);
 </script>
 
-<h2>Warning text</h2>
-<p>{config.placeholder}</p>
+<div class="govuk-warning-text">
+	<span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+	<strong class="govuk-warning-text__text">
+		<span class="govuk-visually-hidden">{config.iconFallbackText || 'Warning'}</span>
+		{config.text}
+	</strong>
+</div>

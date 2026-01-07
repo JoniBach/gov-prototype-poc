@@ -1,5 +1,26 @@
 [
   {
-    "placeholder": "Select all that apply"
+    "fieldset": {
+      "legend": {
+        "text": "Which types of waste do you transport?",
+        "classes": "govuk-fieldset__legend--l"
+      }
+    },
+    "hint": "Select all that apply",
+    "name": "waste",
+    "items": [
+      {
+        "text": "Waste from animal carcasses",
+        "value": "carcasses"
+      },
+      {
+        "text": "Waste from mines or quarries",
+        "value": "mines"
+      },
+      {
+        "text": "Farm or agricultural waste",
+        "value": "farm"
+      }
+    ]
   }
 ]

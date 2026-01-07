@@ -5,5 +5,12 @@
 	const { config } = FieldsetSchema.parse(raw);
 </script>
 
-<h2>Fieldset</h2>
-<p>{config.placeholder}</p>
+<fieldset class="govuk-fieldset">
+	<legend class="govuk-fieldset__legend {config.legend.classes}">
+		{#if config.legend.isPageHeading}
+			<h1 class="govuk-fieldset__heading">{config.legend.text}</h1>
+		{:else}
+			{config.legend.text}
+		{/if}
+	</legend>
+</fieldset>

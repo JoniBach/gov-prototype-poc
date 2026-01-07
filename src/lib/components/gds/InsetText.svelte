@@ -5,5 +5,4 @@
 	const { config } = InsetTextSchema.parse(raw);
 </script>
 
-<h2>Inset text</h2>
-<p>{config.placeholder}</p>
+<div class="govuk-inset-text">{config.text}</div>

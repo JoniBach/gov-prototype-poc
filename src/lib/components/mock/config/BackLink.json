@@ -1,5 +1,6 @@
 [
   {
-    "placeholder": "Back to previous page"
+    "text": "Back to previous page",
+    "href": "#"
   }
 ]

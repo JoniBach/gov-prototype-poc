@@ -1,5 +1,13 @@
 [
   {
-    "placeholder": "Enter date of birth"
+    "fieldset": {
+      "legend": {
+        "text": "When was your passport issued?",
+        "classes": "govuk-fieldset__legend--l"
+      }
+    },
+    "hint": "For example, 27 3 2007",
+    "id": "passport-issued",
+    "name": "passport-issued"
   }
 ]

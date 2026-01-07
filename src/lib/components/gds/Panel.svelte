@@ -5,5 +5,7 @@
 	const { config } = PanelSchema.parse(raw);
 </script>
 
-<h2>Panel</h2>
-<p>{config.placeholder}</p>
+<div class="govuk-panel govuk-panel--confirmation">
+	<h1 class="govuk-panel__title">{config.titleText}</h1>
+	<div class="govuk-panel__body">{@html config.html}</div>
+</div>

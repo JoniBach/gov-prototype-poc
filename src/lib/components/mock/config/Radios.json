@@ -1,5 +1,29 @@
 [
   {
-    "placeholder": "Select one option"
+    "fieldset": {
+      "legend": {
+        "text": "Where do you live?",
+        "classes": "govuk-fieldset__legend--l"
+      }
+    },
+    "name": "whereDoYouLive",
+    "items": [
+      {
+        "text": "England",
+        "value": "england"
+      },
+      {
+        "text": "Scotland",
+        "value": "scotland"
+      },
+      {
+        "text": "Wales",
+        "value": "wales"
+      },
+      {
+        "text": "Northern Ireland",
+        "value": "northern-ireland"
+      }
+    ]
   }
 ]

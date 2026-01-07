@@ -1,5 +1,15 @@
 [
   {
-    "placeholder": "Please correct the following errors"
+    "titleText": "There is a problem",
+    "errorList": [
+      {
+        "text": "Enter your full name",
+        "href": "#"
+      },
+      {
+        "text": "The date your passport was issued must be in the past",
+        "href": "#"
+      }
+    ]
   }
 ]

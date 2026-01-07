@@ -1,5 +1,9 @@
 [
   {
-    "placeholder": "Upload your document"
+    "label": {
+      "text": "Upload a file"
+    },
+    "id": "file-upload-1",
+    "name": "fileUpload1"
   }
 ]

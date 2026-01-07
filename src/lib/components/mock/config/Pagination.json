@@ -1,5 +1,27 @@
 [
   {
-    "placeholder": "Navigate through pages"
+    "items": [
+      {
+        "number": 1,
+        "href": "#"
+      },
+      {
+        "number": 2,
+        "href": "#",
+        "current": true
+      },
+      {
+        "number": 3,
+        "href": "#"
+      }
+    ],
+    "previous": {
+      "text": "Previous",
+      "href": "#"
+    },
+    "next": {
+      "text": "Next",
+      "href": "#"
+    }
   }
 ]
