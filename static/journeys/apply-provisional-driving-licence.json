@@ -61,7 +61,7 @@
         {
           "type": "heading",
           "id": "start-heading",
-          "props": {
+          "config": {
             "text": "Apply for a provisional driving licence",
             "size": "xl"
           }
@@ -69,14 +69,14 @@
         {
           "type": "paragraph",
           "id": "start-intro",
-          "props": {
+          "config": {
             "text": "You can use this service to apply for your first (provisional) driving licence to drive a car, motorcycle or moped in Great Britain."
           }
         },
         {
           "type": "insetText",
           "id": "start-inset",
-          "props": {
+          "config": {
             "text": "You must be at least 15 years and 9 months old and normally resident in Great Britain to use this service."
           }
         }
@@ -91,7 +91,7 @@
         {
           "type": "heading",
           "id": "eligibility-age-heading",
-          "props": {
+          "config": {
             "text": "Are you at least 15 years and 9 months old?",
             "size": "l"
           }
@@ -99,7 +99,7 @@
         {
           "type": "radios",
           "id": "eligibility-age-radio",
-          "props": {
+          "config": {
             "id": "eligibility-age-radio",
             "name": "eligibility-age",
             "legend": "Select yes if you are at least 15 years and 9 months old.",
@@ -131,7 +131,7 @@
         {
           "type": "heading",
           "id": "eligibility-residency-heading",
-          "props": {
+          "config": {
             "text": "Are you normally resident in Great Britain?",
             "size": "l"
           }
@@ -139,14 +139,14 @@
         {
           "type": "paragraph",
           "id": "eligibility-residency-hint",
-          "props": {
+          "config": {
             "text": "You should usually live in England, Scotland or Wales for at least 185 days in each calendar year."
           }
         },
         {
           "type": "radios",
           "id": "eligibility-residency-radio",
-          "props": {
+          "config": {
             "id": "eligibility-residency-radio",
             "name": "eligibility-residency",
             "legend": "Select where you are normally resident.",
@@ -183,7 +183,7 @@
         {
           "type": "heading",
           "id": "personal-name-heading",
-          "props": {
+          "config": {
             "text": "Enter your full name",
             "size": "l"
           }
@@ -191,7 +191,7 @@
         {
           "type": "textInput",
           "id": "first-name",
-          "props": {
+          "config": {
             "id": "first-name",
             "name": "first-name",
             "label": "First name",
@@ -206,7 +206,7 @@
         {
           "type": "textInput",
           "id": "middle-names",
-          "props": {
+          "config": {
             "id": "middle-names",
             "name": "middle-names",
             "label": "Middle names (optional)",
@@ -221,7 +221,7 @@
         {
           "type": "textInput",
           "id": "last-name",
-          "props": {
+          "config": {
             "id": "last-name",
             "name": "last-name",
             "label": "Last name",
@@ -244,7 +244,7 @@
         {
           "type": "heading",
           "id": "personal-details-heading",
-          "props": {
+          "config": {
             "text": "Enter your personal details",
             "size": "l"
           }
@@ -252,7 +252,7 @@
         {
           "type": "textInput",
           "id": "date-of-birth",
-          "props": {
+          "config": {
             "id": "date-of-birth",
             "name": "date-of-birth",
             "label": "Date of birth",
@@ -268,7 +268,7 @@
         {
           "type": "textInput",
           "id": "national-insurance-number",
-          "props": {
+          "config": {
             "id": "national-insurance-number",
             "name": "national-insurance-number",
             "label": "National Insurance number (optional)",
@@ -284,7 +284,7 @@
         {
           "type": "radios",
           "id": "gender",
-          "props": {
+          "config": {
             "id": "gender",
             "name": "gender",
             "legend": "What is your gender as shown on your official documents?",
@@ -315,7 +315,7 @@
         {
           "type": "heading",
           "id": "identity-document-heading",
-          "props": {
+          "config": {
             "text": "Do you have a UK passport?",
             "size": "l"
           }
@@ -323,14 +323,14 @@
         {
           "type": "paragraph",
           "id": "identity-document-hint",
-          "props": {
+          "config": {
             "text": "DVLA can use your UK passport details to confirm your identity and use your passport photo."
           }
         },
         {
           "type": "radios",
           "id": "identity-document-radio",
-          "props": {
+          "config": {
             "id": "identity-document-radio",
             "name": "identity-document",
             "legend": "Select an option",
@@ -362,7 +362,7 @@
         {
           "type": "heading",
           "id": "contact-address-heading",
-          "props": {
+          "config": {
             "text": "What is your current home address?",
             "size": "l"
           }
@@ -370,14 +370,14 @@
         {
           "type": "paragraph",
           "id": "contact-address-hint",
-          "props": {
+          "config": {
             "text": "DVLA will send your provisional driving licence to this address."
           }
         },
         {
           "type": "textInput",
           "id": "address-line-1",
-          "props": {
+          "config": {
             "id": "address-line-1",
             "name": "address-line-1",
             "label": "Address line 1",
@@ -392,7 +392,7 @@
         {
           "type": "textInput",
           "id": "address-line-2",
-          "props": {
+          "config": {
             "id": "address-line-2",
             "name": "address-line-2",
             "label": "Address line 2 (optional)",
@@ -407,7 +407,7 @@
         {
           "type": "textInput",
           "id": "address-town",
-          "props": {
+          "config": {
             "id": "address-town",
             "name": "address-town",
             "label": "Town or city",
@@ -422,7 +422,7 @@
         {
           "type": "textInput",
           "id": "address-postcode",
-          "props": {
+          "config": {
             "id": "address-postcode",
             "name": "address-postcode",
             "label": "Postcode",
@@ -445,7 +445,7 @@
         {
           "type": "heading",
           "id": "previous-addresses-heading",
-          "props": {
+          "config": {
             "text": "Have you lived at this address for the last 3 years?",
             "size": "l"
           }
@@ -453,14 +453,14 @@
         {
           "type": "paragraph",
           "id": "previous-addresses-hint",
-          "props": {
+          "config": {
             "text": "DVLA needs your addresses for the last 3 years."
           }
         },
         {
           "type": "radios",
           "id": "previous-addresses-radio",
-          "props": {
+          "config": {
             "id": "previous-addresses-radio",
             "name": "previous-addresses",
             "legend": "Select yes if you have lived at your current address for 3 years or more.",
@@ -491,7 +491,7 @@
         {
           "type": "heading",
           "id": "contact-details-heading",
-          "props": {
+          "config": {
             "text": "How can DVLA contact you about your application?",
             "size": "l"
           }
@@ -499,7 +499,7 @@
         {
           "type": "textInput",
           "id": "email-address",
-          "props": {
+          "config": {
             "id": "email-address",
             "name": "email-address",
             "label": "Email address (optional)",
@@ -515,7 +515,7 @@
         {
           "type": "textInput",
           "id": "phone-number",
-          "props": {
+          "config": {
             "id": "phone-number",
             "name": "phone-number",
             "label": "UK mobile or landline number (optional)",
@@ -538,7 +538,7 @@
         {
           "type": "heading",
           "id": "vehicle-categories-heading",
-          "props": {
+          "config": {
             "text": "What type of vehicle do you want to learn to drive?",
             "size": "l"
           }
@@ -546,7 +546,7 @@
         {
           "type": "checkboxes",
           "id": "vehicle-categories-checkboxes",
-          "props": {
+          "config": {
             "id": "vehicle-categories-checkboxes",
             "name": "vehicle-categories",
             "legend": "Select all that apply.",
@@ -583,7 +583,7 @@
         {
           "type": "heading",
           "id": "medical-conditions-heading",
-          "props": {
+          "config": {
             "text": "Do you have any medical conditions DVLA needs to know about?",
             "size": "l"
           }
@@ -591,14 +591,14 @@
         {
           "type": "paragraph",
           "id": "medical-conditions-hint",
-          "props": {
+          "config": {
             "text": "For example, epilepsy, diabetes treated with insulin, severe visual impairment or serious heart conditions."
           }
         },
         {
           "type": "radios",
           "id": "medical-conditions-radio",
-          "props": {
+          "config": {
             "id": "medical-conditions-radio",
             "name": "medical-conditions",
             "legend": "Select an option",
@@ -621,7 +621,7 @@
         {
           "type": "warningText",
           "id": "medical-conditions-warning",
-          "props": {
+          "config": {
             "content": "You must tell DVLA about certain medical conditions and disabilities. If you are not sure, you should check the list of conditions on GOV.UK before you continue.",
             "iconFallbackText": "Warning"
           }
@@ -637,7 +637,7 @@
         {
           "type": "heading",
           "id": "declarations-heading",
-          "props": {
+          "config": {
             "text": "Read and confirm the declarations",
             "size": "l"
           }
@@ -645,7 +645,7 @@
         {
           "type": "checkboxes",
           "id": "declarations-checkboxes",
-          "props": {
+          "config": {
             "id": "declarations-checkboxes",
             "name": "declarations",
             "legend": "Tick all the boxes to confirm.",
@@ -682,7 +682,7 @@
         {
           "type": "heading",
           "id": "payment-heading",
-          "props": {
+          "config": {
             "text": "Pay for your provisional driving licence",
             "size": "l"
           }
@@ -690,14 +690,14 @@
         {
           "type": "paragraph",
           "id": "payment-amount",
-          "props": {
+          "config": {
             "text": "You need to pay the application fee using a debit or credit card."
           }
         },
         {
           "type": "textInput",
           "id": "card-holder-name",
-          "props": {
+          "config": {
             "id": "card-holder-name",
             "name": "card-holder-name",
             "label": "Name on the card",
@@ -712,7 +712,7 @@
         {
           "type": "textInput",
           "id": "card-number",
-          "props": {
+          "config": {
             "id": "card-number",
             "name": "card-number",
             "label": "Card number",
@@ -727,7 +727,7 @@
         {
           "type": "textInput",
           "id": "card-expiry",
-          "props": {
+          "config": {
             "id": "card-expiry",
             "name": "card-expiry",
             "label": "Expiry date (MM/YY)",
@@ -742,7 +742,7 @@
         {
           "type": "textInput",
           "id": "card-cvc",
-          "props": {
+          "config": {
             "id": "card-cvc",
             "name": "card-cvc",
             "label": "Card security code",
@@ -766,7 +766,7 @@
         {
           "type": "heading",
           "id": "check-answers-heading",
-          "props": {
+          "config": {
             "text": "Check your answers before you submit",
             "size": "l"
           }
@@ -774,7 +774,7 @@
         {
           "type": "paragraph",
           "id": "check-answers-intro",
-          "props": {
+          "config": {
             "text": "Make sure the details you have given are correct. You can go back to change any answers."
           }
         }
@@ -789,21 +789,21 @@
         {
           "type": "paragraph",
           "id": "confirmation-body-1",
-          "props": {
+          "config": {
             "text": "You have applied for a provisional driving licence. DVLA will now process your application."
           }
         },
         {
           "type": "paragraph",
           "id": "confirmation-body-2",
-          "props": {
+          "config": {
             "text": "If your application is successful, your photocard provisional driving licence will be posted to your home address."
           }
         },
         {
           "type": "insetText",
           "id": "confirmation-next-steps",
-          "props": {
+          "config": {
             "text": "You must have your provisional driving licence before you can take driving lessons on public roads or book a driving test."
           }
         }

@@ -1,12 +1,12 @@
 <script lang="ts">
-	interface Props {
-		props: {
+	interface config {
+		config: {
 			placeholder: string;
 		};
 	}
 
-	let { props }: Props = $props();
+	let { config }: config = $props();
 </script>
 
 <h2>Panel</h2>
-<p>{props.placeholder}</p>
+<p>{config.placeholder}</p>

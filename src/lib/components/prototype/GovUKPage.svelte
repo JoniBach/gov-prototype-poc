@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	interface Props {
+	interface config {
 		title?: string;
 		children?: any;
 	}
 
-	let { title = 'GOV.UK Page', children }: Props = $props();
+	let { title = 'GOV.UK Page', children }: config = $props();
 
 	onMount(() => {
 		// Initialize GOV.UK Frontend after the page loads

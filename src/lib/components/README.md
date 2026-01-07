@@ -1,3 +1,14 @@
+# Components documentation
+
+## Requirements
+Create a new component for each of the GOV.UK Design System components listed in the reference section below. Mark as done when completed.
+
+Each component should have a single prop called config. In it is a universal interface for all config. This will allow us to dynamically call the components in the future.
+
+The schema for the config is defined in schema.ts - Make sure to update this file when adding new components. Use the schema in
+
+## Reference
+
 - [ ] [Accordion](https://design-system.service.gov.uk/components/accordion/)
 - [ ] [Back link](https://design-system.service.gov.uk/components/back-link/)
 - [ ] [Breadcrumbs](https://design-system.service.gov.uk/components/breadcrumbs/)

@@ -6,5 +6,5 @@
 </script>
 
 <GovUKPage title="GOV.UK Design System Examples">
-<Accordion props={{placeholder: 'test'}}	/>
+<Accordion config={{placeholder: 'test'}}	/>
 </GovUKPage>
