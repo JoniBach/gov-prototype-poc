@@ -23,12 +23,12 @@ async function generateJourneyIndex(description) {
   const journeyIndex = indexResponse;
   addObjectToJson('static/journeys/index.json', journeyIndex);
   console.log("Index Response:", journeyIndex)
+
+  return journeyIndex 
 }
 
 async function generateHighLevelJourney(journeyId: string) {
-
   const content = getObjectById('static/journeys/index.json', journeyId);
-
   const response = await useOpenAI({
     model: 'gpt-4o-mini',
     system: "You are a helpful assistant that generates GOV.UK style form journeys using the Design System components.",
@@ -39,13 +39,25 @@ async function generateHighLevelJourney(journeyId: string) {
   console.log(content)
   console.log(JSON.stringify(response, null, 2))
 
-  createJson(`static/journeys/${journeyId}.json`, response)
+  createJson(`static/journeys/${journeyId}.json`, response.pages)
 }
+
+async function generateLowLevelPage(page) {
+
+}
+
+async function generateLowLevelJourney(journeyId) {
+
+
+
+}
+
 async function generatePrototype(description: string) {
   try {
-    // generateJourneyIndex(description);
-    generateHighLevelJourney('passport-application-journey')
+    const journeyIndex = await generateJourneyIndex(description);
+    await generateHighLevelJourney(journeyIndex.id)
 
+    return journeyIndex
 
   } catch (error) {
     // Better error handling

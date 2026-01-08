@@ -10,6 +10,20 @@
       "type": "data-entry",
       "enabled": true,
       "created": "2025-12-15T12:43:09.689Z"
+    },
+    {
+      "id": "passport-application",
+      "name": "Passport Application Journey",
+      "departmentId": "home-office",
+      "departmentName": "Home Office",
+      "description": "A comprehensive journey for applicants applying for a UK passport."
+    },
+    {
+      "id": "passport-application",
+      "name": "Passport Application Journey",
+      "departmentId": "home-office",
+      "departmentName": "Home Office",
+      "description": "A step-by-step process for applying for a UK passport online."
     }
   ]
 }
