@@ -1,18 +1,5 @@
 {
   "journeys": [
-    {
-      "id": "passport-application",
-      "name": "Passport Application",
-      "departmentId": "home-office",
-      "departmentName": "Home Office",
-      "description": "A step-by-step journey to apply for a UK passport online."
-    },
-    {
-      "id": "passport-application-journey",
-      "name": "Passport Application Process",
-      "departmentId": "home-office",
-      "departmentName": "Home Office",
-      "description": "A step-by-step guide for applicants to successfully complete their passport application."
-    }
+
   ]
 }
