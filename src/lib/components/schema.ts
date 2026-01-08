@@ -422,6 +422,8 @@ export const ComponentTypeEnum = z.enum([
 	'WarningText',
 ]);
 
+
+
 export const ComponentSchema = z.object({
 	component: ComponentTypeEnum,
 	config: z.any(),
@@ -434,7 +436,34 @@ export const PageSchema = z.object({
 	components: ComponentsSchema,
 });
 
+
+
 export const MultiPageSchema = z.object({
 	pages: z.array(PageSchema),
 	currentPage: z.number(),
+});
+
+export const JourneyIndexSchema = z.object({
+	id: z.string(),
+	name: z.string(),
+	departmentId: z.string(),
+	departmentName: z.string(),
+	description: z.string(),
+});
+
+export const JourneysSchema = z.array(JourneyIndexSchema);
+
+
+export const HighLevelComponentSchema = z.object({
+	component: ComponentTypeEnum,
+	id: z.string(),
+	config: z.null()
+});
+
+export const HighLevelPageSchema = z.object({
+	title: z.string(),
+	components: z.array(HighLevelComponentSchema),
+});
+export const HighLevelMultiPageSchema = z.object({
+	pages: z.array(HighLevelPageSchema),
 });
