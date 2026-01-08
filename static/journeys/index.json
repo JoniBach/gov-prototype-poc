@@ -1,29 +1,18 @@
 {
   "journeys": [
     {
-      "id": "apply-provisional-driving-licence",
-      "name": "Apply for a Provisional Driving Licence",
-      "description": "Online service for individuals to apply for a first (provisional) driving licence to drive a car, motorcycle or moped in Great Britain. Applicants can enter their personal details, confirm identity information, provide addresses and medical declarations, and pay the required fee. The service validates eligibility (including age and residency), checks details against existing government records where possible, and submits the application to the Driver and Vehicle Licensing Agency (DVLA) for processing. Successful applications result in the issue and postal delivery of a photocard provisional driving licence, which is required before taking driving lessons or booking a driving test.",
-      "slug": "apply-for-provisional-driving-licence",
-      "department": "Department for Transport",
-      "departmentSlug": "department-for-transport",
-      "type": "data-entry",
-      "enabled": true,
-      "created": "2025-12-15T12:43:09.689Z"
-    },
-    {
       "id": "passport-application",
-      "name": "Passport Application Journey",
+      "name": "Passport Application",
       "departmentId": "home-office",
       "departmentName": "Home Office",
-      "description": "A comprehensive journey for applicants applying for a UK passport."
+      "description": "A step-by-step journey to apply for a UK passport online."
     },
     {
-      "id": "passport-application",
-      "name": "Passport Application Journey",
+      "id": "passport-application-journey",
+      "name": "Passport Application Process",
       "departmentId": "home-office",
       "departmentName": "Home Office",
-      "description": "A step-by-step process for applying for a UK passport online."
+      "description": "A step-by-step guide for applicants to successfully complete their passport application."
     }
   ]
 }

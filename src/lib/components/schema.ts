@@ -466,6 +466,7 @@ export const ComponentTypeEnum = z.enum([
 export const ComponentSchema = z.object({
 	component: ComponentTypeEnum,
 	config: z.any(),
+	id: z.string(),
 });
 
 export const ComponentsSchema = z.array(ComponentSchema);

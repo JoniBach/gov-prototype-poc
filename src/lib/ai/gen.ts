@@ -32,17 +32,15 @@ async function generateJourneyIndex(description) {
 async function generateHighLevelJourney(journeyId: string) {
   const content = getObjectById('static/journeys/index.json', journeyId);
   const response = await useOpenAI({
-    model: 'gpt-4o-mini',
+    model: 'gpt-5.1',
     system: "You are a qualified GOV uk content designer that generates GOV.UK style form journeys using the Design System components.",
     user: JSON.stringify(content),
     schema: HighLevelMultiPageSchema,
   })
 
-  console.log(content)
-  console.log(JSON.stringify(response, null, 2))
 
   createJson(`static/journeys/${journeyId}.json`, response.pages)
-
+return response
 
 }
 
@@ -105,16 +103,23 @@ async function generateLowLevelJourney(journeyId) {
   createJson(`static/journeys/${journeyId}.json`, lowLevelJourney);
 
   console.log('finished: ', journeyId);
+
+  return lowLevelJourney
 }
 
 async function generatePrototype(description: string) {
   try {
-    // const journeyIndex = await generateJourneyIndex(description);
-    // await generateHighLevelJourney(journeyIndex.id)
-
-    const journeyIndex = getObjectById('static/journeys/index.json', "passport-application");
-    await generateLowLevelJourney(journeyIndex.id)
+    const journeyIndex = await generateJourneyIndex(description);
+    if (journeyIndex?.id) console.log('Journey successfully generated'); else console.log('No journey index generated');
+    const highLevelJourney = await generateHighLevelJourney(journeyIndex.id)
+    if (highLevelJourney) console.log('High level journey successfully generated'); else console.log('No high level journey generated');
+    const lowLevelJourney = await generateLowLevelJourney(journeyIndex.id)
+    if (lowLevelJourney) console.log('Low level journey successfully generated'); else console.log('No low level journey generated');
     return journeyIndex
+
+    // const journeyIndex = getObjectById('static/journeys/index.json', "passport-application");
+    // await generateLowLevelJourney(journeyIndex.id)
+    // return journeyIndex
 
   } catch (error) {
     // Better error handling
