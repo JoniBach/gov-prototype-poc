@@ -1,20 +1,22 @@
 <script lang="ts">
-	import { fetchJsonFile } from '$lib/ai/files';
 	import GovUKPage from '$lib/components/prototype/GovUKPage.svelte';
-	import MultiPage from '$lib/components/prototype/MultiPage.svelte';
 	import { onMount } from 'svelte';
 
-	let journeyId = 'passport-application';
-
-	let pages = [];
-	let currentPage = 0;
+	let journeys = [];
 
 	onMount(async () => {
-		const response = await fetch(`/journeys/${journeyId}.json`);
-		pages = await response.json();
+		const response = await fetch('/journeys/index.json');
+		journeys = await response.json();
 	});
 </script>
 
-{#if pages.length > 0}
-	<MultiPage pages={pages} currentPage={currentPage}/>
-{/if}
+<GovUKPage title="Journeys">
+	<ul class="govuk-list">
+		{#each journeys as journey}
+			<li>
+				<a href="/journey/{journey.id}" class="govuk-link">{journey.name}</a>
+				<p class="govuk-body-s">{journey.description}</p>
+			</li>
+		{/each}
+	</ul>
+</GovUKPage>
