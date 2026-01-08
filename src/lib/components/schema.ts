@@ -386,7 +386,7 @@ export const WarningTextSchema = z.object({
 
 export const configurationSchema = {
 	Accordion: AccordionSchema,
-	BackLink: BackLinkSchema,
+	// BackLink: BackLinkSchema,
 	Breadcrumbs: BreadcrumbsSchema,
 	// Button: ButtonSchema,
 	CharacterCount: CharacterCountSchema,
@@ -425,7 +425,7 @@ export const ConfigurationSchemaEnum = z.object(configurationSchema);
 
 export const ComponentTypeEnum = z.enum([
 	'Accordion',
-	'BackLink',
+	// 'BackLink',
 	'Breadcrumbs',
 	// 'Button',
 	'CharacterCount',
