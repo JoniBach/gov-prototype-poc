@@ -4,7 +4,7 @@
 	import MultiPage from '$lib/components/prototype/MultiPage.svelte';
 	import { onMount } from 'svelte';
 
-	let journeyId = 'passport-application-journey';
+	let journeyId = 'passport-application';
 
 	let pages = [];
 	let currentPage = 0;

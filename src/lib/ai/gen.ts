@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import { configurationSchema, ConfigurationSchemaEnum, HighLevelMultiPageSchema, JourneyIndexSchema, MultiPageSchema } from '../components/schema.ts';
+import { configurationSchema, HighLevelMultiPageSchema, JourneyIndexSchema, MultiPageSchema } from '../components/schema.ts';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -30,6 +30,7 @@ async function generateJourneyIndex(description) {
 }
 
 async function generateHighLevelJourney(journeyId: string) {
+  console.log("Generating high level journey")
   const content = getObjectById('static/journeys/index.json', journeyId);
   const response = await useOpenAI({
     model: 'gpt-5.1',
@@ -39,52 +40,55 @@ async function generateHighLevelJourney(journeyId: string) {
   })
 
 
+  console.log(`Generated ${response.pages.length} pages for journey: ${journeyId}`);
+
+
   createJson(`static/journeys/${journeyId}.json`, response.pages)
-return response
+  return response
 
 }
 
-async function generateLowLevelPage(page) {
-
-  const componentList = page.components.map(({ component }) => component)
-  const ComponentTypeEnum = z.enum(componentList)
-
-  const ComponentListSchemas = _.pick(configurationSchema, componentList)
-  const ConfigurationSchemaEnum = z.object(ComponentListSchemas);
-
-  const ComponentSchema = z.object({
-    component: ComponentTypeEnum,
-    config: ConfigurationSchemaEnum,
-    id: z.string(),
-  });
-
-  const ComponentsSchema = z.array(ComponentSchema)
-  const PageSchema = z.object({
-    title: z.string(),
-    components: ComponentsSchema,
-  });
-
-  // console.log('generateLowLevelPage page: ', page)
-  // console.log('generateLowLevelPage componentList: ', componentList)
+async function generateComponentConfig(component: { component: string; id: string }) {
+  const componentSchema = configurationSchema[component.component];
+  
+  if (!componentSchema) {
+    throw new Error(`Unknown component type: ${component.component}`);
+  }
 
   const response = await useOpenAI({
     model: 'gpt-4o-mini',
-    system: "You are a qualified GOV UK interaction designerthat generates content for pages for GOV.UK style form journeys using the Design System components. You fill out empty configuration objects ",
-    user: JSON.stringify(page),
-    schema: PageSchema,
-  })
+    system: `You are a GOV UK interaction designer. Generate a proper configuration for this ${component.component} component following GOV.UK Design System standards.`,
+    user: JSON.stringify(component),
+    schema: componentSchema,
+  });
 
-  console.log(console.log(JSON.stringify(response, null, 2))
-  )
+  return response;
+}
 
-  return response
+async function generateLowLevelPage(page) {
+  console.log(`Generating configs for page: ${page.title}`);
+  
+  // Generate all component configs in parallel
+  const componentPromises = page.components.map(async (component) => {
+    const config = await generateComponentConfig(component);
+    return {
+      component: component.component,
+      id: component.id,
+      config: config.config,
+    };
+  });
 
+  const components = await Promise.all(componentPromises);
 
+  return {
+    title: page.title,
+    components: components,
+  };
 }
 
 async function generateLowLevelJourney(journeyId) {
   const highLevelJourney = fetchJsonFile(`static/journeys/${journeyId}.json`);
-  
+
   console.log(`Generating ${highLevelJourney.length} pages in parallel...`);
 
   let count = highLevelJourney.length;
@@ -99,6 +103,7 @@ async function generateLowLevelJourney(journeyId) {
   });
 
   const lowLevelJourney = await Promise.all(pagePromises);
+
 
   createJson(`static/journeys/${journeyId}.json`, lowLevelJourney);
 
