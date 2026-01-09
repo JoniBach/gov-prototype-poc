@@ -13,9 +13,10 @@
 		if (typeof window !== 'undefined') {
 			// Wait for the script to load
 			const checkAndInit = () => {
-				if ((window as any).GOVUKFrontend) {
+				if ((window as any).GOVUKFrontend && !(window as any).GOVUKFrontend.initialized) {
 					(window as any).GOVUKFrontend.initAll();
-				} else {
+					(window as any).GOVUKFrontend.initialized = true;
+				} else if (!(window as any).GOVUKFrontend) {
 					// Retry after a short delay if not loaded yet
 					setTimeout(checkAndInit, 100);
 				}
@@ -29,7 +30,9 @@
 	<link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css" />
 	<script type="module">
 		import { initAll } from '/javascripts/govuk-frontend.min.js';
-		window.GOVUKFrontend = { initAll };
+		if (!window.GOVUKFrontend) {
+			window.GOVUKFrontend = { initAll, initialized: false };
+		}
 	</script>
 	<meta name="theme-color" content="#1d70b8" />
 </svelte:head>

@@ -1,6 +1,6 @@
 import { configurationSchema, HighLevelMultiPageSchema, JourneyIndexSchema, MultiPageSchema } from '../components/schema.ts';
 import { useOpenAI } from './openai.ts';
-import { addObjectToJson, createJson, fetchJsonFile, getObjectById } from './files.ts';
+import { addUniqueObjectToJson, createJson, fetchJsonFile, getObjectById, removeObjectsByKeys } from './files.ts';
 import _ from 'lodash';
 
 async function generateJourneyIndex(description) {
@@ -12,10 +12,22 @@ async function generateJourneyIndex(description) {
   })
 
   const journeyIndex = indexResponse;
-  addObjectToJson('static/journeys/index.json', journeyIndex);
+  addUniqueObjectToJson('static/journeys/index.json', journeyIndex);
   console.log("Index Response:", journeyIndex)
 
   return journeyIndex
+}
+
+async function filterOutUnwantedComponents(array) {
+
+  const unwantedComponents = [
+    "GOVUKFooter",
+    'GOVUKHeader',
+  ]
+
+  const filteredArray = removeObjectsByKeys(array, 'component', unwantedComponents)
+
+  return filteredArray
 }
 
 async function generateHighLevelJourney(journeyId: string) {
@@ -23,21 +35,30 @@ async function generateHighLevelJourney(journeyId: string) {
   const content = getObjectById('static/journeys/index.json', journeyId);
   const response = await useOpenAI({
     model: 'gpt-5.1',
-    system: "You are an interaction designer defining page flows, information hierarchy, and interaction patterns for a GOV.UK service prototype, deciding pages, layouts, and component placements.",
-    user: JSON.stringify(content),
+    system: `You are an interaction designer defining page flows, information hierarchy, and interaction patterns for a GOV.UK service prototype, deciding pages, layouts, and component placements. 
+    IMPORTANT OUTPUT RULES (MUST FOLLOW):
+    - Every component must have an "id" string.
+    - Component "id" values MUST be globally unique across ALL pages.
+    - Never reuse an id, even on different pages.
+    - Treat component ids as stable identifiers.
+    `,
+    user: `${JSON.stringify(content)}`,
     schema: HighLevelMultiPageSchema,
   })
 
+  const postProcessed = await filterOutUnwantedComponents(response.pages)
+
+  console.log('postProcessed - ', postProcessed)
   console.log(`Generated ${response.pages.length} pages for journey: ${journeyId}`);
 
-  createJson(`static/journeys/${journeyId}.json`, response.pages)
-  return response
+  createJson(`static/journeys/${journeyId}.json`, postProcessed)
+  return postProcessed
 
 }
 
 async function generateComponentConfig(component: { component: string; id: string }) {
   const componentSchema = configurationSchema[component.component];
-  
+
   if (!componentSchema) {
     throw new Error(`Unknown component type: ${component.component}`);
   }
@@ -54,7 +75,7 @@ async function generateComponentConfig(component: { component: string; id: strin
 
 async function generateLowLevelPage(page) {
   console.log(`Generating configs for page: ${page.title}`);
-  
+
   // Generate all component configs in parallel
   const componentPromises = page.components.map(async (component) => {
     const config = await generateComponentConfig(component);

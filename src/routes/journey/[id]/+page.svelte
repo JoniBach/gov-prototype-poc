@@ -5,10 +5,10 @@
 	import MultiPage from '$lib/components/prototype/MultiPage.svelte';
 	import { onMount } from 'svelte';
 
-	let journeyId = $page.params.id;
+	let journeyId = $derived($page.params.id);
 
-	let pages = [];
-	let currentPage = 0;
+	let pages = $state([]);
+	let currentPage = $state(0);
 
 	onMount(async () => {
 		const response = await fetch(`/journeys/${journeyId}.json`);

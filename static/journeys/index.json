@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "id": "passport-application-service",
+    "name": "Passport Application Service",
+    "departmentId": "home-office",
+    "departmentName": "Home Office",
+    "description": "A service to apply for, renew, and manage passport applications in the UK."
+  }
+]
