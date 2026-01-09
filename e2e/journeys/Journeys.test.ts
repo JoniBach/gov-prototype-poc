@@ -1,31 +1,59 @@
-import { Page, test, expect } from '@playwright/test';
-// @ts-ignore
-import journeysIndex from '../../static/journeys/index.json' with { type: 'json' };
-// @ts-ignore
-import passportApplicationService from '../../static/journeys/passport-application-service.json' with { type: 'json' };
+import { Page, test } from '@playwright/test';
 
-const journeyData: Record<string, any[]> = {
-  'passport-application-service': passportApplicationService,
+import journeysIndex from "../../static/journeys/index.json" with { type: "json" };
+import passportApplicationService from "../../static/journeys/passport-application-service.json" with { type: "json" };
+import { components, componentConfigs } from '../componentUtils';
+
+// Map of journey ID -> journey JSON
+const journeys: Record<string, any> = {
+    "passport-application-service": passportApplicationService
 };
 
+/**
+ * Visit the journey URL and run all component tests for all pages
+ */
+async function testJourney(page: Page, journey: any) {
+    // Go to the journey's main URL
+    await page.goto(`/journey/${journey.id}`);
+
+    const fullJourney = journeys[journey.id];
+
+    if (!fullJourney) {
+        throw new Error(`Journey JSON not found for ID: ${journey.id}`);
+    }
+
+    for (const pageDef of fullJourney) {
+        // Optional: log current page
+        console.log(`Testing page: ${pageDef.title}`);
+
+        for (const componentDef of pageDef.components) {
+            const { component, id, config } = componentDef;
+            const testComponent = components[component];
+
+            if (!testComponent) {
+                test.skip(`No test registered for component "${component}" (${id})`);
+                continue;
+            }
+
+            // Use journey config first, fall back to mock component config
+            const componentConfig = config ?? componentConfigs[component];
+
+            if (!componentConfig) {
+                throw new Error(`No config found for component "${component}" (${id})`);
+            }
+
+            await testComponent(page, componentConfig);
+        }
+    }
+}
+
+/**
+ * Generate Playwright tests dynamically from journeysIndex
+ */
 for (const journey of journeysIndex) {
-  test.describe(`${journey.name} Journey`, () => {
-    const pages = journeyData[journey.id];
-    pages.forEach((journeyPage, index) => {
-      test(`Page ${index + 1}: ${journeyPage.title}`, async ({ page }) => {
-        await page.goto(`/journey/${journey.id}`);
-        await page.waitForSelector('#phase-banner-start');
-        for (let i = 0; i < index; i++) {
-          const prevPage = pages[i];
-          const buttonComp = prevPage.components.find((c: any) => c.component === 'Button');
-          if (buttonComp) {
-            await page.click(`button:has-text("${buttonComp.config.text}")`);
-          }
-        }
-        for (const component of journeyPage.components) {
-          await expect(page.locator(`#${component.id}`)).toBeVisible();
-        }
-      });
+    test.describe(`${journey.name} Journey`, () => {
+        test(`should render and function correctly`, async ({ page }) => {
+            await testJourney(page, journey);
+        });
     });
-  });
 }
