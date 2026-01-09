@@ -35,7 +35,7 @@
 	import WarningText from '../gds/WarningText.svelte';
 	import { ComponentSchema } from '../schema';
 
-	let { component }: { component: { component: string; config: any } } = $props();
+	let { component, ...rest }: { component: { component: string; config: any }; [key: string]: unknown } = $props();
 
 	let Component = $derived.by(() => {
 		const validated = ComponentSchema.parse(component);
@@ -115,5 +115,5 @@
 </script>
 
 {#if Component}
-	<svelte:component this={Component} config={component.config} />
+	<svelte:component this={Component} config={component.config} {...rest} />
 {/if}
