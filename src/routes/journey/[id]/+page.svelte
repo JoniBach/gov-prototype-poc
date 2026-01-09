@@ -8,7 +8,7 @@
 	let journeyId = $derived($page.params.id);
 
 	let pages = $state([]);
-	let currentPage = $state(0);
+	let currentPage = $derived(parseInt($page.url.searchParams.get('page') || '0'));
 
 	onMount(async () => {
 		const response = await fetch(`/journeys/${journeyId}.json`);

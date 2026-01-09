@@ -13,16 +13,16 @@ const journeys: Record<string, any> = {
  * Visit the journey URL and run all component tests for all pages
  */
 async function testJourney(page: Page, journey: any) {
-    // Go to the journey's main URL
-    await page.goto(`/journey/${journey.id}`);
-
     const fullJourney = journeys[journey.id];
 
     if (!fullJourney) {
         throw new Error(`Journey JSON not found for ID: ${journey.id}`);
     }
 
-    for (const pageDef of fullJourney) {
+    for (const [index, pageDef] of fullJourney.entries()) {
+        // Go to the specific page
+        await page.goto(`/journey/${journey.id}?page=${index}`);
+
         // Optional: log current page
         console.log(`Testing page: ${pageDef.title}`);
 
@@ -40,7 +40,7 @@ async function testJourney(page: Page, journey: any) {
 
             if (!componentConfig) {
                 throw new Error(`No config found for component "${component}" (${id})`);
-            }
+                }
 
             await testComponent(page, componentConfig);
         }

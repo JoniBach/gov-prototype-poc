@@ -10,13 +10,16 @@
 		<div class="govuk-accordion__section" class:govuk-accordion__section--expanded={section.expanded}>
 			<div class="govuk-accordion__section-header">
 				<h2 class="govuk-accordion__section-heading">
-					<span
+					<button
+						type="button"
 						class="govuk-accordion__section-button"
 						id="{config.id}-heading-{index + 1}"
 						aria-expanded={section.expanded ? 'true' : 'false'}
+						aria-controls="{config.id}-content-{index + 1}"
+						aria-label="{section.heading} , Show this section"
 					>
 						{section.heading}
-					</span>
+					</button>
 				</h2>
 			</div>
 			<div
