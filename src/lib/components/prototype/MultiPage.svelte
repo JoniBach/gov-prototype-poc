@@ -30,12 +30,12 @@
 	}
 
 	$effect(() => {
-		console.log(data);
+		console.log($state.snapshot(data));
 	});
 </script>
 
 
-<form onsubmit={handleSubmit}>
+<form onsubmit={handleSubmit} novalidate>
 	{#each pages as page, index}
 		<div class={`${index === currentPage ? 'show' : 'hide'}`}>
 			<GovUKPage title={page.title}>
