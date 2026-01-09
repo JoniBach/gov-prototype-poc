@@ -1,24 +1,13 @@
-import OpenAI from 'openai';
 import { configurationSchema, HighLevelMultiPageSchema, JourneyIndexSchema, MultiPageSchema } from '../components/schema.ts';
-import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { zodTextFormat } from "openai/helpers/zod";
 import { useOpenAI } from './openai.ts';
 import { addObjectToJson, createJson, fetchJsonFile, getObjectById } from './files.ts';
-import z from 'zod';
 import _ from 'lodash';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
 
 async function generateJourneyIndex(description) {
   const indexResponse = await useOpenAI({
     model: 'gpt-4o-mini',
-    system: "You are a helpful assistant that generates GOV.UK style form journeys using the Design System components.",
-    user: `Create a journey for: ${description}`,
+    system: "You are a service designer defining the purpose, goals, and high-level requirements for a GOV.UK service based on the input description.",
+    user: `Create a service blueprint for: ${description}`,
     schema: JourneyIndexSchema,
   })
 
@@ -34,14 +23,12 @@ async function generateHighLevelJourney(journeyId: string) {
   const content = getObjectById('static/journeys/index.json', journeyId);
   const response = await useOpenAI({
     model: 'gpt-5.1',
-    system: "You are a qualified GOV uk content designer that generates GOV.UK style form journeys using the Design System components.",
+    system: "You are an interaction designer defining page flows, information hierarchy, and interaction patterns for a GOV.UK service prototype, deciding pages, layouts, and component placements.",
     user: JSON.stringify(content),
     schema: HighLevelMultiPageSchema,
   })
 
-
   console.log(`Generated ${response.pages.length} pages for journey: ${journeyId}`);
-
 
   createJson(`static/journeys/${journeyId}.json`, response.pages)
   return response
@@ -57,7 +44,7 @@ async function generateComponentConfig(component: { component: string; id: strin
 
   const response = await useOpenAI({
     model: 'gpt-4o-mini',
-    system: `You are a GOV UK interaction designer. Generate a proper configuration for this ${component.component} component following GOV.UK Design System standards.`,
+    system: `You are a UX/UI designer fleshing out configurations for GOV.UK components, including labels, hints, validations, and default values to ensure usability and standards compliance.`,
     user: JSON.stringify(component),
     schema: componentSchema,
   });

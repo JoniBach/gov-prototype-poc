@@ -386,24 +386,15 @@ export const WarningTextSchema = z.object({
 
 export const configurationSchema = {
 	Accordion: AccordionSchema,
-	// BackLink: BackLinkSchema,
 	Breadcrumbs: BreadcrumbsSchema,
-	// Button: ButtonSchema,
 	CharacterCount: CharacterCountSchema,
 	Checkboxes: CheckboxesSchema,
 	CookieBanner: CookieBannerSchema,
 	DateInput: DateInputSchema,
 	Details: DetailsSchema,
-	// ErrorMessage: ErrorMessageSchema,
-	// ErrorSummary: ErrorSummarySchema,
-	ExitThisPage: ExitThisPageSchema,
 	Fieldset: FieldsetSchema,
 	FileUpload: FileUploadSchema,
-	// GOVUKFooter: GOVUKFooterSchema,
-	// GOVUKHeader: GOVUKHeaderSchema,
 	InsetText: InsetTextSchema,
-	NotificationBanner: NotificationBannerSchema,
-	Pagination: PaginationSchema,
 	Panel: PanelSchema,
 	PasswordInput: PasswordInputSchema,
 	PhaseBanner: PhaseBannerSchema,
@@ -420,29 +411,31 @@ export const configurationSchema = {
 	Textarea: TextareaSchema,
 	Typography: TypographySchema,
 	WarningText: WarningTextSchema,
+
+	// Not in use by AI
+	BackLink: BackLinkSchema,
+	Button: ButtonSchema,
+	GOVUKFooter: GOVUKFooterSchema,
+	GOVUKHeader: GOVUKHeaderSchema,
+	ErrorMessage: ErrorMessageSchema,
+	ErrorSummary: ErrorSummarySchema,
+	ExitThisPage: ExitThisPageSchema,
+	Pagination: PaginationSchema,
+	NotificationBanner: NotificationBannerSchema,
 }
 export const ConfigurationSchemaEnum = z.object(configurationSchema);
 
-export const ComponentTypeEnum = z.enum([
+export const ComponentList = [
 	'Accordion',
-	// 'BackLink',
 	'Breadcrumbs',
-	// 'Button',
 	'CharacterCount',
 	'Checkboxes',
 	'CookieBanner',
 	'DateInput',
 	'Details',
-	// 'ErrorMessage',
-	// 'ErrorSummary',
-	'ExitThisPage',
 	'Fieldset',
 	'FileUpload',
-	// 'GOVUKFooter',
-	// 'GOVUKHeader',
 	'InsetText',
-	'NotificationBanner',
-	'Pagination',
 	'Panel',
 	'PasswordInput',
 	'PhaseBanner',
@@ -459,7 +452,20 @@ export const ComponentTypeEnum = z.enum([
 	'Textarea',
 	'Typography',
 	'WarningText',
-]);
+
+	// Not in use by AI
+	'BackLink',
+	'Button',
+	'ErrorMessage',
+	'ErrorSummary',
+	'GOVUKFooter',
+	'GOVUKHeader',
+	'Pagination',
+	'ExitThisPage',
+	'NotificationBanner',
+]
+
+export const ComponentTypeEnum = z.enum(ComponentList);
 
 
 
@@ -492,7 +498,6 @@ export const JourneyIndexSchema = z.object({
 });
 
 export const JourneysSchema = z.array(JourneyIndexSchema);
-
 
 export const HighLevelComponentSchema = z.object({
 	component: ComponentTypeEnum,
