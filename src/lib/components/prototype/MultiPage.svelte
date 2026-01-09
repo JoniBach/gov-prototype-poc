@@ -32,6 +32,12 @@
 	$effect(() => {
 		console.log($state.snapshot(data));
 	});
+
+	$effect(() => {
+		if (pages.length > 0 && typeof window !== 'undefined' && (window as any).GOVUKFrontend) {
+			(window as any).GOVUKFrontend.initAll();
+		}
+	});
 </script>
 
 

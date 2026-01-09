@@ -14,7 +14,6 @@
 						type="button"
 						class="govuk-accordion__section-button"
 						id="{config.id}-heading-{index + 1}"
-						aria-expanded={section.expanded ? 'true' : 'false'}
 						aria-controls="{config.id}-content-{index + 1}"
 						aria-label="{section.heading} , Show this section"
 					>
