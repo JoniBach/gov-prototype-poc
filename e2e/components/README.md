@@ -3,7 +3,9 @@
 ## Requirements
 To write a new GOV.UK Design System component test, follow these steps:
 
-1. **XXX**: xxx
+1. **Review the component**: Examine the [GOV.UK Design System documentation](https://design-system.service.gov.uk/components/) for the component to understand its structure, required attributes, and expected behavior.
+2. **Implement the test function**: Create a TypeScript file in `e2e/components/` (e.g., `Button.ts`) with an async function that takes `page: Page` and `config: any`, using Playwright to test the component's rendering and interactions.
+3. **Update reference**: Mark the component as `[x]` in the reference list below to indicate it has a test implemented.
 
 ## Reference
 
@@ -38,7 +40,7 @@ To write a new GOV.UK Design System component test, follow these steps:
 - [ ] [Tabs](https://design-system.service.gov.uk/components/tabs/)
 - [ ] [Tag](https://design-system.service.gov.uk/components/tag/)
 - [ ] [Task list](https://design-system.service.gov.uk/components/task-list/)
-- [ ] [Text input](https://design-system.service.gov.uk/components/text-input/)
+- [x] [Text input](https://design-system.service.gov.uk/components/text-input/)
 - [ ] [Textarea](https://design-system.service.gov.uk/components/textarea/)
 - [ ] [Warning text](https://design-system.service.gov.uk/components/warning-text/)
 - [ ] [Typography](https://design-system.service.gov.uk/styles/typography/)
