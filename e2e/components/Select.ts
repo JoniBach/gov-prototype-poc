@@ -2,45 +2,36 @@ import { Page, expect } from '@playwright/test';
 
 export async function testSelect(page: Page, config: any) {
 	const select = page.locator(`#${config.id}`);
-	const errorMessage = page.locator(`#${config.id}-error`);
-	const formGroup = page.locator('.govuk-form-group');
+	const formGroup = page.locator('.govuk-form-group').filter({ has: page.locator(`#${config.id}`) });
+	const label = page.locator(`label[for="${config.id}"]`);
 
-	// Select exists
+	await expect(formGroup).toBeVisible();
+
+	await expect(label).toBeVisible();
+	await expect(label).toContainText(config.label.text);
+	await expect(label).toHaveClass(/govuk-label/);
+
 	await expect(select).toBeVisible();
+	await expect(select).toHaveAttribute('id', config.id);
+	await expect(select).toHaveAttribute('name', config.name);
+	await expect(select).toHaveClass(/govuk-select/);
 
-	// ---- INVALID VALUE ----
-	if (config.invalidValue) {
-		await select.selectOption(config.invalidValue);
-
-		// Error message should appear
-		await expect(errorMessage).toBeVisible();
-		await expect(errorMessage).toContainText(config.expectedError);
-
-		// GOV.UK error classes applied
-		await expect(formGroup).toHaveClass(/govuk-form-group--error/);
-		await expect(select).toHaveClass(/govuk-select--error/);
-
-		// aria-describedby is set
-		await expect(select).toHaveAttribute(
-			'aria-describedby',
-			`${config.id}-error`
-		);
+	for (const item of config.items) {
+		const option = select.locator(`option[value="${item.value}"]`);
+		await expect(option).toBeAttached();
+		await expect(option).toContainText(item.text);
 	}
 
-	// ---- VALID VALUE ----
-	if (config.validValue) {
-		await select.selectOption(config.validValue);
+	await select.focus();
+	await expect(select).toBeFocused();
 
-		// Error message removed
-		await expect(errorMessage).toBeHidden();
-
-		// Error classes removed
-		await expect(formGroup).not.toHaveClass(/govuk-form-group--error/);
-		await expect(select).not.toHaveClass(/govuk-select--error/);
-
-		// aria-describedby removed
-		await expect(select).not.toHaveAttribute('aria-describedby');
+	if (config.items.length > 0) {
+		await select.selectOption(config.items[0].value);
+		await expect(select).toHaveValue(config.items[0].value);
 	}
+
+	await select.press('Tab');
+	// After tab, focus should move away
 }
 
 export default testSelect;
