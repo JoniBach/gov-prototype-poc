@@ -1,0 +1,1534 @@
+[
+  {
+    "title": "Start passport application",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back-passport-start",
+        "config": {
+          "text": "Back",
+          "href": "/passport/start"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typo-passport-start-heading",
+        "config": {
+          "text": "Start your passport application",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typo-passport-start-intro",
+        "config": {
+          "text": "This section introduces the passport application process. Here, you'll find key information and guidance to help you navigate through the application steps quickly and efficiently. Please ensure you have all required documents at hand.",
+          "variant": "intro"
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-passport-start-eligibility",
+        "config": {
+          "text": "### Check your eligibility for a passport\n\nTo apply for a UK passport, you need to meet certain eligibility criteria. Make sure you verify the following:\n\n- You are a British citizen, or if not, that you have the right to reside in the UK.\n- Your previous passport must have been issued in your name, and you need to provide it for reference.\n- Ensure that your passport application is not connected to any ongoing legal issues or travel restrictions.\n\nIf you're unsure, please visit the UK government's official passport application page for more detailed information."
+        }
+      },
+      {
+        "component": "TaskList",
+        "id": "tasklist-passport-start-overview",
+        "config": {
+          "idPrefix": "tasklist-passport-start-overview",
+          "items": [
+            {
+              "title": {
+                "text": "Check your eligibility to apply for a passport"
+              },
+              "href": "/check-eligibility",
+              "hint": {
+                "text": "This helps you understand if you can apply based on your circumstances."
+              },
+              "status": {
+                "text": null,
+                "tag": null
+              }
+            },
+            {
+              "title": {
+                "text": "Gather your documents"
+              },
+              "href": "/gather-documents",
+              "hint": {
+                "text": "Make sure you have all necessary identification and proof of address."
+              },
+              "status": {
+                "text": null,
+                "tag": null
+              }
+            },
+            {
+              "title": {
+                "text": "Complete your passport application"
+              },
+              "href": "/complete-application",
+              "hint": {
+                "text": "Fill out the form accurately to avoid delays."
+              },
+              "status": {
+                "text": null,
+                "tag": null
+              }
+            },
+            {
+              "title": {
+                "text": "Pay the application fee"
+              },
+              "href": "/pay-fee",
+              "hint": {
+                "text": "Select your payment method and keep your receipt."
+              },
+              "status": {
+                "text": null,
+                "tag": null
+              }
+            },
+            {
+              "title": {
+                "text": "Submit your application"
+              },
+              "href": "/submit-application",
+              "hint": {
+                "text": "Follow the instructions for sending your application."
+              },
+              "status": {
+                "text": null,
+                "tag": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-passport-start-begin",
+        "config": {
+          "text": "Start your application",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typo-passport-start-alt-channels",
+        "config": {
+          "text": "As part of the GOV.UK typography design system, ensure that the text used for passport-related content is clear and accessible, following government communication styles. Use a hierarchy of font sizes to differentiate headings, subheadings, and body text for easy scanning and comprehension. Maintain consistency with line heights and letter spacing to enhance readability across devices.",
+          "variant": "default"
+        }
+      }
+    ]
+  },
+  {
+    "title": "What do you want to do?",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back-passport-intent",
+        "config": {
+          "text": "Back to passport application",
+          "href": "/passport/application"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typo-passport-intent-heading",
+        "config": {
+          "text": "Passport Intent",
+          "variant": "h2"
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-passport-intent-type",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "What is your reason for applying for a passport?",
+              "classes": null
+            }
+          },
+          "name": "passport-intent-type",
+          "items": [
+            {
+              "text": "First passport application",
+              "value": "first",
+              "id": "first-passport",
+              "checked": null
+            },
+            {
+              "text": "Renewal of an existing passport",
+              "value": "renewal",
+              "id": "renewal-passport",
+              "checked": null
+            },
+            {
+              "text": "Lost or stolen passport replacement",
+              "value": "replacement",
+              "id": "replacement-passport",
+              "checked": null
+            },
+            {
+              "text": "Other",
+              "value": "other",
+              "id": "other-passport",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-passport-intent-guidance",
+        "config": {
+          "summaryText": "Check what to do about your passport application.",
+          "text": "If you’re applying for a passport, your application may take longer than usual. Make sure you apply online and double-check that all your details are correct. If you're given an option to expedite your application, consider it if you need your passport urgently."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-passport-intent-continue",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Who is this passport for?",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back-passport-applicant-type",
+        "config": {
+          "text": "Back to passport applicant type",
+          "href": "/passport/applicant-type"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typo-passport-applicant-type-heading",
+        "config": {
+          "text": "Passport applicant type",
+          "variant": "h2"
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-passport-applicant-type",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "What type of passport applicant are you?",
+              "classes": "govuk-fieldset__legend--m"
+            }
+          },
+          "name": "applicant-type",
+          "items": [
+            {
+              "text": "First time applicant",
+              "value": "first_time",
+              "id": "first-time-applicant",
+              "checked": null
+            },
+            {
+              "text": "Renewal of an existing passport",
+              "value": "renewal",
+              "id": "renewal-applicant",
+              "checked": null
+            },
+            {
+              "text": "Lost or stolen passport",
+              "value": "lost-stolen",
+              "id": "lost-stolen-applicant",
+              "checked": null
+            },
+            {
+              "text": "Change of personal details",
+              "value": "change-details",
+              "id": "change-details-applicant",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-passport-applicant-type-continue",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Your details",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back-passport-your-details",
+        "config": {
+          "text": "Back to your passport details",
+          "href": "/passport/details"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typo-passport-your-details-heading",
+        "config": {
+          "text": "Your details",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Fieldset",
+        "id": "fieldset-passport-your-name",
+        "config": {
+          "legend": {
+            "text": "Your name",
+            "classes": null,
+            "isPageHeading": false
+          }
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "input-passport-your-first-name",
+        "config": {
+          "label": {
+            "text": "Your first name",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "id": "input-passport-your-first-name",
+          "name": "your-first-name",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "input-passport-your-middle-names",
+        "config": {
+          "label": {
+            "text": "Your middle names",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "id": "input-passport-your-middle-names",
+          "name": "passport-your-middle-names",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "input-passport-your-last-name",
+        "config": {
+          "label": {
+            "text": "Your last name",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "id": "input-passport-your-last-name",
+          "name": "passport-your-last-name",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "DateInput",
+        "id": "date-passport-your-dob",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Your date of birth",
+              "classes": null
+            }
+          },
+          "hint": "Please enter your date of birth in the format DD/MM/YYYY.",
+          "id": "date-passport-your-dob",
+          "name": "dateOfBirth",
+          "validation": [
+            "required",
+            "validDate"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-passport-your-gender",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Your gender",
+              "classes": null
+            }
+          },
+          "name": "gender",
+          "items": [
+            {
+              "text": "Male",
+              "value": "male",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Female",
+              "value": "female",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Other",
+              "value": "other",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "input-passport-your-email",
+        "config": {
+          "label": {
+            "text": "Your email address",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "id": "input-passport-your-email",
+          "name": "email",
+          "type": "email",
+          "validation": [
+            "required",
+            "email"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "input-passport-your-phone",
+        "config": {
+          "label": {
+            "text": "Your phone number",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "id": "input-passport-your-phone",
+          "name": "your-phone",
+          "type": "tel",
+          "validation": [
+            "required",
+            "pattern"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-passport-your-details-continue",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Current passport details",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back-passport-current-details",
+        "config": {
+          "text": "Back to passport details",
+          "href": "/passport/details"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typo-passport-current-details-heading",
+        "config": {
+          "text": "Current passport details",
+          "variant": "h2"
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "input-passport-number",
+        "config": {
+          "label": {
+            "text": "Passport number",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "id": "input-passport-number",
+          "name": "passport-number",
+          "type": "text",
+          "validation": [
+            "required",
+            "pattern"
+          ]
+        }
+      },
+      {
+        "component": "DateInput",
+        "id": "date-passport-issue-date",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Passport issue date",
+              "classes": "govuk-fieldset__legend--l"
+            }
+          },
+          "hint": "Enter the date your passport was issued.",
+          "id": "date-passport-issue-date",
+          "name": "passport-issue-date",
+          "validation": [
+            "required",
+            "validDate",
+            "dateInPast"
+          ]
+        }
+      },
+      {
+        "component": "DateInput",
+        "id": "date-passport-expiry-date",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Passport expiry date",
+              "classes": "govuk-fieldset__legend--m"
+            }
+          },
+          "hint": "Enter the date your passport will expire.",
+          "id": "date-passport-expiry-date",
+          "name": "passport-expiry-date",
+          "validation": [
+            "required",
+            "validDate",
+            "dateInFuture"
+          ]
+        }
+      },
+      {
+        "component": "Select",
+        "id": "select-passport-issuing-country",
+        "config": {
+          "label": {
+            "text": "Select passport issuing country"
+          },
+          "id": "select-passport-issuing-country",
+          "name": "passport-issuing-country",
+          "items": [
+            {
+              "text": "United Kingdom",
+              "value": "uk",
+              "selected": null
+            },
+            {
+              "text": "United States",
+              "value": "us",
+              "selected": null
+            },
+            {
+              "text": "Canada",
+              "value": "ca",
+              "selected": null
+            },
+            {
+              "text": "Australia",
+              "value": "au",
+              "selected": null
+            },
+            {
+              "text": "India",
+              "value": "in",
+              "selected": null
+            },
+            {
+              "text": "Other",
+              "value": "other",
+              "selected": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Checkboxes",
+        "id": "checkbox-passport-lost-stolen",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Have you lost or had your passport stolen?",
+              "classes": null
+            }
+          },
+          "hint": "Select one or more options below.",
+          "name": "passport-status",
+          "items": [
+            {
+              "text": "Lost passport",
+              "value": "lost",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Stolen passport",
+              "value": "stolen",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-passport-lost-stolen-info",
+        "config": {
+          "summaryText": "What to do if your passport is lost or stolen",
+          "text": "If you've lost your passport or it has been stolen, follow these steps to report it and apply for a replacement. It's important to report a lost or stolen passport promptly to minimize the risk of identity theft. You will need to provide details such as when and where it was lost or stolen."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-passport-current-details-continue",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Your address",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back-passport-address",
+        "config": {
+          "text": "Back to passport address",
+          "href": "/passport/address"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typo-passport-address-heading",
+        "config": {
+          "text": "Passport Address",
+          "variant": "h2"
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "input-passport-postcode-search",
+        "config": {
+          "label": {
+            "text": "Search for your passport application",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "id": "input-passport-postcode-search",
+          "name": "passport_postcode_search",
+          "type": "text",
+          "validation": [
+            "required",
+            "pattern"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-passport-address-find",
+        "config": {
+          "text": "Find your passport address",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Select",
+        "id": "select-passport-address-list",
+        "config": {
+          "label": {
+            "text": "Select your passport address"
+          },
+          "id": "select-passport-address-list",
+          "name": "passport-address",
+          "items": [
+            {
+              "text": "123 Main St, London",
+              "value": "123-main-st-london",
+              "selected": null
+            },
+            {
+              "text": "456 Elm St, Manchester",
+              "value": "456-elm-st-manchester",
+              "selected": null
+            },
+            {
+              "text": "789 Oak Rd, Bristol",
+              "value": "789-oak-rd-bristol",
+              "selected": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-passport-address-manual",
+        "config": {
+          "summaryText": "Provide your passport address manually.",
+          "text": "Please enter your current address as it appears on your passport. Ensure that the information is accurate to avoid any processing delays."
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "input-passport-address-line1",
+        "config": {
+          "label": {
+            "text": "Address line 1",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "id": "input-passport-address-line1",
+          "name": "passport-address-line1",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "input-passport-address-line2",
+        "config": {
+          "label": {
+            "text": "Address line 2",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "id": "input-passport-address-line2",
+          "name": "passport_address_line2",
+          "type": "text",
+          "validation": [
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "input-passport-address-town",
+        "config": {
+          "label": {
+            "text": "Town or city",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "id": "input-passport-address-town",
+          "name": "passport-address-town",
+          "type": "text",
+          "validation": [
+            "required",
+            "minLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "input-passport-address-county",
+        "config": {
+          "label": {
+            "text": "County",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "id": "input-passport-address-county",
+          "name": "passportAddressCounty",
+          "type": "text",
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Select",
+        "id": "select-passport-address-country",
+        "config": {
+          "label": {
+            "text": "Select your country of residence"
+          },
+          "id": "select-passport-address-country",
+          "name": "passport_address_country",
+          "items": [
+            {
+              "text": "United Kingdom",
+              "value": "UK",
+              "selected": null
+            },
+            {
+              "text": "United States",
+              "value": "US",
+              "selected": null
+            },
+            {
+              "text": "Canada",
+              "value": "CA",
+              "selected": null
+            },
+            {
+              "text": "Australia",
+              "value": "AU",
+              "selected": null
+            },
+            {
+              "text": "India",
+              "value": "IN",
+              "selected": null
+            },
+            {
+              "text": "Other",
+              "value": "OTHER",
+              "selected": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "input-passport-address-postcode-manual",
+        "config": {
+          "label": {
+            "text": "Postcode",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "id": "input-passport-address-postcode-manual",
+          "name": "postcode",
+          "type": "text",
+          "validation": [
+            "required",
+            "pattern"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-passport-address-continue",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Photo upload",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back-passport-photo",
+        "config": {
+          "text": "Back to passport photo guidelines",
+          "href": "/guidance/passport-photo-requirements"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typo-passport-photo-heading",
+        "config": {
+          "text": "Passport photo guidelines",
+          "variant": "h2"
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-passport-photo-requirements",
+        "config": {
+          "text": "### Passport Photo Requirements\n\nTo ensure your passport photo meets the standards, please follow these guidelines:\n\n- **Size**: The photo must be 45mm high by 35mm wide.\n- **Background**: Use a plain light grey or cream background; avoid shadows and other objects.\n- **Quality**: The picture should be sharp, clear, and in focus without reflections.\n- **Expression**: You must have a neutral expression, with your mouth closed and eyes open.\n\nFor more details on acceptable passport photos, visit the official government website."
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-passport-photo-examples",
+        "config": {
+          "summaryText": "Examples of acceptable passport photos",
+          "text": "When submitting a passport photo, ensure it meets the following criteria:\n\n1. **Size**: The photo must be 45mm high by 35mm wide.\n2. **Quality**: It should be in sharp focus, properly exposed, and clear.\n3. **Background**: Use a plain light grey, cream, or white background.\n4. **Expression**: The subject must have a neutral expression with their mouth closed and eyes open.\n5. **Accessories**: Glasses are allowed, but there should be no reflections or shadows.\n6. **Head Position**: The head should be centered and occupy 70-80% of the height of the photo.\n\n**Examples**: Please see below for visual examples demonstrating acceptable and unacceptable passport photos."
+        }
+      },
+      {
+        "component": "FileUpload",
+        "id": "file-passport-photo-upload",
+        "config": {
+          "label": {
+            "text": "Upload your passport photo"
+          },
+          "id": "file-passport-photo-upload",
+          "name": "passportPhoto",
+          "validation": [
+            "required",
+            "fileType",
+            "fileSize"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-passport-photo-upload",
+        "config": {
+          "text": "Upload passport photo",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Supporting documents",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back-passport-documents",
+        "config": {
+          "text": "Back to passport documents",
+          "href": "/passport/documents"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typo-passport-documents-heading",
+        "config": {
+          "text": "Passport documents",
+          "variant": "h2"
+        }
+      },
+      {
+        "component": "Checkboxes",
+        "id": "checkboxes-passport-documents-types",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Select the types of passport documents",
+              "classes": null
+            }
+          },
+          "hint": null,
+          "name": "passport-documents-types",
+          "items": [
+            {
+              "text": "National Passport",
+              "value": "national_passport",
+              "id": null,
+              "checked": false
+            },
+            {
+              "text": "Diplomatic Passport",
+              "value": "diplomatic_passport",
+              "id": null,
+              "checked": false
+            },
+            {
+              "text": "Official Passport",
+              "value": "official_passport",
+              "id": null,
+              "checked": false
+            },
+            {
+              "text": "Other Document",
+              "value": "other_document",
+              "id": null,
+              "checked": false
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-passport-documents-originals",
+        "config": {
+          "text": "<h2>Important information about original documents</h2>\n<p>When submitting your passport application, you must provide original documents. Copies are not accepted. Ensure that the documents you submit are the most recent and valid versions.</p>\n<ul>\n  <li>Birth certificate (if applicable)</li>\n  <li>Proof of citizenship (e.g., certificate of naturalization)</li>\n  <li>Any previous passports (if you are renewing)</li>\n</ul>\n<p>If you have any questions about the required documents, please refer to the <a href='https://www.gov.uk/passport-application-documents'>official guidance</a>.</p>"
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-passport-documents-names-changed",
+        "config": {
+          "summaryText": "Provide information regarding name changes related to passport documents.",
+          "text": "If your name has changed since your passport was issued, please specify the previous name(s) as they appear on the passport. This helps us to validate your identity."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-passport-documents-continue",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Delivery options",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back-passport-delivery",
+        "config": {
+          "text": "Back to passport delivery",
+          "href": "/passport-delivery"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typo-passport-delivery-heading",
+        "config": {
+          "text": "Passport delivery options",
+          "variant": "h2"
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-passport-delivery-type",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Select passport delivery type",
+              "classes": "govuk-fieldset__legend--m"
+            }
+          },
+          "name": "passportDeliveryType",
+          "items": [
+            {
+              "text": "Standard delivery (3-5 days)",
+              "value": "standard",
+              "id": "standard-delivery",
+              "checked": null
+            },
+            {
+              "text": "Next day delivery",
+              "value": "next-day",
+              "id": "next-day-delivery",
+              "checked": null
+            },
+            {
+              "text": "Collect from passport office",
+              "value": "collect",
+              "id": "collect-passport",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-passport-delivery-times",
+        "config": {
+          "text": "### Passport delivery times\n\n- **Standard service**: 10 weeks\n- **Fast track service**: 1 week\n- **Premium service**: Same day (appointment required)\n\nPlease ensure to apply in advance to avoid delays, especially during peak travel seasons."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-passport-delivery-continue",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Check your answers",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back-passport-check-answers",
+        "config": {
+          "text": "Back to passport check answers",
+          "href": "/passport-check-answers"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typo-passport-check-answers-heading",
+        "config": {
+          "text": "Check your passport details",
+          "variant": "h2"
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "summarylist-passport-personal-details",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Full name"
+              },
+              "value": {
+                "text": "John Doe",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of birth"
+              },
+              "value": {
+                "text": "1 January 1990",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Place of birth"
+              },
+              "value": {
+                "text": "London, United Kingdom",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Nationality"
+              },
+              "value": {
+                "text": "British",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Passport number"
+              },
+              "value": {
+                "text": "123456789",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of issue"
+              },
+              "value": {
+                "text": "1 January 2020",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of expiry"
+              },
+              "value": {
+                "text": "1 January 2030",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "summarylist-passport-passport-details",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Passport number"
+              },
+              "value": {
+                "text": "123456789",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Place of issue"
+              },
+              "value": {
+                "text": "London",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of issue"
+              },
+              "value": {
+                "text": "1 January 2020",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of expiry"
+              },
+              "value": {
+                "text": "31 December 2030",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Holder's name"
+              },
+              "value": {
+                "text": "John Doe",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "summarylist-passport-address-details",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Passport number"
+              },
+              "value": {
+                "text": "AB123456C",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of issue"
+              },
+              "value": {
+                "text": "1 January 2020",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of expiry"
+              },
+              "value": {
+                "text": "1 January 2030",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Name"
+              },
+              "value": {
+                "text": "John Doe",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of birth"
+              },
+              "value": {
+                "text": "1 January 1990",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Nationality"
+              },
+              "value": {
+                "text": "British",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Address"
+              },
+              "value": {
+                "text": "123 Example Street, London, UK",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "summarylist-passport-delivery-details",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Passport Delivery Address"
+              },
+              "value": {
+                "text": "123 Example Street, London, E1 2AB",
+                "html": "<span>123 Example Street, London, E1 2AB</span>"
+              }
+            },
+            {
+              "key": {
+                "text": "Delivery Method"
+              },
+              "value": {
+                "text": "Standard Delivery",
+                "html": "<span>Standard Delivery</span>"
+              }
+            },
+            {
+              "key": {
+                "text": "Expected Delivery Date"
+              },
+              "value": {
+                "text": "Within 10 working days",
+                "html": "<span>Within 10 working days</span>"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-passport-check-answers-privacy",
+        "config": {
+          "summaryText": "Check your answers before submission.",
+          "text": "Ensure that all information provided in your passport application is correct. If you need to make any changes, please go back and edit the relevant sections. Your privacy is important to us, and your data will be handled in accordance with our privacy policy."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-passport-check-answers-confirm",
+        "config": {
+          "text": "Confirm and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Pay and submit",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back-passport-payment",
+        "config": {
+          "text": "Back to passport payment",
+          "href": "/passport/payment"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typo-passport-payment-heading",
+        "config": {
+          "text": "Passport Payment Details",
+          "variant": "h2"
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-passport-payment-method",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Select your payment method for the passport application",
+              "classes": "govuk-fieldset__legend--l"
+            }
+          },
+          "name": "passport-payment-method",
+          "items": [
+            {
+              "text": "Credit Card",
+              "value": "credit-card",
+              "id": "payment-method-credit-card",
+              "checked": null
+            },
+            {
+              "text": "Debit Card",
+              "value": "debit-card",
+              "id": "payment-method-debit-card",
+              "checked": null
+            },
+            {
+              "text": "PayPal",
+              "value": "paypal",
+              "id": "payment-method-paypal",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-passport-payment-fee",
+        "config": {
+          "text": "### Passport application fee\n\nTo apply for a UK passport, you will need to pay a fee. The cost depends on the type of application:\n\n- **Standard application**: £75.50\n- **Fast track application**: £112\n\nMake sure to have your payment details ready when you start your application."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-passport-payment-continue-to-govpay",
+        "config": {
+          "text": "Continue to GOV.UK Pay",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Application submitted",
+    "components": [
+      {
+        "component": "Typography",
+        "id": "typo-passport-confirmation-heading",
+        "config": {
+          "text": "Passport Confirmation",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Panel",
+        "id": "panel-passport-confirmation-reference",
+        "config": {
+          "titleText": "Confirm Your Passport Reference Number",
+          "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">Passport Reference Confirmation</h1>\n  <div class=\"govuk-panel__body\">\n    <p>Please review your passport reference number carefully before submitting your application. Your reference number is crucial for tracking your application status.</p>\n    <h2>Reference Number Details</h2>\n    <p>Your reference number is: <strong>123456789</strong></p>\n    <p>If you wish to change your reference number, please go back to the previous page.</p>\n  </div>\n</div>"
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "summarylist-passport-confirmation-key-details",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Passport Number"
+              },
+              "value": {
+                "text": "123456789",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of Birth"
+              },
+              "value": {
+                "text": "1 January 1990",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Nationality"
+              },
+              "value": {
+                "text": "British",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Issue Date"
+              },
+              "value": {
+                "text": "1 January 2020",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Expiry Date"
+              },
+              "value": {
+                "text": "1 January 2030",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-passport-confirmation-next-steps",
+        "config": {
+          "text": "### Next steps for your passport application\n\nIf your application to renew your passport was successful, here’s what you need to do next:\n\n1. **Check your application status**: You can track your application progress online by visiting our [passport tracking page](#).\n2. **Prepare for collection**: Once notified, make sure to bring an appropriate form of identification when collecting your passport.\n3. **Review your passport upon receipt**: Confirm that all details are correct to avoid any issues when traveling. If there are any discrepancies, contact our support team immediately."
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typo-passport-confirmation-emails",
+        "config": {
+          "text": "Passport confirmation emails",
+          "variant": "heading"
+        }
+      }
+    ]
+  }
+]

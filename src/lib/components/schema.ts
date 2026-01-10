@@ -408,6 +408,8 @@ const inputSchemas = {
 const genericSchemas = {
 	Accordion: AccordionSchema,
 	Breadcrumbs: BreadcrumbsSchema,
+	BackLink: BackLinkSchema,
+	Button: ButtonSchema,
 	CookieBanner: CookieBannerSchema,
 	Details: DetailsSchema,
 	Fieldset: FieldsetSchema,
@@ -426,8 +428,6 @@ const genericSchemas = {
 
 const blacklistSchemas = {
 	PhaseBanner: PhaseBannerSchema,
-	BackLink: BackLinkSchema,
-	Button: ButtonSchema,
 	GOVUKFooter: GOVUKFooterSchema,
 	GOVUKHeader: GOVUKHeaderSchema,
 	ErrorMessage: ErrorMessageSchema,

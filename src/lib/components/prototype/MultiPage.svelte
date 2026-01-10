@@ -41,13 +41,13 @@
 </script>
 
 {#each pages as page, index}
-	<form onsubmit={handleSubmit} novalidate>
-		<div class={`${index === currentPage ? 'show' : 'hide'}`}>
+	<div class={`${index === currentPage ? 'show' : 'hide'}`}>
+		<form id={page.title} onsubmit={handleSubmit} novalidate>
 			<GovUKPage title={page.title}>
 				<Components components={page.components} onBackLinkClicked={handleBackLinkClicked} />
 			</GovUKPage>
-		</div>
-	</form>
+		</form>
+	</div>
 {/each}
 
 <style>
