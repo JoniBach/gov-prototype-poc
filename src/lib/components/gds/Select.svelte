@@ -13,7 +13,7 @@
 </script>
 
 <ErrorMessage
-	config={{ hint: { text: config.hint?.text || '' }, label: { text: (config as any).label?.text || '' } }}
+	config={{ hint: { text: config.hint?.text || '' }, label: { text: (config.label as { text: string }).text || '' } }}
 	errors={errors.map((e) => ({ text: e }))}
 >
 	<select class="govuk-select" id={config.id} name={config.name} {value} onchange={handleChange}>

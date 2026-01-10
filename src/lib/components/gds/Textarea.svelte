@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { TextareaSchema } from '../schema.js';
+	import ErrorMessage from './ErrorMessage.svelte';
 
-	let raw = $props();
+	let { errors = [], ...raw } = $props();
 	const { config } = TextareaSchema.parse(raw);
 
 	let value = $state('');
@@ -11,22 +12,9 @@
 	}
 </script>
 
-<div class="govuk-form-group">
-	{#if config.label.isPageHeading}
-		<h1 class="govuk-label-wrapper">
-			<label class="govuk-label {config.label.classes || ''}" for={config.id}>
-				{config.label.text}
-			</label>
-		</h1>
-	{:else}
-		<label class="govuk-label {config.label.classes || ''}" for={config.id}>
-			{config.label.text}
-		</label>
-	{/if}
-	{#if config.hint}
-		<div id="{config.id}-hint" class="govuk-hint">
-			{config.hint.text}
-		</div>
-	{/if}
+<ErrorMessage
+	config={{ hint: { text: config.hint?.text || '' }, label: { text: config.label.text } }}
+	errors={errors.map((e) => ({ text: e }))}
+>
 	<textarea class="govuk-textarea" id={config.id} name={config.name} rows={config.rows || 5} {value} oninput={handleInput} aria-describedby={config.hint ? `${config.id}-hint ` : ''}></textarea>
-</div>
+</ErrorMessage>

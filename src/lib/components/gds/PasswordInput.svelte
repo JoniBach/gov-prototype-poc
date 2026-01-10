@@ -1,11 +1,14 @@
 <script lang="ts">
 	import { PasswordInputSchema } from '../schema.js';
+	import ErrorMessage from './ErrorMessage.svelte';
 
-	let raw = $props();
+	let { errors = [], ...raw } = $props();
 	const { config } = PasswordInputSchema.parse(raw);
 </script>
 
-<div class="govuk-form-group">
-	<label class="govuk-label" for={config.id}>{config.label.text}</label>
+<ErrorMessage
+	config={{ hint: { text: '' }, label: { text: config.label.text } }}
+	errors={errors.map((e) => ({ text: e }))}
+>
 	<input class="govuk-input govuk-password-input__input" id={config.id} name={config.name} type="password">
-</div>
+</ErrorMessage>

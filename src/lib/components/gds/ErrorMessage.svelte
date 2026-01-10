@@ -8,7 +8,7 @@
 
 
 
-<div class="govuk-form-group {raw.errors.length > 0 ? 'govuk-form-group--error' : ''}">
+<div class="govuk-form-group {raw.errors?.length > 0 ? 'govuk-form-group--error' : ''}">
 	<fieldset
 		class="govuk-fieldset"
 		role="group"
@@ -21,7 +21,7 @@
 		<div class="govuk-hint">
 			{config.hint.text}
 		</div>
-	{#if raw.errors.length > 0}
+	{#if raw.errors?.length > 0}
 		{#each raw.errors as error}
 			<p class="govuk-error-message">
 				<span class="govuk-visually-hidden">Error:</span>
