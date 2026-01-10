@@ -33,5 +33,5 @@
 			{errorMessage}
 		</p>
 	{/if}
-	<input class="govuk-input {errorMessage ? 'govuk-input--error' : ''}" id={config.id} name={config.name} type={config.type || 'text'} {value} on:input={handleInput} aria-describedby={errorMessage ? `${config.id}-error` : undefined}>
+	<input class="govuk-input {errorMessage ? 'govuk-input--error' : ''}" id={config.id} name={config.name} type={config.type || 'text'} {value} oninput={handleInput} aria-describedby={errorMessage ? `${config.id}-error` : undefined}>
 </div>

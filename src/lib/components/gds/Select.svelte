@@ -23,7 +23,7 @@
 			{errorMessage}
 		</p>
 	{/if}
-	<select class="govuk-select {errorMessage ? 'govuk-select--error' : ''}" id={config.id} name={config.name} {value} on:change={handleChange} aria-describedby={errorMessage ? `${config.id}-error` : undefined}>
+	<select class="govuk-select {errorMessage ? 'govuk-select--error' : ''}" id={config.id} name={config.name} {value} onchange={handleChange} aria-describedby={errorMessage ? `${config.id}-error` : undefined}>
 		{#each config.items as item}
 			<option value={item.value} selected={item.selected}>{item.text}</option>
 		{/each}

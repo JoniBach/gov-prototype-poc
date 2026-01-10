@@ -38,5 +38,5 @@
 			{errorMessage}
 		</p>
 	{/if}
-	<textarea class="govuk-textarea {errorMessage ? 'govuk-textarea--error' : ''}" id={config.id} name={config.name} rows={config.rows || 5} {value} on:input={handleInput} aria-describedby={(config.hint ? `${config.id}-hint ` : '') + (errorMessage ? `${config.id}-error` : '')}></textarea>
+	<textarea class="govuk-textarea {errorMessage ? 'govuk-textarea--error' : ''}" id={config.id} name={config.name} rows={config.rows || 5} {value} oninput={handleInput} aria-describedby={(config.hint ? `${config.id}-hint ` : '') + (errorMessage ? `${config.id}-error` : '')}></textarea>
 </div>
