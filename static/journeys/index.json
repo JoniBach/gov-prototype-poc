@@ -1,9 +1,3 @@
 [
-  {
-    "id": "passport-application-001",
-    "name": "Passport Application Service",
-    "departmentId": "passport-department-01",
-    "departmentName": "Home Office",
-    "description": "A service that enables citizens to apply for, renew, or update their UK passports."
-  }
+
 ]
