@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { SelectSchema } from '../schema.js';
+	import ErrorMessage from './ErrorMessage.svelte';
 
-	let raw = $props();
+	let { errors = [], ...raw } = $props();
 	const { config } = SelectSchema.parse(raw);
 
 	let value = $state('');
@@ -11,11 +12,13 @@
 	}
 </script>
 
-<div class="govuk-form-group">
-	<label class="govuk-label" for={config.id}>{config.label.text}</label>
+<ErrorMessage
+	config={{ hint: { text: config.hint?.text || '' }, label: { text: (config as any).label?.text || '' } }}
+	errors={errors.map((e) => ({ text: e }))}
+>
 	<select class="govuk-select" id={config.id} name={config.name} {value} onchange={handleChange}>
 		{#each config.items as item}
 			<option value={item.value} selected={item.selected}>{item.text}</option>
 		{/each}
 	</select>
-</div>
+</ErrorMessage>

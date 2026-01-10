@@ -1,24 +1,15 @@
 <script lang="ts">
 	import { TextInputSchema } from '../schema.js';
-	import { ComponentValidations, runValidations } from '../validation.js';
-	import type { ValidationResult } from '../validation.js';
 	import ErrorMessage from './ErrorMessage.svelte';
 
-	let { ...raw } = $props();
+	let { errors = [], ...raw } = $props();
 	const { config } = TextInputSchema.parse(raw);
 
 	let value = $state('');
 
-	const validation = ComponentValidations.TextInput;
-
-	let errors = $state<string[]>([]);
-
 	function handleBlur(event: Event) {
 		value = (event.target as HTMLInputElement).value;
-		errors = runValidations(validation, config.validation, value);
 	}
-
-	$inspect(errors);
 
 	let ariaDescribedBy = $derived(
 		[config.hint ? `${config.id}-hint` : null, errors.length > 0 ? `${config.id}-error` : null]

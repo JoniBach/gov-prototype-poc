@@ -2,7 +2,7 @@
 	import { ErrorSummarySchema } from '../schema.js';
 
 	let raw = $props();
-	const { config } = ErrorSummarySchema.parse(raw);
+	const config = $derived(ErrorSummarySchema.parse(raw).config);
 </script>
 
 <div class="govuk-error-summary" data-module="govuk-error-summary">

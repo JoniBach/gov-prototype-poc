@@ -1,0 +1,1780 @@
+[
+  
+  {
+    "title": "Applicant details",
+    "components": [
+      {
+        "component": "Typography",
+        "id": "h1-applicant-details",
+        "config": {
+          "text": "Applicant Details",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Fieldset",
+        "id": "fs-applicant-name",
+        "config": {
+          "legend": {
+            "text": "Applicant Name",
+            "classes": null,
+            "isPageHeading": true
+          }
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-applicant-first-name",
+        "config": {
+          "label": {
+            "text": "First name",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "hint": "Enter your first name as it appears on your official documents.",
+          "id": "txt-applicant-first-name",
+          "name": "first_name",
+          "type": "text",
+          "validation": [
+            "required",
+            "minLength",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-applicant-middle-names",
+        "config": {
+          "label": {
+            "text": "Middle names",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "If you have more than one middle name, please separate them with a space.",
+          "id": "txt-applicant-middle-names",
+          "name": "middleNames",
+          "type": "text",
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-applicant-last-name",
+        "config": {
+          "label": {
+            "text": "Last name",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter your last name as it appears on your official documents.",
+          "id": "txt-applicant-last-name",
+          "name": "applicant_last_name",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "DateInput",
+        "id": "date-applicant-dob",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Date of birth",
+              "classes": null
+            }
+          },
+          "hint": "Please enter your date of birth in the format DD/MM/YYYY.",
+          "id": "date-applicant-dob",
+          "name": "date-applicant-dob",
+          "validation": [
+            "required",
+            "validDate",
+            "dateInPast"
+          ]
+        }
+      },
+      {
+        "component": "Select",
+        "id": "select-applicant-country-of-birth",
+        "config": {
+          "label": {
+            "text": "Country of Birth"
+          },
+          "hint": "Please select the country where you were born.",
+          "id": "select-applicant-country-of-birth",
+          "name": "country_of_birth",
+          "items": [
+            {
+              "text": "United Kingdom",
+              "value": "UK",
+              "selected": null
+            },
+            {
+              "text": "Australia",
+              "value": "AU",
+              "selected": null
+            },
+            {
+              "text": "Canada",
+              "value": "CA",
+              "selected": null
+            },
+            {
+              "text": "India",
+              "value": "IN",
+              "selected": null
+            },
+            {
+              "text": "Other",
+              "value": "other",
+              "selected": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-applicant-town-of-birth",
+        "config": {
+          "label": {
+            "text": "Town or city of birth",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "hint": "Enter the name of the town or city where you were born.",
+          "id": "txt-applicant-town-of-birth",
+          "name": "town-of-birth",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-applicant-sex",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Applicant's sex",
+              "classes": "govuk-fieldset__legend--m"
+            }
+          },
+          "hint": "Select one option that best describes the applicant's sex.",
+          "name": "applicant-sex",
+          "id": "radios-applicant-sex",
+          "items": [
+            {
+              "text": "Female",
+              "value": "female",
+              "id": "applicant-sex-female",
+              "checked": null
+            },
+            {
+              "text": "Male",
+              "value": "male",
+              "id": "applicant-sex-male",
+              "checked": null
+            },
+            {
+              "text": "Prefer not to say",
+              "value": "prefer-not-to-say",
+              "id": "applicant-sex-prefer-not-to-say",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Select",
+        "id": "select-applicant-marital-status",
+        "config": {
+          "label": {
+            "text": "Marital Status"
+          },
+          "hint": "Please select your current marital status from the options below.",
+          "id": "select-applicant-marital-status",
+          "name": "applicant-marital-status",
+          "items": [
+            {
+              "text": "Single",
+              "value": "single",
+              "selected": null
+            },
+            {
+              "text": "Married",
+              "value": "married",
+              "selected": null
+            },
+            {
+              "text": "Divorced",
+              "value": "divorced",
+              "selected": null
+            },
+            {
+              "text": "Widowed",
+              "value": "widowed",
+              "selected": null
+            },
+            {
+              "text": "In a civil partnership",
+              "value": "civil-partnership",
+              "selected": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "WarningText",
+        "id": "warn-applicant-name-must-match-docs",
+        "config": {
+          "text": "The name you entered must match the name on your supporting documents.",
+          "iconFallbackText": "Warning"
+        }
+      },
+      {
+        "component": "Button",
+        "id": "btn-applicant-details-continue",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "BackLink",
+        "id": "back-applicant-details-to-application-type",
+        "config": {
+          "text": "Back to application type",
+          "href": "/application-type"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Contact details",
+    "components": [
+      {
+        "component": "Typography",
+        "id": "h1-contact-details",
+        "config": {
+          "text": "Contact details",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-contact-email",
+        "config": {
+          "label": {
+            "text": "Email address",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "We'll only use your email for correspondence regarding your application.",
+          "id": "txt-contact-email",
+          "name": "contact_email",
+          "type": "email",
+          "validation": [
+            "required",
+            "email"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-contact-email-confirm",
+        "config": {
+          "label": {
+            "text": "Confirm your email address",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Please re-enter your email address for verification.",
+          "id": "txt-contact-email-confirm",
+          "name": "confirm_email",
+          "type": "email",
+          "validation": [
+            "required",
+            "email"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-contact-phone-mobile",
+        "config": {
+          "label": {
+            "text": "Mobile phone number",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Optional if you provide a UK phone number.",
+          "id": "txt-contact-phone-mobile",
+          "name": "contact-phone-mobile",
+          "type": "tel",
+          "validation": [
+            "required",
+            "pattern"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-contact-phone-alt",
+        "config": {
+          "label": {
+            "text": "Alternative phone number",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Optional. Please provide an alternative contact number if available.",
+          "id": "txt-contact-phone-alt",
+          "name": "contact-phone-alt",
+          "type": "text",
+          "validation": [
+            "pattern"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-contact-preferred-method",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Preferred method of contact",
+              "classes": "govuk-fieldset__legend--m"
+            }
+          },
+          "hint": "Please select your preferred method for us to contact you.",
+          "name": "contact-preferred-method",
+          "id": "radios-contact-preferred-method",
+          "items": [
+            {
+              "text": "Email",
+              "value": "email",
+              "id": "contact-method-email",
+              "checked": null
+            },
+            {
+              "text": "Phone",
+              "value": "phone",
+              "id": "contact-method-phone",
+              "checked": null
+            },
+            {
+              "text": "Post",
+              "value": "post",
+              "id": "contact-method-post",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-contact-usage",
+        "config": {
+          "text": "### Contact us\n\nIf you have questions about using our services, feel free to reach out. We’re here to help you navigate any issues you may encounter."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "btn-contact-details-continue",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "BackLink",
+        "id": "back-contact-details-to-applicant-details",
+        "config": {
+          "text": "Back to applicant details",
+          "href": "/applicant-details"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Address and delivery",
+    "components": [
+      {
+        "component": "Typography",
+        "id": "h1-address-delivery",
+        "config": {
+          "text": "Delivery Address",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-address-postcode-lookup",
+        "config": {
+          "label": {
+            "text": "Postcode",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "hint": "Enter your postcode to find your address.",
+          "id": "txt-address-postcode-lookup",
+          "name": "postcode",
+          "type": "text",
+          "validation": [
+            "required",
+            "pattern"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "btn-address-find-uk-address",
+        "config": {
+          "text": "Find UK address",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Select",
+        "id": "select-address-results",
+        "config": {
+          "label": {
+            "text": "Select a location"
+          },
+          "hint": "Choose the appropriate location from the list.",
+          "id": "select-address-results",
+          "name": "location",
+          "items": [
+            {
+              "text": "London",
+              "value": "london",
+              "selected": null
+            },
+            {
+              "text": "Manchester",
+              "value": "manchester",
+              "selected": null
+            },
+            {
+              "text": "Birmingham",
+              "value": "birmingham",
+              "selected": null
+            },
+            {
+              "text": "Leeds",
+              "value": "leeds",
+              "selected": null
+            },
+            {
+              "text": "Liverpool",
+              "value": "liverpool",
+              "selected": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-address-enter-manually",
+        "config": {
+          "summaryText": "Enter your address manually if you cannot find it in the search.",
+          "text": "Please provide your full address details below: Include your house number, street name, city, and postcode. Make sure all information is accurate to avoid any delays."
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-address-line-1",
+        "config": {
+          "label": {
+            "text": "Address line 1",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the first line of your address, for example, your house number and street name.",
+          "id": "txt-address-line-1",
+          "name": "address-line-1",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-address-line-2",
+        "config": {
+          "label": {
+            "text": "Address Line 2",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Optional. Provide any additional address information.",
+          "id": "txt-address-line-2",
+          "name": "address-line-2",
+          "type": "text",
+          "validation": []
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-address-town",
+        "config": {
+          "label": {
+            "text": "Town or city",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "hint": "Enter the name of your town or city.",
+          "id": "txt-address-town",
+          "name": "address-town",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-address-county",
+        "config": {
+          "label": {
+            "text": "County",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the county of your address.",
+          "id": "txt-address-county",
+          "name": "county",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "Select",
+        "id": "select-address-country",
+        "config": {
+          "label": {
+            "text": "Select your country"
+          },
+          "hint": "Please choose your country from the list provided.",
+          "id": "select-address-country",
+          "name": "country",
+          "items": [
+            {
+              "text": "United Kingdom",
+              "value": "GB",
+              "selected": null
+            },
+            {
+              "text": "United States",
+              "value": "US",
+              "selected": null
+            },
+            {
+              "text": "Canada",
+              "value": "CA",
+              "selected": null
+            },
+            {
+              "text": "Australia",
+              "value": "AU",
+              "selected": null
+            },
+            {
+              "text": "Other",
+              "value": "OT",
+              "selected": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-address-delivery-option",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Choose your delivery option",
+              "classes": null
+            }
+          },
+          "hint": "Select one option for your delivery preference.",
+          "name": "delivery-option",
+          "id": "delivery-option",
+          "items": [
+            {
+              "text": "Standard Delivery",
+              "value": "standard",
+              "id": null,
+              "checked": true
+            },
+            {
+              "text": "Express Delivery",
+              "value": "express",
+              "id": null,
+              "checked": false
+            },
+            {
+              "text": "Click and Collect",
+              "value": "collect",
+              "id": null,
+              "checked": false
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-address-delivery-info",
+        "config": {
+          "text": "**Delivery Information**\n\nPlease ensure that your delivery address is accurate to avoid any delays. If your address includes a house number, please include it before the street name. Make sure to provide any additional instructions that will help the delivery service reach you."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "btn-address-delivery-continue",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "BackLink",
+        "id": "back-address-delivery-to-contact-details",
+        "config": {
+          "text": "Back to contact details",
+          "href": "/contact-details"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Identity and previous passports",
+    "components": [
+      {
+        "component": "Typography",
+        "id": "h1-identity-previous-passports",
+        "config": {
+          "text": "Previous passports",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-had-uk-passport-before",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Have you had a UK passport before?",
+              "classes": null
+            }
+          },
+          "hint": "Select ‘Yes’ if you have previously held a UK passport.",
+          "name": "had_uk_passport_before",
+          "id": "radios-had-uk-passport-before",
+          "items": [
+            {
+              "text": "Yes",
+              "value": "yes",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "No",
+              "value": "no",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-previous-passport-number",
+        "config": {
+          "label": {
+            "text": "Previous passport number",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the passport number from your previous passport.",
+          "id": "txt-previous-passport-number",
+          "name": "previous-passport-number",
+          "type": "text",
+          "validation": [
+            "required",
+            "pattern"
+          ]
+        }
+      },
+      {
+        "component": "DateInput",
+        "id": "date-previous-passport-issue",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Previous passport issue date",
+              "classes": null
+            }
+          },
+          "hint": "Please provide the date when your previous passport was issued.",
+          "id": "date-previous-passport-issue",
+          "name": "previous-passport-issue-date",
+          "validation": [
+            "required",
+            "validDate",
+            "dateInPast"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-passport-lost-stolen",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Have you lost or had your passport stolen?",
+              "classes": null
+            }
+          },
+          "hint": "Select 'yes' if your passport has been lost or stolen, otherwise select 'no'.",
+          "name": "passportLostStolen",
+          "id": "radios-passport-lost-stolen",
+          "items": [
+            {
+              "text": "Yes",
+              "value": "yes",
+              "id": "passport-lost",
+              "checked": null
+            },
+            {
+              "text": "No",
+              "value": "no",
+              "id": "passport-not-lost",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-lost-stolen-report-info",
+        "config": {
+          "text": "### Reporting lost or stolen items\n\nIf you have lost or had items stolen, it’s important to report this as soon as possible. You can report the loss to the relevant authorities or organizations. Make sure to provide as much detail as possible to aid in the recovery process.\n\n- **Items to report:**\n  - Passports\n  - Credit/debit cards\n  - Identification documents\n  - Personal belongings\n\nFor further assistance, visit the [official reporting guide](https://www.gov.uk/report-lost-stolen). Remember to keep a copy of your report for records."
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-hold-other-nationalities",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Do you hold any other nationalities?",
+              "classes": null
+            }
+          },
+          "hint": "Select 'Yes' if you hold other nationalities, otherwise select 'No'.",
+          "name": "hold_other_nationalities",
+          "id": "radios-hold-other-nationalities",
+          "items": [
+            {
+              "text": "Yes",
+              "value": "yes",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "No",
+              "value": "no",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Textarea",
+        "id": "txt-other-nationalities-details",
+        "config": {
+          "label": {
+            "text": "Other nationalities (details)",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": {
+            "text": "If you have any other nationalities, please provide details here."
+          },
+          "id": "txt-other-nationalities-details",
+          "name": "other-nationalities",
+          "rows": 5,
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "btn-identity-previous-passports-continue",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "BackLink",
+        "id": "back-identity-previous-passports-to-address-delivery",
+        "config": {
+          "text": "Back to previous passports",
+          "href": "/previous-passports"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Supporting documents checklist",
+    "components": [
+      {
+        "component": "Typography",
+        "id": "h1-supporting-documents-checklist",
+        "config": {
+          "text": "Supporting documents checklist",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-supporting-documents-summary",
+        "config": {
+          "text": "### Supporting documents\n\nPlease provide any relevant supporting documents that can help us process your application. Make sure your documents are clear and readable. Accepted formats include PDF, JPEG, and PNG."
+        }
+      },
+      {
+        "component": "TaskList",
+        "id": "tasklist-supporting-documents-items",
+        "config": {
+          "idPrefix": null,
+          "items": [
+            {
+              "title": {
+                "text": "Provide proof of identity"
+              },
+              "href": "#proof-of-identity",
+              "hint": {
+                "text": "This can be a passport or a driver's license."
+              },
+              "status": {
+                "text": null,
+                "tag": null
+              }
+            },
+            {
+              "title": {
+                "text": "Submit income evidence"
+              },
+              "href": "#income-evidence",
+              "hint": {
+                "text": "Please include recent pay slips or tax returns."
+              },
+              "status": {
+                "text": null,
+                "tag": null
+              }
+            },
+            {
+              "title": {
+                "text": "Upload financial statements"
+              },
+              "href": "#financial-statements",
+              "hint": {
+                "text": "Bank statements from the last three months are required."
+              },
+              "status": {
+                "text": null,
+                "tag": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-supporting-documents-examples",
+        "config": {
+          "summaryText": "Supporting Documents Examples",
+          "text": "Here are examples of the type of supporting documents you might consider providing:\n\n1. **Proof of Identity**: Passport, driver's license, or national ID card.\n2. **Proof of Address**: Utility bill, bank statement, or rental agreement.\n3. **Financial Statements**: Tax returns, pay slips, or bank statements confirming income.\n4. **Legal Documents**: Court orders, contracts, or agreements relevant to your application.\n5. **Academic Records**: Transcripts, diplomas, or professional certificates.\n\nEnsure that all documents are clear and legible. If submitting online, check file size limits and acceptable formats."
+        }
+      },
+      {
+        "component": "WarningText",
+        "id": "warn-supporting-documents-originals",
+        "config": {
+          "text": "Please submit the original supporting documents to ensure accurate processing. Be aware that photocopies or electronic versions may not be accepted.",
+          "iconFallbackText": "Warning: Originals required"
+        }
+      },
+      {
+        "component": "Button",
+        "id": "btn-supporting-documents-continue",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "BackLink",
+        "id": "back-supporting-documents-to-identity-previous-passports",
+        "config": {
+          "text": "Back to supporting documents to identity previous passports",
+          "href": "/back-supporting-documents-to-identity-previous-passports"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Upload digital photo",
+    "components": [
+      {
+        "component": "Typography",
+        "id": "h1-upload-digital-photo",
+        "config": {
+          "text": "Upload a digital photo",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-photo-guidance-short",
+        "config": {
+          "text": "This inset section provides additional information related to your content. Use it to highlight important details or secondary information that supports your main message. Ensure the text is concise and relevant."
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-photo-full-guidance",
+        "config": {
+          "summaryText": "Expand to view full guidance on uploading photos.",
+          "text": "When uploading a photo, ensure that the image meets the following criteria: \n\n1. **File Format**: Acceptable formats include JPEG, PNG, and GIF.\n2. **File Size**: The maximum file size is 5MB.\n3. **Dimensions**: For best results, images should be at least 800x600 pixels.\n4. **Content Guidelines**: Ensure that the photo adheres to the submission guidelines and does not contain inappropriate content. \n5. **Accessibility**: Include alt text that describes the image content to improve accessibility."
+        }
+      },
+      {
+        "component": "FileUpload",
+        "id": "file-photo-upload",
+        "config": {
+          "label": {
+            "text": "Upload your photo"
+          },
+          "hint": "Please upload a JPEG, PNG, or GIF file no larger than 2MB.",
+          "id": "file-photo-upload",
+          "name": "photo-upload",
+          "validation": [
+            "required",
+            "fileType",
+            "fileSize"
+          ]
+        }
+      },
+      {
+        "component": "WarningText",
+        "id": "warn-photo-non-compliant",
+        "config": {
+          "text": "The uploaded photo does not meet the compliance requirements. Please ensure that it is clear, properly lit, and follows the guidelines provided.",
+          "iconFallbackText": "Warning"
+        }
+      },
+      {
+        "component": "Button",
+        "id": "btn-photo-upload-continue",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "BackLink",
+        "id": "back-photo-upload-to-supporting-documents",
+        "config": {
+          "text": "Back to supporting documents",
+          "href": "/supporting-documents"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Photo review",
+    "components": [
+      {
+        "component": "Typography",
+        "id": "h1-photo-review",
+        "config": {
+          "text": "Photo Review",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-photo-preview",
+        "config": {
+          "text": "### Photo preview\n\nThis section displays a preview of the selected photo. Make sure it meets the specifications outlined. If no photo is uploaded, please upload one to see the preview."
+        }
+      },
+      {
+        "component": "WarningText",
+        "id": "warn-photo-review-may-be-rejected",
+        "config": {
+          "text": "Warning: Your photo may be rejected if it does not meet the required guidelines. Please ensure your photo is clear, properly framed, and adheres to all specifications.",
+          "iconFallbackText": null
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-photo-accept-or-reupload",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Do you accept the photo or would you like to re-upload it?",
+              "classes": null
+            }
+          },
+          "hint": "Please choose one option to proceed with your application.",
+          "name": "photo-upload-option",
+          "id": "radios-photo-accept-or-reupload",
+          "items": [
+            {
+              "text": "Accept the photo",
+              "value": "accept",
+              "id": "accept-photo",
+              "checked": null
+            },
+            {
+              "text": "Re-upload the photo",
+              "value": "reupload",
+              "id": "reupload-photo",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "btn-photo-review-continue",
+        "config": {
+          "text": "Continue to photo review",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "BackLink",
+        "id": "back-photo-review-to-photo-upload",
+        "config": {
+          "text": "Back to photo upload",
+          "href": "/photo-upload"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Countersignatory details (if needed)",
+    "components": [
+      {
+        "component": "Typography",
+        "id": "h1-countersignatory-details",
+        "config": {
+          "text": "Countersignatory Details",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-countersignatory-when-needed",
+        "config": {
+          "text": "You need to provide a countersignatory if someone is applying on behalf of another person. This can help verify the identity of the applicant or confirm the details of the application."
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-countersignatory-name",
+        "config": {
+          "label": {
+            "text": "Countersignatory name",
+            "classes": "govuk-label--m",
+            "isPageHeading": false
+          },
+          "hint": "Enter the full name of the countersignatory.",
+          "id": "txt-countersignatory-name",
+          "name": "countersignatory_name",
+          "type": "text",
+          "validation": [
+            "required",
+            "minLength",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-countersignatory-profession",
+        "config": {
+          "label": {
+            "text": "Profession",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the profession of the countersignatory.",
+          "id": "txt-countersignatory-profession",
+          "name": "countersignatory_profession",
+          "type": "text",
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-countersignatory-relationship",
+        "config": {
+          "label": {
+            "text": "Relationship to the countersignatory",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "hint": "Provide your relationship to the countersignatory, e.g. friend, colleague, family member.",
+          "id": "txt-countersignatory-relationship",
+          "name": "countersignatory-relationship",
+          "type": "text",
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-countersignatory-email",
+        "config": {
+          "label": {
+            "text": "Countersignatory email address",
+            "classes": "govuk-label--s",
+            "isPageHeading": false
+          },
+          "hint": "Enter a valid email address for the countersignatory.",
+          "id": "txt-countersignatory-email",
+          "name": "countersignatoryEmail",
+          "type": "email",
+          "validation": [
+            "required",
+            "email"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "txt-countersignatory-phone",
+        "config": {
+          "label": {
+            "text": "Countersignatory Phone Number",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Please enter a valid UK phone number.",
+          "id": "txt-countersignatory-phone",
+          "name": "countersignatory-phone",
+          "type": "tel",
+          "validation": [
+            "required",
+            "ukPhone"
+          ]
+        }
+      },
+      {
+        "component": "WarningText",
+        "id": "warn-countersignatory-eligibility",
+        "config": {
+          "text": "You must be a registered countersignatory to verify this application.",
+          "iconFallbackText": "Warning"
+        }
+      },
+      {
+        "component": "Button",
+        "id": "btn-countersignatory-details-continue",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "BackLink",
+        "id": "back-countersignatory-details-to-photo-review",
+        "config": {
+          "text": "Back to countersignatory details",
+          "href": "/countersignatory-details"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Review your answers",
+    "components": [
+      {
+        "component": "Typography",
+        "id": "h1-review-your-answers",
+        "config": {
+          "text": "Review your answers",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "summarylist-application-answers",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Name"
+              },
+              "value": {
+                "text": "John Smith",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Address"
+              },
+              "value": {
+                "text": "123 Example Street, Sample City, EC1 1AB",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of Birth"
+              },
+              "value": {
+                "text": "1 January 1990",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Phone Number"
+              },
+              "value": {
+                "text": "+44 20 1234 5678",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Email Address"
+              },
+              "value": {
+                "text": "john.smith@example.com",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-review-check-carefully",
+        "config": {
+          "text": "### Review this information carefully\n\nBefore proceeding, please ensure that all details are accurate. This information will affect your application and may lead to delays or rejections if incorrect."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "btn-review-answers-confirm-and-continue",
+        "config": {
+          "text": "Confirm and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "BackLink",
+        "id": "back-review-answers-to-previous-section",
+        "config": {
+          "text": "Back to previous section",
+          "href": "/previous-section"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Delivery and fee summary",
+    "components": [
+      {
+        "component": "Typography",
+        "id": "h1-delivery-fee-summary",
+        "config": {
+          "text": "Delivery Fee Summary",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "summarylist-fees-and-delivery",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Total fee"
+              },
+              "value": {
+                "text": "£150.00",
+                "html": "<strong>£150.00</strong>"
+              }
+            },
+            {
+              "key": {
+                "text": "Delivery method"
+              },
+              "value": {
+                "text": "Standard delivery",
+                "html": "<strong>Standard delivery</strong>"
+              }
+            },
+            {
+              "key": {
+                "text": "Estimated delivery date"
+              },
+              "value": {
+                "text": "5-7 working days",
+                "html": "<strong>5-7 working days</strong>"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-fee-explanation",
+        "config": {
+          "text": "**Fee Explanation**  \nThis section provides details about any fees associated with this service. Please review the information carefully to understand the costs involved before proceeding."
+        }
+      },
+      {
+        "component": "WarningText",
+        "id": "warn-fee-non-refundable",
+        "config": {
+          "text": "Please note that the fee submitted is non-refundable, even if your application is unsuccessful.",
+          "iconFallbackText": "Warning"
+        }
+      },
+      {
+        "component": "Button",
+        "id": "btn-delivery-fee-continue-to-payment",
+        "config": {
+          "text": "Continue to payment",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "BackLink",
+        "id": "back-delivery-fee-to-review-answers",
+        "config": {
+          "text": "Back to delivery fee review",
+          "href": "/delivery-fee/review"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Pay and submit",
+    "components": [
+      {
+        "component": "Typography",
+        "id": "h1-pay-and-submit",
+        "config": {
+          "text": "Pay and submit your application",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-pay-redirect-to-govpay",
+        "config": {
+          "text": "If you’re redirected to GovPay, your payment will be processed securely. Please ensure you follow the instructions provided on the GovPay page to complete your payment. If you have any questions regarding the payment process, refer to the support section on the GovPay site."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "btn-pay-now",
+        "config": {
+          "text": "Pay now",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "WarningText",
+        "id": "warn-pay-session-timeout",
+        "config": {
+          "text": "Your session is about to expire due to inactivity. Please take action to avoid losing any unsaved changes.",
+          "iconFallbackText": "Warning: session timeout"
+        }
+      },
+      {
+        "component": "BackLink",
+        "id": "back-pay-and-submit-to-delivery-fee",
+        "config": {
+          "text": "Back to payment and submission",
+          "href": "/pay-and-submit"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Application submitted",
+    "components": [
+      {
+        "component": "Panel",
+        "id": "panel-application-submitted-confirmation",
+        "config": {
+          "titleText": "Application Submitted",
+          "html": "<div class='govuk-panel govuk-panel--confirmation'>\n  <h1 class='govuk-panel__title'>Your application has been submitted successfully.</h1>\n  <div class='govuk-panel__body'>\n    <p>Thank you for submitting your application. You will receive a confirmation email shortly with the details you provided.</p>\n    <p>If you have any questions about your application, please contact our support team.</p>\n  </div>\n</div>"
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "summarylist-submission-details",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Submission Date"
+              },
+              "value": {
+                "text": "22 October 2023",
+                "html": "<strong>22 October 2023</strong>"
+              }
+            },
+            {
+              "key": {
+                "text": "Applicant Name"
+              },
+              "value": {
+                "text": "John Doe",
+                "html": "<strong>John Doe</strong>"
+              }
+            },
+            {
+              "key": {
+                "text": "Application Reference Number"
+              },
+              "value": {
+                "text": "12345-67890",
+                "html": "<strong>12345-67890</strong>"
+              }
+            },
+            {
+              "key": {
+                "text": "Status"
+              },
+              "value": {
+                "text": "Pending Review",
+                "html": "<strong>Pending Review</strong>"
+              }
+            },
+            {
+              "key": {
+                "text": "Contact Email"
+              },
+              "value": {
+                "text": "johndoe@example.com",
+                "html": "<strong>johndoe@example.com</strong>"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-what-happens-next",
+        "config": {
+          "text": "### What happens next?\n\nOnce you've submitted your application, you will receive a confirmation email. If further information is required, we will contact you within 5 working days. Please ensure your email address is correct to avoid any delays."
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-track-application",
+        "config": {
+          "summaryText": "Track your application status",
+          "text": "Provide your application reference number below to view the current status of your application. If you do not have the reference number, please check your email confirmation or contact support."
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-change-or-cancel-application",
+        "config": {
+          "summaryText": "Change or cancel your application details.",
+          "text": "You can modify or withdraw your application by providing the necessary information below. Please ensure all details are correct before submitting your changes."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "btn-application-submitted-finish",
+        "config": {
+          "text": "Finish",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Service blueprint – internal view",
+    "components": [
+      {
+        "component": "Typography",
+        "id": "h1-service-blueprint-internal",
+        "config": {
+          "text": "Service Blueprint",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Tabs",
+        "id": "tabs-service-blueprint-views",
+        "config": {
+          "title": "Tabs Component Configuration",
+          "items": [
+            {
+              "id": "tab-1",
+              "label": "Overview",
+              "content": "This tab provides a brief overview of the service, highlighting its main features and purpose."
+            },
+            {
+              "id": "tab-2",
+              "label": "Details",
+              "content": "In this tab, you can find detailed information about service specifications, requirements, and technical details."
+            },
+            {
+              "id": "tab-3",
+              "label": "Support",
+              "content": "This tab contains resources for getting support, including FAQs, contact information, and community forums."
+            },
+            {
+              "id": "tab-4",
+              "label": "Feedback",
+              "content": "Users can share their feedback regarding the service and suggest improvements in this tab."
+            }
+          ]
+        }
+      },
+      {
+        "component": "Table",
+        "id": "tbl-service-blueprint-high-level-steps",
+        "config": {
+          "caption": "High-Level Steps for Service Blueprint",
+          "captionClasses": "govuk-table__caption",
+          "firstCellIsHeader": true,
+          "head": [
+            {
+              "text": "Step",
+              "html": null
+            },
+            {
+              "text": "Description",
+              "html": null
+            },
+            {
+              "text": "Owner",
+              "html": null
+            }
+          ],
+          "rows": [
+            [
+              {
+                "text": "1",
+                "html": null
+              },
+              {
+                "text": "Define Objectives",
+                "html": null
+              },
+              {
+                "text": "Service Manager",
+                "html": null
+              }
+            ],
+            [
+              {
+                "text": "2",
+                "html": null
+              },
+              {
+                "text": "Identify Stakeholders",
+                "html": null
+              },
+              {
+                "text": "Project Lead",
+                "html": null
+              }
+            ],
+            [
+              {
+                "text": "3",
+                "html": null
+              },
+              {
+                "text": "Map User Journeys",
+                "html": null
+              },
+              {
+                "text": "UX Designer",
+                "html": null
+              }
+            ],
+            [
+              {
+                "text": "4",
+                "html": null
+              },
+              {
+                "text": "Design Touchpoints",
+                "html": null
+              },
+              {
+                "text": "UI Designer",
+                "html": null
+              }
+            ],
+            [
+              {
+                "text": "5",
+                "html": null
+              },
+              {
+                "text": "Gather Feedback",
+                "html": null
+              },
+              {
+                "text": "Research Analyst",
+                "html": null
+              }
+            ]
+          ]
+        }
+      },
+      {
+        "component": "Accordion",
+        "id": "acc-service-blueprint-swimlanes",
+        "config": {
+          "id": "acc-service-blueprint-swimlanes",
+          "sections": [
+            {
+              "heading": "Overview",
+              "content": "This accordion component provides a collapsible structure to display content in a segmented manner. It allows users to expand and collapse sections to view information without overwhelming the interface.",
+              "expanded": true
+            },
+            {
+              "heading": "Usage Guidelines",
+              "content": "Use this component when you want to present related content in a concise way. It's particularly useful in documentation or when guiding users through complex information. Ensure that each section is clearly labeled to describe its content.",
+              "expanded": false
+            },
+            {
+              "heading": "Accessibility Considerations",
+              "content": "Ensure that the accordion can be navigated using a keyboard. Use ARIA roles and properties such as 'aria-expanded' and 'aria-controls' to ensure screen readers correctly interpret the state of each section. Provide sufficient contrast for text and background colors to support users with visual impairments.",
+              "expanded": false
+            },
+            {
+              "heading": "Validation Messages",
+              "content": "When sections contain forms or input, include validation messages that are clear and concise. Use error messages that inform users about what needs to be corrected and provide examples when possible. Make sure these messages appear near the relevant input area when expanded.",
+              "expanded": false
+            },
+            {
+              "heading": "Default Values",
+              "content": "Set the default state of the accordion to show the first section expanded, while all others remain collapsed. This provides users with immediate context while allowing them to explore further as needed.",
+              "expanded": false
+            }
+          ]
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-service-sla-and-metrics",
+        "config": {
+          "summaryText": "Service Level Agreements (SLA) and Performance Metrics",
+          "text": "This section provides an overview of the service level agreements and performance metrics related to our services. You can find details about expected response times, resolution times, and other key performance indicators."
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "inset-service-blueprint-note-not-user-facing",
+        "config": {
+          "text": "This is an important note for service teams. Ensure that you refer to the latest guidelines and documentation when implementing changes to the service blueprint. This text is not visible to end users."
+        }
+      }
+    ]
+  }
+]

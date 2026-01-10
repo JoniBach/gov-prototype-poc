@@ -1,17 +1,25 @@
 <script lang="ts">
 	import { DateInputSchema } from '../schema.js';
 
-	let raw = $props();
+	let { errors = [], ...raw } = $props();
 	const { config } = DateInputSchema.parse(raw);
 </script>
 
-<div class="govuk-form-group">
-	<fieldset class="govuk-fieldset" role="group" aria-describedby={config.hint ? `${config.id}-hint` : undefined}>
+<div class="govuk-form-group {errors.length > 0 ? 'govuk-form-group--error' : ''}">
+	<fieldset class="govuk-fieldset" aria-describedby={config.hint ? `${config.id}-hint` : undefined}>
 		<legend class="govuk-fieldset__legend {config.fieldset.legend.classes}">
 			<h1 class="govuk-fieldset__heading">{config.fieldset.legend.text}</h1>
 		</legend>
 		{#if config.hint}
 			<div id="{config.id}-hint" class="govuk-hint">{config.hint}</div>
+		{/if}
+			{#if errors.length > 0}
+			{#each errors as error}
+				<p class="govuk-error-message">
+					<span class="govuk-visually-hidden">Error:</span>
+					{error}
+				</p>
+			{/each}
 		{/if}
 		<div class="govuk-date-input" id={config.id}>
 			<div class="govuk-date-input__item">
@@ -33,5 +41,6 @@
 				</div>
 			</div>
 		</div>
+	
 	</fieldset>
 </div>

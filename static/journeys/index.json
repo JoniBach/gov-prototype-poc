@@ -1,3 +1,9 @@
 [
-
+  {
+    "id": "passport-application-service-blueprint",
+    "name": "Passport Application Service Blueprint",
+    "departmentId": "home-office",
+    "departmentName": "Home Office",
+    "description": "A comprehensive service blueprint outlining the end-to-end process for applying for a UK passport, detailing user interactions, back-office processes, and various touchpoints involved in the service delivery. The blueprint aims to enhance user experience, ensure clarity in steps, and streamline operations."
+  }
 ]
