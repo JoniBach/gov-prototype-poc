@@ -1,5 +1,10 @@
 [
   {
-    "text": "Enter your full name"
+    "label": {
+      "text": "Full Name"
+    },
+    "hint": {
+      "text": "Enter your first and last name"
+    }
   }
 ]

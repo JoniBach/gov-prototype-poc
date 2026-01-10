@@ -163,10 +163,11 @@ export class FieldValidator {
 
   /* -------------------- MULTI-VALUE -------------------- */
 
-  static atLeastOne(values: string[]): ValidationResult {
+  static atLeastOne(values: string | string[]): ValidationResult {
+    const arr = Array.isArray(values) ? values : (values ? [values] : []);
     return {
-      isValid: values.length > 0,
-      message: values.length > 0
+      isValid: arr.length > 0,
+      message: arr.length > 0
         ? undefined
         : 'Select at least one option',
     };
@@ -297,9 +298,10 @@ export const ComponentValidations = {
 type ComponentValidatorName = keyof typeof ComponentValidations;
 
 
-export const validationSchema = (validator: ComponentValidatorName) => z.array(z.enum(
+export const validationOptions = (validator: ComponentValidatorName) => z.array(z.enum(
 			Object.keys(ComponentValidations[validator]) as [string, ...string[]]
 		)).default([])
+
 
 /* -----------------------------------------------------
    HELPERS
@@ -318,19 +320,19 @@ export function validateField(
   return { isValid: true };
 }
 
-export function validateByRules(
-  rules: string[],
-  value: any,
-  params?: Record<string, any>
-): ValidationResult {
-  for (const rule of rules) {
-    const validator = ValidationRules[rule];
-    if (validator) {
-      const result = validator(value, params?.[rule]);
-      if (!result.isValid) {
-        return result;
+export function runValidations(
+  componentValidation: Record<string, any>,
+  validators: string[],
+  value: any
+): string[] {
+  const errors: string[] = [];
+  for (const validator of validators) {
+    if (validator && componentValidation[validator]) {
+      const result = componentValidation[validator](value);
+      if (result && !result.isValid && result.message && typeof result.message === 'string') {
+        errors.push(result.message);
       }
     }
   }
-  return { isValid: true };
+  return errors;
 }

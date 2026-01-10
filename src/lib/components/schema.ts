@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ComponentValidations, validationSchema } from './validation';
+import { ComponentValidations, validationOptions } from './validation';
 
 export const AccordionSchema = z.object({
 	config: z.object({
@@ -48,7 +48,7 @@ export const CharacterCountSchema = z.object({
 		maxlength: z.number(),
 		rows: z.number().optional().nullable().default(5),
 		id: z.string().optional().nullable(),
-		validation: validationSchema("CharacterCount"),
+		validation: validationOptions("CharacterCount"),
 	}),
 });
 
@@ -68,7 +68,7 @@ export const CheckboxesSchema = z.object({
 			id: z.string().optional().nullable(),
 			checked: z.boolean().optional().nullable(),
 		})),
-		validation: validationSchema("Checkboxes"),
+		validation: validationOptions("Checkboxes"),
 	}),
 });
 
@@ -101,7 +101,7 @@ export const DateInputSchema = z.object({
 		hint: z.string().optional().nullable(),
 		id: z.string(),
 		name: z.string(),
-		validation: validationSchema("DateInput"),
+		validation: validationOptions("DateInput"),
 	}),
 });
 
@@ -114,8 +114,12 @@ export const DetailsSchema = z.object({
 
 export const ErrorMessageSchema = z.object({
 	config: z.object({
-		text: z.string(),
-		visuallyHiddenText: z.string().optional().nullable().default("Error"),
+		label: z.object({
+			text: z.string(),
+		}),
+		hint: z.object({
+			text: z.string(),
+		}),
 	}),
 });
 
@@ -151,9 +155,10 @@ export const FileUploadSchema = z.object({
 		label: z.object({
 			text: z.string(),
 		}),
+		hint: z.string().optional().nullable(),
 		id: z.string(),
 		name: z.string(),
-		validation: validationSchema("FileUpload"),
+		validation: validationOptions("FileUpload"),
 	}),
 });
 
@@ -209,9 +214,10 @@ export const PasswordInputSchema = z.object({
 		label: z.object({
 			text: z.string(),
 		}),
+		hint: z.string().optional().nullable(),
 		id: z.string(),
 		name: z.string(),
-		validation: validationSchema("PasswordInput"),
+		validation: validationOptions("PasswordInput"),
 	}),
 });
 
@@ -232,6 +238,7 @@ export const RadiosSchema = z.object({
 				classes: z.string().optional().nullable(),
 			}),
 		}),
+		hint: z.string().optional().nullable(),
 		name: z.string(),
 		items: z.array(z.object({
 			text: z.string(),
@@ -239,7 +246,7 @@ export const RadiosSchema = z.object({
 			id: z.string().optional().nullable(),
 			checked: z.boolean().optional().nullable(),
 		})),
-		validation: validationSchema("Radios"),
+		validation: validationOptions("Radios"),
 	}),
 });
 
@@ -248,6 +255,7 @@ export const SelectSchema = z.object({
 		label: z.object({
 			text: z.string(),
 		}),
+		hint: z.string().optional().nullable(),
 		id: z.string(),
 		name: z.string(),
 		items: z.array(z.object({
@@ -255,7 +263,7 @@ export const SelectSchema = z.object({
 			value: z.string(),
 			selected: z.boolean().optional().nullable(),
 		})),
-		validation: validationSchema("Select"),
+		validation: validationOptions("Select"),
 	}),
 });
 
@@ -355,10 +363,11 @@ export const TextInputSchema = z.object({
 			classes: z.string().optional().nullable(),
 			isPageHeading: z.boolean().optional().nullable(),
 		}),
+		hint: z.string().optional().nullable(),
 		id: z.string(),
 		name: z.string(),
 		type: z.string().optional().nullable().default("text"),
-		validation: validationSchema("TextInput"),
+		validation: validationOptions("TextInput"),
 	}),
 });
 
@@ -375,7 +384,7 @@ export const TextareaSchema = z.object({
 		id: z.string(),
 		name: z.string(),
 		rows: z.number().optional().nullable().default(5),
-		validation: validationSchema("Textarea"),
+		validation: validationOptions("Textarea"),
 	}),
 });
 

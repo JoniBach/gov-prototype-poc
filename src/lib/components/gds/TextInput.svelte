@@ -1,27 +1,43 @@
 <script lang="ts">
 	import { TextInputSchema } from '../schema.js';
+	import { ComponentValidations, runValidations } from '../validation.js';
+	import type { ValidationResult } from '../validation.js';
+	import ErrorMessage from './ErrorMessage.svelte';
 
-	let raw = $props();
+	let { ...raw } = $props();
 	const { config } = TextInputSchema.parse(raw);
 
 	let value = $state('');
 
-	function handleInput(event: Event) {
+	const validation = ComponentValidations.TextInput;
+
+	let errors = $state<string[]>([]);
+
+	function handleBlur(event: Event) {
 		value = (event.target as HTMLInputElement).value;
+		errors = runValidations(validation, config.validation, value);
 	}
+
+	$inspect(errors);
+
+	let ariaDescribedBy = $derived(
+		[config.hint ? `${config.id}-hint` : null, errors.length > 0 ? `${config.id}-error` : null]
+			.filter(Boolean)
+			.join(' ') || undefined
+	);
 </script>
 
-<div class="govuk-form-group">
-	{#if config.label.isPageHeading}
-		<h1 class="govuk-label-wrapper">
-			<label class="govuk-label {config.label.classes || ''}" for={config.id}>
-				{config.label.text}
-			</label>
-		</h1>
-	{:else}
-		<label class="govuk-label {config.label.classes || ''}" for={config.id}>
-			{config.label.text}
-		</label>
-	{/if}
-	<input class="govuk-input" id={config.id} name={config.name} type={config.type || 'text'} {value} oninput={handleInput}>
-</div>
+<ErrorMessage
+	config={{ hint: { text: config.hint?.text || '' }, label: { text: config.label?.text || '' } }}
+	errors={errors.map((e) => ({ text: e }))}
+>
+	<input
+		class="govuk-input {errors.length > 0 ? 'govuk-input--error' : ''}"
+		id={config.id}
+		name={config.name}
+		type="text"
+		aria-describedby={ariaDescribedBy}
+		{value}
+		onblur={handleBlur}
+	/>
+</ErrorMessage>

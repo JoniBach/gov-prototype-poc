@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import ErrorSummary from '../gds/ErrorSummary.svelte';
 
 	interface config {
 		title?: string;
 		children?: any;
+		errors?: { href: string; text: string }[];
 	}
 
-	let { title = 'GOV.UK Page', children }: config = $props();
+	let { title = 'GOV.UK Page', children, errors }: config = $props();
 
 	onMount(() => {
 		// Initialize GOV.UK Frontend after the page loads
@@ -83,6 +85,9 @@
 	<div class="govuk-width-container">
 		<main class="govuk-main-wrapper" id="main-content">
 			<h1 class="govuk-heading-xl">{title}</h1>
+			{#if errors && errors.length > 0}
+				<ErrorSummary config={{ titleText: 'There is a problem', errorList: errors }} />
+			{/if}
 			{@render children?.()}
 		</main>
 	</div>
