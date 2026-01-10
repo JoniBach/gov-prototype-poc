@@ -15,7 +15,8 @@
 		"test:e2e": "playwright test",
 		"test": "npm run test:e2e",
 		"test:components": "npx playwright test e2e/Components.test.ts",
-		"test:journeys": "npx playwright test e2e/journeys/Journeys.test.ts"
+		"test:journeys": "npx playwright test e2e/journeys/Journeys.test.ts",
+		"gen": "npx tsx ./src/lib/ai/gen.ts"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",

@@ -1,6 +1,7 @@
-// validation.ts - Accessible validation rules for form components
+// validation.ts
+// Accessible, GOV.UK-style validation rules for form components
 
-// Validation functions return null if valid, or error message string if invalid
+import z from "zod";
 
 export interface ValidationResult {
   isValid: boolean;
@@ -8,11 +9,13 @@ export interface ValidationResult {
 }
 
 export class FieldValidator {
+  /* -------------------- BASIC -------------------- */
+
   static required(value: string): ValidationResult {
-    const trimmed = value.trim();
+    const trimmed = value?.trim?.() ?? '';
     return {
       isValid: trimmed.length > 0,
-      message: trimmed.length > 0 ? undefined : 'This field is required'
+      message: trimmed.length > 0 ? undefined : 'This field is required',
     };
   }
 
@@ -20,66 +23,221 @@ export class FieldValidator {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return {
       isValid: emailRegex.test(value),
-      message: emailRegex.test(value) ? undefined : 'Enter a valid email address'
-    };
-  }
-
-  static minLength(min: number) {
-    return (value: string): ValidationResult => {
-      return {
-        isValid: value.length >= min,
-        message: value.length >= min ? undefined : `Must be at least ${min} characters`
-      };
-    };
-  }
-
-  static maxLength(max: number) {
-    return (value: string): ValidationResult => {
-      return {
-        isValid: value.length <= max,
-        message: value.length <= max ? undefined : `Must be ${max} characters or less`
-      };
+      message: emailRegex.test(value)
+        ? undefined
+        : 'Enter a valid email address',
     };
   }
 
   static numeric(value: string): ValidationResult {
-    const num = parseFloat(value);
+    const num = Number(value);
     return {
       isValid: !isNaN(num) && isFinite(num),
-      message: (!isNaN(num) && isFinite(num)) ? undefined : 'Must be a number'
+      message: !isNaN(num) && isFinite(num)
+        ? undefined
+        : 'Must be a number',
     };
   }
 
+  /* -------------------- LENGTH -------------------- */
+
+  static minLength(min: number) {
+    return (value: string): ValidationResult => ({
+      isValid: value.length >= min,
+      message: value.length >= min
+        ? undefined
+        : `Must be at least ${min} characters`,
+    });
+  }
+
+  static maxLength(max: number) {
+    return (value: string): ValidationResult => ({
+      isValid: value.length <= max,
+      message: value.length <= max
+        ? undefined
+        : `Must be ${max} characters or less`,
+    });
+  }
+
+  static exactLength(len: number) {
+    return (value: string): ValidationResult => ({
+      isValid: value.length === len,
+      message: value.length === len
+        ? undefined
+        : `Must be exactly ${len} characters`,
+    });
+  }
+
+  /* -------------------- PATTERN -------------------- */
+
   static pattern(regex: RegExp, errorMessage: string) {
+    return (value: string): ValidationResult => ({
+      isValid: regex.test(value),
+      message: regex.test(value) ? undefined : errorMessage,
+    });
+  }
+
+  /* -------------------- UK-SPECIFIC -------------------- */
+
+  static ukPostcode(value: string): ValidationResult {
+    const postcodeRegex =
+      /^([A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2})$/i;
+
+    const trimmed = value.trim();
+    return {
+      isValid: postcodeRegex.test(trimmed),
+      message: postcodeRegex.test(trimmed)
+        ? undefined
+        : 'Enter a valid UK postcode',
+    };
+  }
+
+  static ukPhone(value: string): ValidationResult {
+    const phoneRegex =
+      /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
+
+    return {
+      isValid: phoneRegex.test(value),
+      message: phoneRegex.test(value)
+        ? undefined
+        : 'Enter a valid UK phone number',
+    };
+  }
+
+  /* -------------------- DATE -------------------- */
+
+  static validDate(value: string): ValidationResult {
+    const date = new Date(value);
+    const isValid =
+      !isNaN(date.getTime()) && value.length >= 8;
+
+    return {
+      isValid,
+      message: isValid ? undefined : 'Enter a real date',
+    };
+  }
+
+  static dateInPast(value: string): ValidationResult {
+    const date = new Date(value);
+    const now = new Date();
+    return {
+      isValid: date < now,
+      message: date < now ? undefined : 'Date must be in the past',
+    };
+  }
+
+  static dateInFuture(value: string): ValidationResult {
+    const date = new Date(value);
+    const now = new Date();
+    return {
+      isValid: date > now,
+      message: date > now ? undefined : 'Date must be in the future',
+    };
+  }
+
+  /* -------------------- NUMERIC RANGE -------------------- */
+
+  static minValue(min: number) {
     return (value: string): ValidationResult => {
+      const num = Number(value);
       return {
-        isValid: regex.test(value),
-        message: regex.test(value) ? undefined : errorMessage
+        isValid: !isNaN(num) && num >= min,
+        message: !isNaN(num) && num >= min
+          ? undefined
+          : `Must be ${min} or more`,
       };
     };
   }
 
-  // For checkboxes/radios - at least one selected
+  static maxValue(max: number) {
+    return (value: string): ValidationResult => {
+      const num = Number(value);
+      return {
+        isValid: !isNaN(num) && num <= max,
+        message: !isNaN(num) && num <= max
+          ? undefined
+          : `Must be ${max} or less`,
+      };
+    };
+  }
+
+  /* -------------------- MULTI-VALUE -------------------- */
+
   static atLeastOne(values: string[]): ValidationResult {
     return {
       isValid: values.length > 0,
-      message: values.length > 0 ? undefined : 'Select at least one option'
+      message: values.length > 0
+        ? undefined
+        : 'Select at least one option',
     };
+  }
+
+  /* -------------------- FILE UPLOAD -------------------- */
+
+  static fileRequired(value: File | null): ValidationResult {
+    return {
+      isValid: value !== null,
+      message: value !== null ? undefined : 'Please select a file',
+    };
+  }
+
+  static fileType(allowedTypes: string[]) {
+    return (file: File | null): ValidationResult => ({
+      isValid: !!file && allowedTypes.includes(file.type),
+      message: 'Upload a file of the correct type',
+    });
+  }
+
+  static fileSize(maxBytes: number) {
+    return (file: File | null): ValidationResult => ({
+      isValid: !!file && file.size <= maxBytes,
+      message:
+        'File must be smaller than ' +
+        Math.round(maxBytes / 1024 / 1024) +
+        'MB',
+    });
   }
 }
 
-// Validation rule map for string-based configuration
-export const ValidationRules: Record<string, (value: any, params?: any) => ValidationResult> = {
+/* -----------------------------------------------------
+   STRING-BASED RULE MAP (for schema-driven validation)
+----------------------------------------------------- */
+
+export const ValidationRules: Record<
+  string,
+  (value: any, params?: any) => ValidationResult
+> = {
   required: FieldValidator.required,
   email: FieldValidator.email,
   numeric: FieldValidator.numeric,
-  minLength: (value: string, min: number) => FieldValidator.minLength(min)(value),
-  maxLength: (value: string, max: number) => FieldValidator.maxLength(max)(value),
+  ukPostcode: FieldValidator.ukPostcode,
+  ukPhone: FieldValidator.ukPhone,
+  validDate: FieldValidator.validDate,
+  dateInPast: FieldValidator.dateInPast,
+  dateInFuture: FieldValidator.dateInFuture,
+
+  minLength: (value: string, min: number) =>
+    FieldValidator.minLength(min)(value),
+
+  maxLength: (value: string, max: number) =>
+    FieldValidator.maxLength(max)(value),
+
+  exactLength: (value: string, len: number) =>
+    FieldValidator.exactLength(len)(value),
+
+  minValue: (value: string, min: number) =>
+    FieldValidator.minValue(min)(value),
+
+  maxValue: (value: string, max: number) =>
+    FieldValidator.maxValue(max)(value),
+
   atLeastOne: FieldValidator.atLeastOne,
-  // Add more as needed
 };
 
-// Component-specific validation rules
+/* -----------------------------------------------------
+   COMPONENT-SPECIFIC VALIDATION MAPS
+----------------------------------------------------- */
+
 export const ComponentValidations = {
   TextInput: {
     required: FieldValidator.required,
@@ -87,7 +245,10 @@ export const ComponentValidations = {
     numeric: FieldValidator.numeric,
     minLength: FieldValidator.minLength,
     maxLength: FieldValidator.maxLength,
+    exactLength: FieldValidator.exactLength,
     pattern: FieldValidator.pattern,
+    ukPostcode: FieldValidator.ukPostcode,
+    ukPhone: FieldValidator.ukPhone,
   },
 
   Textarea: {
@@ -110,15 +271,16 @@ export const ComponentValidations = {
   },
 
   DateInput: {
-    required: (value: string) => FieldValidator.required(value),
-    // Could add date format validation
+    required: FieldValidator.required,
+    validDate: FieldValidator.validDate,
+    dateInPast: FieldValidator.dateInPast,
+    dateInFuture: FieldValidator.dateInFuture,
   },
 
   FileUpload: {
-    required: (value: File | null) => ({
-      isValid: value !== null,
-      message: value !== null ? undefined : 'Please select a file'
-    }),
+    required: FieldValidator.fileRequired,
+    fileType: FieldValidator.fileType,
+    fileSize: FieldValidator.fileSize,
   },
 
   CharacterCount: {
@@ -129,12 +291,24 @@ export const ComponentValidations = {
   PasswordInput: {
     required: FieldValidator.required,
     minLength: FieldValidator.minLength,
-    // Could add strength validation
   },
 };
 
-// Helper to run multiple validations
-export function validateField(validations: ((value: any) => ValidationResult)[], value: any): ValidationResult {
+type ComponentValidatorName = keyof typeof ComponentValidations;
+
+
+export const validationSchema = (validator: ComponentValidatorName) => z.array(z.enum(
+			Object.keys(ComponentValidations[validator]) as [string, ...string[]]
+		)).default([])
+
+/* -----------------------------------------------------
+   HELPERS
+----------------------------------------------------- */
+
+export function validateField(
+  validations: ((value: any) => ValidationResult)[],
+  value: any
+): ValidationResult {
   for (const validation of validations) {
     const result = validation(value);
     if (!result.isValid) {
@@ -144,11 +318,15 @@ export function validateField(validations: ((value: any) => ValidationResult)[],
   return { isValid: true };
 }
 
-// Helper to validate by rule names
-export function validateByRules(rules: string[], value: any, params?: Record<string, any>): ValidationResult {
+export function validateByRules(
+  rules: string[],
+  value: any,
+  params?: Record<string, any>
+): ValidationResult {
   for (const rule of rules) {
-    if (ValidationRules[rule]) {
-      const result = ValidationRules[rule](value, params?.[rule]);
+    const validator = ValidationRules[rule];
+    if (validator) {
+      const result = validator(value, params?.[rule]);
       if (!result.isValid) {
         return result;
       }

@@ -2,11 +2,15 @@ import { Page, test } from '@playwright/test';
 
 import journeysIndex from "../../static/journeys/index.json" with { type: "json" };
 import passportApplicationService from "../../static/journeys/passport-application-service.json" with { type: "json" };
+import passportApplicationServiceBlueprint from "../../static/journeys/passport-application-service-blueprint.json" with { type: "json" };
+import passportApplication from "../../static/journeys/passport-application.json" with { type: "json" };
 import { components, componentConfigs } from '../componentUtils';
 
 // Map of journey ID -> journey JSON
 const journeys: Record<string, any> = {
-    "passport-application-service": passportApplicationService
+    "passport-application-service": passportApplicationService,
+    "passport-application-service-blueprint": passportApplicationServiceBlueprint,
+    "passport-application": passportApplication
 };
 
 /**
@@ -51,7 +55,7 @@ async function testJourney(page: Page, journey: any) {
  * Generate Playwright tests dynamically from journeysIndex
  */
 for (const journey of journeysIndex) {
-    test.describe(`${journey.name} Journey`, () => {
+    test.describe(`${journey.id} Journey`, () => {
         test(`should render and function correctly`, async ({ page }) => {
             await testJourney(page, journey);
         });

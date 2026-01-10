@@ -40,16 +40,15 @@
 	});
 </script>
 
-
-<form onsubmit={handleSubmit} novalidate>
-	{#each pages as page, index}
+{#each pages as page, index}
+	<form onsubmit={handleSubmit} novalidate>
 		<div class={`${index === currentPage ? 'show' : 'hide'}`}>
 			<GovUKPage title={page.title}>
 				<Components components={page.components} onBackLinkClicked={handleBackLinkClicked} />
 			</GovUKPage>
 		</div>
-	{/each}
-</form>
+	</form>
+{/each}
 
 <style>
 	.hide {
@@ -58,10 +57,9 @@
 	.show {
 		display: block;
 	}
-		:global(body) {
+	:global(body) {
 		margin: 0;
 		padding: 0;
 		font-family: 'GDS Transport', arial, sans-serif;
 	}
 </style>
-

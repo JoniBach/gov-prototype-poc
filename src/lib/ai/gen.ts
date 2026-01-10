@@ -1,4 +1,4 @@
-import { configurationSchema, HighLevelMultiPageSchema, JourneyIndexSchema, MultiPageSchema } from '../components/schema.ts';
+import { blacklistSchemaList, configurationSchema, HighLevelMultiPageSchema, JourneyIndexSchema, MultiPageSchema } from '../components/schema.ts';
 import { useOpenAI } from './openai.ts';
 import { addUniqueObjectToJson, createJson, fetchJsonFile, getObjectById, removeObjectsByKeys } from './files.ts';
 import _ from 'lodash';
@@ -19,13 +19,7 @@ async function generateJourneyIndex(description) {
 }
 
 async function filterOutUnwantedComponents(array) {
-
-  const unwantedComponents = [
-    "GOVUKFooter",
-    'GOVUKHeader',
-  ]
-
-  const filteredArray = removeObjectsByKeys(array, 'component', unwantedComponents)
+  const filteredArray = removeObjectsByKeys(array, 'component', blacklistSchemaList)
 
   return filteredArray
 }
@@ -48,7 +42,6 @@ async function generateHighLevelJourney(journeyId: string) {
 
   const postProcessed = await filterOutUnwantedComponents(response.pages)
 
-  console.log('postProcessed - ', postProcessed)
   console.log(`Generated ${response.pages.length} pages for journey: ${journeyId}`);
 
   createJson(`static/journeys/${journeyId}.json`, postProcessed)

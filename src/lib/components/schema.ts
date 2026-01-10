@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { ComponentValidations, validationSchema } from './validation';
 
 export const AccordionSchema = z.object({
 	config: z.object({
@@ -36,6 +37,9 @@ export const ButtonSchema = z.object({
 	}),
 });
 
+
+
+
 export const CharacterCountSchema = z.object({
 	config: z.object({
 		label: z.string(),
@@ -44,6 +48,7 @@ export const CharacterCountSchema = z.object({
 		maxlength: z.number(),
 		rows: z.number().optional().nullable().default(5),
 		id: z.string().optional().nullable(),
+		validation: validationSchema("CharacterCount"),
 	}),
 });
 
@@ -63,6 +68,7 @@ export const CheckboxesSchema = z.object({
 			id: z.string().optional().nullable(),
 			checked: z.boolean().optional().nullable(),
 		})),
+		validation: validationSchema("Checkboxes"),
 	}),
 });
 
@@ -95,6 +101,7 @@ export const DateInputSchema = z.object({
 		hint: z.string().optional().nullable(),
 		id: z.string(),
 		name: z.string(),
+		validation: validationSchema("DateInput"),
 	}),
 });
 
@@ -146,6 +153,7 @@ export const FileUploadSchema = z.object({
 		}),
 		id: z.string(),
 		name: z.string(),
+		validation: validationSchema("FileUpload"),
 	}),
 });
 
@@ -203,6 +211,7 @@ export const PasswordInputSchema = z.object({
 		}),
 		id: z.string(),
 		name: z.string(),
+		validation: validationSchema("PasswordInput"),
 	}),
 });
 
@@ -230,6 +239,7 @@ export const RadiosSchema = z.object({
 			id: z.string().optional().nullable(),
 			checked: z.boolean().optional().nullable(),
 		})),
+		validation: validationSchema("Radios"),
 	}),
 });
 
@@ -245,6 +255,7 @@ export const SelectSchema = z.object({
 			value: z.string(),
 			selected: z.boolean().optional().nullable(),
 		})),
+		validation: validationSchema("Select"),
 	}),
 });
 
@@ -347,6 +358,7 @@ export const TextInputSchema = z.object({
 		id: z.string(),
 		name: z.string(),
 		type: z.string().optional().nullable().default("text"),
+		validation: validationSchema("TextInput"),
 	}),
 });
 
@@ -363,6 +375,7 @@ export const TextareaSchema = z.object({
 		id: z.string(),
 		name: z.string(),
 		rows: z.number().optional().nullable().default(5),
+		validation: validationSchema("Textarea"),
 	}),
 });
 
@@ -380,22 +393,26 @@ export const WarningTextSchema = z.object({
 	}),
 });
 
-export const configurationSchema = {
-	Accordion: AccordionSchema,
-	Breadcrumbs: BreadcrumbsSchema,
+const inputSchemas = {
 	CharacterCount: CharacterCountSchema,
 	Checkboxes: CheckboxesSchema,
-	CookieBanner: CookieBannerSchema,
 	DateInput: DateInputSchema,
-	Details: DetailsSchema,
-	Fieldset: FieldsetSchema,
 	FileUpload: FileUploadSchema,
-	InsetText: InsetTextSchema,
-	Panel: PanelSchema,
 	PasswordInput: PasswordInputSchema,
-	PhaseBanner: PhaseBannerSchema,
 	Radios: RadiosSchema,
 	Select: SelectSchema,
+	TextInput: TextInputSchema,
+	Textarea: TextareaSchema,
+}
+
+const genericSchemas = {
+	Accordion: AccordionSchema,
+	Breadcrumbs: BreadcrumbsSchema,
+	CookieBanner: CookieBannerSchema,
+	Details: DetailsSchema,
+	Fieldset: FieldsetSchema,
+	InsetText: InsetTextSchema,
+	Panel: PanelSchema,
 	ServiceNavigation: ServiceNavigationSchema,
 	SkipLink: SkipLinkSchema,
 	SummaryList: SummaryListSchema,
@@ -403,12 +420,12 @@ export const configurationSchema = {
 	Tabs: TabsSchema,
 	Tag: TagSchema,
 	TaskList: TaskListSchema,
-	TextInput: TextInputSchema,
-	Textarea: TextareaSchema,
 	Typography: TypographySchema,
 	WarningText: WarningTextSchema,
+}
 
-	// Not in use by AI
+const blacklistSchemas = {
+	PhaseBanner: PhaseBannerSchema,
 	BackLink: BackLinkSchema,
 	Button: ButtonSchema,
 	GOVUKFooter: GOVUKFooterSchema,
@@ -419,50 +436,21 @@ export const configurationSchema = {
 	Pagination: PaginationSchema,
 	NotificationBanner: NotificationBannerSchema,
 }
-export const ConfigurationSchemaEnum = z.object(configurationSchema);
 
-export const ComponentList = [
-	'Accordion',
-	'Breadcrumbs',
-	'CharacterCount',
-	'Checkboxes',
-	'CookieBanner',
-	'DateInput',
-	'Details',
-	'Fieldset',
-	'FileUpload',
-	'InsetText',
-	'Panel',
-	'PasswordInput',
-	'PhaseBanner',
-	'Radios',
-	'Select',
-	'ServiceNavigation',
-	'SkipLink',
-	'SummaryList',
-	'Table',
-	'Tabs',
-	'Tag',
-	'TaskList',
-	'TextInput',
-	'Textarea',
-	'Typography',
-	'WarningText',
+export const blacklistSchemaList = Object.keys(blacklistSchemas)
 
+export const configurationSchema: Record<string, z.ZodObject<any>> = {
+	// Inputs
+	...inputSchemas,
+	// Generic
+	...genericSchemas,
 	// Not in use by AI
-	'BackLink',
-	'Button',
-	'ErrorMessage',
-	'ErrorSummary',
-	'GOVUKFooter',
-	'GOVUKHeader',
-	'Pagination',
-	'ExitThisPage',
-	'NotificationBanner',
-]
+	...blacklistSchemas,
+}
 
+export const ConfigurationSchemaEnum = z.object(configurationSchema);
+export const ComponentList = Object.keys(configurationSchema)
 export const ComponentTypeEnum = z.enum(ComponentList);
-
 
 
 export const ComponentSchema = z.object({
@@ -477,8 +465,6 @@ export const PageSchema = z.object({
 	title: z.string(),
 	components: ComponentsSchema,
 });
-
-
 
 export const MultiPageSchema = z.object({
 	pages: z.array(PageSchema),

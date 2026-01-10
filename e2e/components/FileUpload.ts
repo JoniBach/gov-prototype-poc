@@ -4,7 +4,7 @@ export async function testFileUpload(page: Page, config: any) {
   const actualConfig = Array.isArray(config) ? config[0] : config;
   const formGroup = page.locator('.govuk-form-group').filter({ has: page.locator(`#${actualConfig.id}`) });
   const label = page.locator(`label[for="${actualConfig.id}"]`);
-  const dropZone = page.locator('.govuk-drop-zone');
+  const dropZone = formGroup.locator('.govuk-drop-zone');
   const fileInput = page.locator(`#${actualConfig.id}`);
 
   await test.step('Form group is present', async () => {
@@ -26,8 +26,8 @@ export async function testFileUpload(page: Page, config: any) {
   await test.step('File input has correct attributes', async () => {
     await expect(fileInput).toBeVisible();
     await expect(fileInput).toHaveAttribute('id', actualConfig.id);
-    await expect(fileInput).toHaveAttribute('type', 'button');
-    await expect(fileInput).toHaveClass(/govuk-file-upload-button/);
+    await expect(fileInput).toHaveAttribute('type', 'file');
+    await expect(fileInput).toHaveClass(/govuk-file-upload/);
   });
 
   await test.step('File input is focusable', async () => {

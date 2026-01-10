@@ -7,5 +7,7 @@
 </script>
 
 {#each components as comp}
-	<Component component={comp} onBackLinkClicked={onBackLinkClicked} />
+	<div class='component-{comp.id}'>
+		<Component component={comp} onBackLinkClicked={onBackLinkClicked} />
+	</div>
 {/each}
