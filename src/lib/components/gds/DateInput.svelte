@@ -6,7 +6,7 @@
 </script>
 
 <div class="govuk-form-group {errors.length > 0 ? 'govuk-form-group--error' : ''}">
-	<fieldset class="govuk-fieldset" aria-describedby={config.hint ? `${config.id}-hint` : undefined}>
+	<fieldset class="govuk-fieldset" role="group" aria-describedby={config.hint ? `${config.id}-hint` : undefined}>
 		<legend class="govuk-fieldset__legend {config.fieldset.legend.classes}">
 			<h1 class="govuk-fieldset__heading">{config.fieldset.legend.text}</h1>
 		</legend>

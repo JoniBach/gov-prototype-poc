@@ -1,16 +1,21 @@
 <script lang="ts">
 	import { FileUploadSchema } from '../schema.js';
-	import ErrorMessage from './ErrorMessage.svelte';
 
 	let { errors = [], ...raw } = $props();
 	const { config } = FileUploadSchema.parse(raw);
 </script>
 
-<ErrorMessage
-	config={{ hint: { text: '' }, label: { text: config.label.text } }}
-	errors={errors.map((e) => ({ text: e }))}
->
-	<div class="govuk-drop-zone" data-module="govuk-file-upload">
+<div class="govuk-form-group">
+	<label class="govuk-label" for={config.id}>{config.label.text}</label>
+	<div class="govuk-drop-zone {errors.length > 0 ? 'govuk-drop-zone--error' : ''}" data-module="govuk-file-upload">
 		<input class="govuk-file-upload" id={config.id} name={config.name} type="file">
 	</div>
-</ErrorMessage>
+	{#if errors.length > 0}
+		{#each errors as error}
+			<p class="govuk-error-message">
+				<span class="govuk-visually-hidden">Error:</span>
+				{error}
+			</p>
+		{/each}
+	{/if}
+</div>

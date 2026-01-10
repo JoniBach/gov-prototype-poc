@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { TextInputSchema } from '../schema.js';
-	import ErrorMessage from './ErrorMessage.svelte';
 
 	let { errors = [], ...raw } = $props();
 	const { config } = TextInputSchema.parse(raw);
@@ -18,17 +17,26 @@
 	);
 </script>
 
-<ErrorMessage
-	config={{ hint: { text: config.hint?.text || '' }, label: { text: config.label?.text || '' } }}
-	errors={errors.map((e) => ({ text: e }))}
->
+<div class="govuk-form-group">
+	<label class="govuk-label{config.label.classes ? ` ${config.label.classes}` : ''}" for={config.id}>{config.label?.text}</label>
+	{#if config.hint}
+		<div id="{config.id}-hint" class="govuk-hint">{config.hint}</div>
+	{/if}
 	<input
 		class="govuk-input {errors.length > 0 ? 'govuk-input--error' : ''}"
 		id={config.id}
 		name={config.name}
-		type="text"
+		type={config.type || 'text'}
 		aria-describedby={ariaDescribedBy}
 		{value}
 		onblur={handleBlur}
 	/>
-</ErrorMessage>
+	{#if errors.length > 0}
+		{#each errors as error}
+			<p class="govuk-error-message">
+				<span class="govuk-visually-hidden">Error:</span>
+				{error}
+			</p>
+		{/each}
+	{/if}
+</div>
