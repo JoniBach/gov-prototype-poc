@@ -1,7 +1,7 @@
 import { Page, expect, test } from '@playwright/test';
 
 export async function testCheckboxes(page: Page, config: any) {
-  const formGroup = page.locator('.govuk-form-group').filter({ hasText: config.fieldset.legend.text });
+  const formGroup = page.locator('.govuk-form-group').filter({ hasText: config.fieldset.legend.text }).nth(0);
   const fieldset = formGroup.locator('fieldset.govuk-fieldset');
   const legend = fieldset.locator('.govuk-fieldset__legend');
   const hint = config.hint ? page.locator(`#${config.name}-hint`) : null;

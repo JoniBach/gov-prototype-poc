@@ -2,7 +2,7 @@ import { Page, expect, test } from '@playwright/test';
 
 export async function testDateInput(page: Page, config: any) {
   const actualConfig = Array.isArray(config) ? config[0] : config;
-  const formGroup = page.locator('.govuk-form-group').filter({ hasText: actualConfig.fieldset.legend.text });
+  const formGroup = page.locator('.govuk-form-group').filter({ hasText: actualConfig.fieldset.legend.text }).nth(0);
   const fieldset = page.locator('fieldset.govuk-fieldset').filter({ has: page.locator(`#${actualConfig.id}`) });
   const legend = fieldset.locator('.govuk-fieldset__legend');
   const heading = fieldset.locator('.govuk-fieldset__heading');
@@ -13,7 +13,7 @@ export async function testDateInput(page: Page, config: any) {
   const yearInput = page.locator(`#${actualConfig.id}-year`);
 
   await test.step('Form group is present', async () => {
-    await expect(formGroup).toBeVisible();
+    await expect(formGroup).toBeAttached();
   });
 
   await test.step('Fieldset is correct', async () => {

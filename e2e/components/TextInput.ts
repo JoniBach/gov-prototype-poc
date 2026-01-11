@@ -33,9 +33,12 @@ export async function testTextInput(page: Page, config: any) {
     await input.focus();
     await expect(input).toBeFocused();
 
+    const inputType = await input.getAttribute('type');
     let testValue = 'Test input value';
-    if (config.type === 'date') {
+    if (inputType === 'date') {
       testValue = '2023-01-01';
+    } else if (inputType === 'number') {
+      testValue = '12345';
     }
     await input.fill(testValue);
     await expect(input).toHaveValue(testValue);
