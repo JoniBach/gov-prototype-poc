@@ -16,6 +16,7 @@ import {
 import ora from 'ora';
 import chalk from 'chalk';
 import cliProgress from 'cli-progress';
+import { nanoid } from 'nanoid';
 
 /**
  * Generate the journey index/blueprint from a description
@@ -29,7 +30,7 @@ export async function generateJourneyIndex(description: string) {
   try {
     const indexResponse = await useOpenAI({
       model: 'gpt-4o-mini',
-      system: "You are a service designer defining the purpose, goals, and high-level requirements for a GOV.UK service based on the input description.",
+      system: "You are a service designer defining the purpose, goals, and high-level requirements for a GOV.UK service based on the input description. When generating the ID, create a semantic, URL-friendly identifier that clearly describes the service (e.g., 'income-tax-calculator', 'passport-application'). Use lowercase letters, numbers, and hyphens only - no spaces or special characters.",
       user: `Create a service blueprint for: ${description}`,
       schema: JourneyIndexSchema,
     });
@@ -37,6 +38,9 @@ export async function generateJourneyIndex(description: string) {
     const journeyIndex = indexResponse;
     
     spinner.text = 'Saving journey index...';
+    // Append 6-character nanoid to the AI-generated id
+    const shortId = nanoid(6);
+    journeyIndex.id = `${journeyIndex.id}-${shortId}`;
     addUniqueObjectToJson('static/journeys/index.json', journeyIndex);
     
     spinner.succeed(chalk.green(`Journey index created: ${chalk.bold(journeyIndex.id)}`));

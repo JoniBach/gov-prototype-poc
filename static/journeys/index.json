@@ -1,37 +1,3 @@
 [
-  {
-    "id": "income-tax-calculator",
-    "name": "Income Tax Calculator",
-    "departmentId": "HMRC",
-    "departmentName": "Her Majesty's Revenue and Customs",
-    "description": "An online service that allows users to calculate their approximate income tax liabilities based on their income, deductions, and applicable allowances. This tool aims to provide clarity and transparency around tax obligations, helping individuals manage their finances effectively."
-  },
-  {
-    "id": "register_company_service",
-    "name": "Register a New Company",
-    "departmentId": "business_services",
-    "departmentName": "Business Registration Services",
-    "description": "A service that allows individuals and organizations to register a new company within the regulatory framework."
-  },
-  {
-    "id": "1",
-    "name": "Driving Test Application Service",
-    "departmentId": "transport",
-    "departmentName": "Department of Transport",
-    "description": "A service allowing users to apply for a driving test online, manage their applications, and receive updates about test schedules and results."
-  },
-  {
-    "id": "alcohol-duties-calculator",
-    "name": "Alcohol Duties Calculator",
-    "departmentId": "HMRC",
-    "departmentName": "Her Majesty's Revenue and Customs",
-    "description": "A digital tool for UK citizens and businesses to calculate the alcohol duties owed on their products based on the type and volume of alcohol being produced or imported."
-  },
-  {
-    "id": "1d4e36d1-a8de-48bc-b7bb-8748404872e1",
-    "name": "Apply for Universal Credit",
-    "departmentId": "d5e1e694-51dc-4dbd-a2ff-5ef327bf47e7",
-    "departmentName": "Department for Work and Pensions (DWP)",
-    "description": "A digital service that allows users to apply for Universal Credit online, providing a user-friendly experience and support throughout the application process."
-  }
+  
 ]

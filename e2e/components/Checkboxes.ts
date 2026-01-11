@@ -5,6 +5,7 @@ export async function testCheckboxes(page: Page, config: any) {
   const fieldset = formGroup.locator('fieldset.govuk-fieldset');
   const legend = fieldset.locator('.govuk-fieldset__legend');
   const hint = config.hint ? page.locator(`#${config.name}-hint`) : null;
+  const checkboxes = fieldset.locator('.govuk-checkboxes');
 
   await test.step('Form group is present', async () => {
     await expect(formGroup).toBeVisible();
@@ -32,7 +33,7 @@ export async function testCheckboxes(page: Page, config: any) {
 
   await test.step('Checkboxes are present and correct', async () => {
     for (const item of config.items) {
-      const checkbox = page.getByRole('checkbox', { name: item.text });
+      const checkbox = checkboxes.locator(`input[value="${item.value}"]`);
       await expect(checkbox).toBeVisible();
       await expect(checkbox).toHaveAttribute('value', item.value);
       if (item.checked) {
@@ -45,7 +46,7 @@ export async function testCheckboxes(page: Page, config: any) {
 
   await test.step('Checkboxes are focusable and interactive', async () => {
     for (const item of config.items) {
-      const checkbox = page.getByRole('checkbox', { name: item.text });
+      const checkbox = checkboxes.locator(`input[value="${item.value}"]`);
       await checkbox.focus();
       await expect(checkbox).toBeFocused();
       // Toggle if not checked

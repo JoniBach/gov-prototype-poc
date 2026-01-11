@@ -27,6 +27,7 @@ let totalErrors = 0;
 let currentJourney = 0;
 let currentPage = 0;
 let currentComponent = 0;
+let currentComponentName = '';
 let journeyTotalPages = 0;
 let journeyTotalComponents = 0;
 let globalTotalComponents = 0;
@@ -58,7 +59,7 @@ function renderProgress() {
     process.stderr.write('testing\n');
     process.stderr.write(`Journey:          ${currentJourney}/${totalJourneys}  ${progressBar((currentJourney / totalJourneys) * 100)}\n`);
     process.stderr.write(`Page:             ${currentPage}/${journeyTotalPages} ${progressBar(journeyTotalPages > 0 ? (currentPage / journeyTotalPages) * 100 : 0)}\n`);
-    process.stderr.write(`Component:        ${currentComponent}/${journeyTotalComponents} ${progressBar(journeyTotalComponents > 0 ? (currentComponent / journeyTotalComponents) * 100 : 0)}\n`);
+    process.stderr.write(`Component:        ${currentComponentName.padEnd(12)} ${currentComponent}/${journeyTotalComponents} ${progressBar(journeyTotalComponents > 0 ? (currentComponent / journeyTotalComponents) * 100 : 0)}\n`);
     process.stderr.write(`journey progress: ${journeyTotalPages > 0 ? Math.round((currentPage / journeyTotalPages) * 100) : 0}% ${progressBar(journeyTotalPages > 0 ? Math.round((currentPage / journeyTotalPages) * 100) : 0)}\n`);
     process.stderr.write(`full progress:    ${globalTotalComponents > 0 ? Math.round((globalCurrentComponent / globalTotalComponents) * 100) : 0}% ${progressBar(globalTotalComponents > 0 ? Math.round((globalCurrentComponent / globalTotalComponents) * 100) : 0)}\n\n`);
 
@@ -119,6 +120,8 @@ async function testJourney(page: Page, journey: any) {
             for (const componentDef of pageDef.components) {
                 const { component, id, config } = componentDef;
                 const testComponent = components[component];
+
+                currentComponentName = component;
 
                 if (!testComponent) {
                     pageComponentsSkipped++;

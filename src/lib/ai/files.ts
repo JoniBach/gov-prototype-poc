@@ -105,51 +105,74 @@ export function addJourneyToJourneysMap(journeyId: string): void {
   // Import line
   const importLine = `import ${variableName} from "../../static/journeys/${journeyId}.json" with { type: "json" };`;
 
-  // Split into lines
-  const lines = content.split('\n');
-
-  // Find the last import line
-  let lastImportIndex = -1;
-  for (let i = 0; i < lines.length; i++) {
-    if (lines[i].startsWith('import ') && lines[i].includes('from "../../static/journeys/')) {
-      lastImportIndex = i;
-    }
-  }
-  if (lastImportIndex === -1) {
-    throw new Error('No journey imports found in journeys.ts');
-  }
-
-  // Insert the new import after the last import
-  lines.splice(lastImportIndex + 1, 0, importLine);
-
-  // Find the journeys object
-  let objectStart = -1;
-  for (let i = 0; i < lines.length; i++) {
-    if (lines[i].includes('export const journeys: Record<string, any> = {')) {
-      objectStart = i + 1; // Line after the opening {
-      break;
-    }
-  }
-  if (objectStart === -1) {
-    throw new Error('Journeys object not found');
-  }
-
-  // Find the last entry before the closing }
-  let lastEntryIndex = -1;
-  for (let i = objectStart; i < lines.length; i++) {
-    if (lines[i].trim() === '};') {
-      lastEntryIndex = i - 1;
-      break;
-    }
-  }
-  if (lastEntryIndex === -1) {
-    throw new Error('Closing } of journeys object not found');
-  }
-
-  // Insert the new entry before the closing }
+  // Entry line
   const entryLine = `    "${journeyId}": ${variableName},`;
-  lines.splice(lastEntryIndex + 1, 0, entryLine);
 
-  // Write back to file
-  fs.writeFileSync(journeysFilePath, lines.join('\n'));
+  // Check if import already exists
+  if (content.includes(importLine)) {
+    console.log(`Import for ${journeyId} already exists, skipping.`);
+  } else {
+    // Add the import
+    const lines = content.split('\n');
+
+    // Find the last import line
+    let lastImportIndex = -1;
+    for (let i = 0; i < lines.length; i++) {
+      if (lines[i].startsWith('import ') && lines[i].includes('from "../../static/journeys/')) {
+        lastImportIndex = i;
+      }
+    }
+    if (lastImportIndex === -1) {
+      throw new Error('No journey imports found in journeys.ts');
+    }
+
+    // Insert the new import after the last import
+    lines.splice(lastImportIndex + 1, 0, importLine);
+
+    // Write back to file
+    fs.writeFileSync(journeysFilePath, lines.join('\n'));
+    console.log(`Added import for ${journeyId}`);
+  }
+
+  // Re-read the file in case we modified it
+  const updatedContent = fs.readFileSync(journeysFilePath, 'utf-8');
+
+  // Check if entry already exists
+  if (updatedContent.includes(entryLine)) {
+    console.log(`Mapping for ${journeyId} already exists, skipping.`);
+  } else {
+    // Add the mapping
+    const lines = updatedContent.split('\n');
+
+    // Find the journeys object
+    let objectStart = -1;
+    for (let i = 0; i < lines.length; i++) {
+      if (lines[i].includes('export const journeys: Record<string, any> = {')) {
+        objectStart = i + 1; // Line after the opening {
+        break;
+      }
+    }
+    if (objectStart === -1) {
+      throw new Error('Journeys object not found');
+    }
+
+    // Find the last entry before the closing }
+    let lastEntryIndex = -1;
+    for (let i = objectStart; i < lines.length; i++) {
+      if (lines[i].trim() === '};') {
+        lastEntryIndex = i - 1;
+        break;
+      }
+    }
+    if (lastEntryIndex === -1) {
+      throw new Error('Closing } of journeys object not found');
+    }
+
+    // Insert the new entry before the closing }
+    lines.splice(lastEntryIndex + 1, 0, entryLine);
+
+    // Write back to file
+    fs.writeFileSync(journeysFilePath, lines.join('\n'));
+    console.log(`Added mapping for ${journeyId}`);
+  }
 }

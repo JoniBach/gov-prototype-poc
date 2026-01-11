@@ -23,25 +23,33 @@ export const prototypeSteps: StepConfig[] = [
       console.log(chalk.cyan.bold('  GOV.UK Prototype Generator'));
       console.log(chalk.cyan('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'));
 
-      const { description } = await inquirer.prompt([
-        {
-          type: 'input',
-          name: 'description',
-          message: '📝 Enter the prototype description:',
-          default: 'passport application',
-          validate: (input) => {
-            if (input.trim().length === 0) {
-              return '❌ Description cannot be empty';
+      // Check if description is provided via command line args
+      let description = context.cmdOptions?.description;
+
+      if (description) {
+        console.log(chalk.gray(`   Using: "${chalk.white(description)}"\n`));
+      } else {
+        const { description: promptedDescription } = await inquirer.prompt([
+          {
+            type: 'input',
+            name: 'description',
+            message: '📝 Enter the prototype description:',
+            default: 'passport application',
+            validate: (input) => {
+              if (input.trim().length === 0) {
+                return '❌ Description cannot be empty';
+              }
+              if (input.trim().length < 3) {
+                return '❌ Description must be at least 3 characters';
+              }
+              return true;
             }
-            if (input.trim().length < 3) {
-              return '❌ Description must be at least 3 characters';
-            }
-            return true;
           }
-        }
-      ]);
+        ]);
+        description = promptedDescription;
+        console.log(chalk.gray(`\n   Using: "${chalk.white(description)}"\n`));
+      }
       
-      console.log(chalk.gray(`\n   Using: "${chalk.white(description)}"\n`));
       return description;
     }
   },

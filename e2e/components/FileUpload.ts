@@ -2,7 +2,7 @@ import { Page, expect, test } from '@playwright/test';
 
 export async function testFileUpload(page: Page, config: any) {
   const actualConfig = Array.isArray(config) ? config[0] : config;
-  const formGroup = page.locator('.govuk-form-group').filter({ hasText: actualConfig.label.text });
+  const formGroup = page.locator('.govuk-form-group').filter({ hasText: actualConfig.label.text }).nth(0);
   const label = page.locator(`label[for="${actualConfig.id}"]`);
   const dropZone = formGroup.locator('.govuk-drop-zone');
   const fileInput = formGroup.locator('input[type="file"]');

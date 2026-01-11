@@ -34,10 +34,12 @@ export async function runCLI(options: CLIOptions) {
   program
     .command('run')
     .description('Run the pipeline')
+    .argument('[description]', 'Prototype description (optional)')
     .option('-s, --steps <steps>', 'Comma-separated step names to run (runs all enabled steps if not specified)')
     .option('-i, --interactive', 'Interactively select which steps to run')
     .option('--skip <steps>', 'Comma-separated step names to skip')
-    .action(async (cmdOptions) => {
+    .action(async (description, cmdOptions) => {
+      cmdOptions.description = description;
       await runPipeline(options.steps, cmdOptions);
     });
 
@@ -57,6 +59,7 @@ export async function runCLI(options: CLIOptions) {
  */
 async function runPipeline(steps: StepConfig[], cmdOptions: any) {
   const context: Record<string, any> = {};
+  context.cmdOptions = cmdOptions; // Add cmdOptions to context for handlers to access
   let stepsToRun = steps.filter(s => s.enabled !== false);
 
   // Interactive mode - let user select steps
