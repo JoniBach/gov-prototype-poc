@@ -8,6 +8,7 @@ export interface StepConfig {
   description: string;
   handler: (context: any) => Promise<any>;
   enabled?: boolean;
+  interactive?: boolean;
 }
 
 export interface CLIOptions {
@@ -55,7 +56,7 @@ export async function runCLI(options: CLIOptions) {
  * Run the pipeline with selected steps
  */
 async function runPipeline(steps: StepConfig[], cmdOptions: any) {
-  const context = {};
+  const context: Record<string, any> = {};
   let stepsToRun = steps.filter(s => s.enabled !== false);
 
   // Interactive mode - let user select steps
@@ -103,23 +104,40 @@ async function runPipeline(steps: StepConfig[], cmdOptions: any) {
   console.log(chalk.blue(`\n🚀 Running ${stepsToRun.length} step(s)...\n`));
   
   for (const step of stepsToRun) {
-    const spinner = ora({
-      text: step.description,
-      color: 'cyan'
-    }).start();
-    
-    try {
-      const result = await step.handler(context);
-      context[step.name] = result;
-      spinner.succeed(chalk.green(step.name));
-    } catch (error) {
-      spinner.fail(chalk.red(`${step.name} failed`));
-      if (error instanceof Error) {
-        console.error(chalk.red(`\n  Error: ${error.message}\n`));
-      } else {
-        console.error(chalk.red('\n  Unknown error occurred\n'));
+    if (step.interactive) {
+      // Interactive steps don't use spinner to avoid interference
+      try {
+        const result = await step.handler(context);
+        context[step.name] = result;
+        console.log(chalk.green(`✓ ${step.name}`));
+      } catch (error) {
+        console.error(chalk.red(`✗ ${step.name} failed`));
+        if (error instanceof Error) {
+          console.error(chalk.red(`\n  Error: ${error.message}\n`));
+        } else {
+          console.error(chalk.red('\n  Unknown error occurred\n'));
+        }
+        process.exit(1);
       }
-      process.exit(1);
+    } else {
+      const spinner = ora({
+        text: step.description,
+        color: 'cyan'
+      }).start();
+      
+      try {
+        const result = await step.handler(context);
+        context[step.name] = result;
+        spinner.succeed(chalk.green(step.name));
+      } catch (error) {
+        spinner.fail(chalk.red(`${step.name} failed`));
+        if (error instanceof Error) {
+          console.error(chalk.red(`\n  Error: ${error.message}\n`));
+        } else {
+          console.error(chalk.red('\n  Unknown error occurred\n'));
+        }
+        process.exit(1);
+      }
     }
   }
 

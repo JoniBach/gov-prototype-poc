@@ -74,18 +74,18 @@ export function removeObjectByKey<T extends Record<string, any>>(
 }
 
 
-export function removeObjectsByKeys<T extends Record<string, any>>(
-  array: T[],
+export function removeObjectsByKeys(
+  array: any[],
   key: string,
   values: any[]
-): T[] {
+): any[] {
   return _.map(
     _.reject(array, item => _.includes(values, _.get(item, key))),
     item => {
       const result = { ...item };
       _.forEach(result, (value, propKey) => {
         if (_.isArray(value) && value.length > 0 && _.isObject(value[0])) {
-          result[propKey as keyof T] = removeObjectsByKeys(value, key, values) as any;
+          result[propKey] = removeObjectsByKeys(value, key, values);
         }
       });
       return result;

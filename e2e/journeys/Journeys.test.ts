@@ -2,12 +2,7 @@ import { Page, test } from '@playwright/test';
 
 import journeysIndex from "../../static/journeys/index.json" with { type: "json" };
 import { components, componentConfigs } from '../componentUtils';
-import passportApplicationServiceBlueprint from "../../static/journeys/passport-application-service-blueprint.json" with { type: "json" };
-
-// Map of journey ID -> journey JSON
-const journeys: Record<string, any> = {
-    "passport-application-service-blueprint": passportApplicationServiceBlueprint,
-};
+import { journeys } from './journeys';
 
 /**
  * Visit the journey URL and run all component tests for all pages

@@ -1,0 +1,2767 @@
+[
+  {
+    "title": "Start - Register a New Company",
+    "components": [
+      {
+        "component": "Typography",
+        "id": "service_name_start",
+        "config": {
+          "text": "Service name",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "service_description_start",
+        "config": {
+          "text": "Service description starts here. Provide a brief overview of the service, highlighting key features and essential information to engage users effectively.",
+          "variant": "body"
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "before_you_start_inset",
+        "config": {
+          "text": "### Before you start\n\n- Ensure you have all necessary documents ready.\n- Review the instructions carefully before proceeding.\n- Note any specific requirements for your application."
+        }
+      },
+      {
+        "component": "TaskList",
+        "id": "start_page_task_list",
+        "config": {
+          "idPrefix": "task_list_",
+          "items": [
+            {
+              "title": {
+                "text": "Register for a new account"
+              },
+              "href": "/register",
+              "hint": {
+                "text": "Set up your profile and access your dashboard."
+              },
+              "status": {
+                "text": "Not started",
+                "tag": {
+                  "text": "New",
+                  "classes": "tag--info"
+                }
+              }
+            },
+            {
+              "title": {
+                "text": "Complete your profile"
+              },
+              "href": "/profile",
+              "hint": {
+                "text": "Add your information to personalize your experience."
+              },
+              "status": {
+                "text": "In progress",
+                "tag": {
+                  "text": "Ongoing",
+                  "classes": "tag--warning"
+                }
+              }
+            },
+            {
+              "title": {
+                "text": "Verify your identity"
+              },
+              "href": "/verify-identity",
+              "hint": {
+                "text": "Upload the required documents for verification."
+              },
+              "status": {
+                "text": "Not started",
+                "tag": {
+                  "text": "Pending",
+                  "classes": "tag--neutral"
+                }
+              }
+            },
+            {
+              "title": {
+                "text": "Set up two-factor authentication"
+              },
+              "href": "/2fa",
+              "hint": {
+                "text": "Enhance your account security with two-factor authentication."
+              },
+              "status": {
+                "text": "In progress",
+                "tag": {
+                  "text": "Ongoing",
+                  "classes": "tag--warning"
+                }
+              }
+            },
+            {
+              "title": {
+                "text": "Submit feedback"
+              },
+              "href": "/feedback",
+              "hint": {
+                "text": "Let us know about your experience."
+              },
+              "status": {
+                "text": "Not started",
+                "tag": {
+                  "text": "New",
+                  "classes": "tag--info"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "start_now_button",
+        "config": {
+          "text": "Start now",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Confirm you can use this service",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_eligibility",
+        "config": {
+          "text": "Back",
+          "href": "/previous-page"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "eligibility_h1",
+        "config": {
+          "text": "Eligibility Criteria",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "eligibility_applicant_type_radios",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Select your applicant type",
+              "classes": null
+            }
+          },
+          "hint": "Please choose one option that best describes your situation.",
+          "name": "applicant_type",
+          "items": [
+            {
+              "text": "Individual",
+              "value": "individual",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Business",
+              "value": "business",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Non-profit",
+              "value": "non_profit",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Government",
+              "value": "government",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "eligibility_company_location_radios",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Company Location",
+              "classes": "govuk-fieldset__legend--m"
+            }
+          },
+          "hint": "Select the location where your company is registered.",
+          "name": "company_location",
+          "items": [
+            {
+              "text": "United Kingdom",
+              "value": "uk",
+              "id": "uk_location",
+              "checked": null
+            },
+            {
+              "text": "European Union",
+              "value": "eu",
+              "id": "eu_location",
+              "checked": null
+            },
+            {
+              "text": "Outside the European Union",
+              "value": "non_eu",
+              "id": "non_eu_location",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "eligibility_over_16_radios",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Eligibility for over 16",
+              "classes": null
+            }
+          },
+          "hint": "Select one option that best describes your eligibility.",
+          "name": "eligibility_over_16",
+          "items": [
+            {
+              "text": "Yes, I am over 16",
+              "value": "yes",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "No, I am not over 16",
+              "value": "no",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Details",
+        "id": "eligibility_help_details",
+        "config": {
+          "summaryText": "Eligibility help details, providing clear information to users about eligibility criteria.",
+          "text": "This section outlines the eligibility requirements for the service or scheme. It is important for users to understand these criteria to ensure they meet the necessary conditions before proceeding."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "eligibility_continue_button",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Create an account or sign in",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_auth_choice",
+        "config": {
+          "text": "Back",
+          "href": "/previous-page"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "auth_choice_h1",
+        "config": {
+          "text": "Choose your authentication method",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "auth_choice_radios",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Select your authentication method",
+              "classes": null
+            }
+          },
+          "hint": "Choose how you would like to log in.",
+          "name": "auth_choice",
+          "items": [
+            {
+              "text": "Email and Password",
+              "value": "email_password",
+              "id": null,
+              "checked": false
+            },
+            {
+              "text": "Social Media Login",
+              "value": "social_media",
+              "id": null,
+              "checked": false
+            },
+            {
+              "text": "Two-Factor Authentication",
+              "value": "two_factor",
+              "id": null,
+              "checked": false
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "auth_choice_continue_button",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Details",
+        "id": "auth_choice_why_account_details",
+        "config": {
+          "summaryText": "Choose how you want to sign in to your account. This helps us provide a secure experience tailored to your needs.",
+          "text": "Please select one of the following options for signing in to your account:\n\n- **Email and Password**: Use your email address and a secure password.\n- **Government Gateway**: Use your existing Government Gateway credentials if you have them.\n\nIf you have any questions about choosing the right option, please check our [Help section](#) for more information."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Create an account",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_create_account",
+        "config": {
+          "text": "Back",
+          "href": "/create-account"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "create_account_h1",
+        "config": {
+          "text": "Create your account",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "create_account_email_input",
+        "config": {
+          "label": {
+            "text": "Email address",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter a valid email address for account creation.",
+          "id": "create_account_email_input",
+          "name": "email",
+          "type": "email",
+          "validation": [
+            "required",
+            "email"
+          ]
+        }
+      },
+      {
+        "component": "PasswordInput",
+        "id": "create_account_password_input",
+        "config": {
+          "label": {
+            "text": "Create a password"
+          },
+          "hint": "Your password must be at least 8 characters long and contain a mix of letters, numbers, and symbols.",
+          "id": "create_account_password_input",
+          "name": "password",
+          "validation": [
+            "required",
+            "minLength"
+          ]
+        }
+      },
+      {
+        "component": "PasswordInput",
+        "id": "create_account_confirm_password_input",
+        "config": {
+          "label": {
+            "text": "Confirm your password"
+          },
+          "hint": "Re-enter your password for verification.",
+          "id": "create_account_confirm_password_input",
+          "name": "confirm_password",
+          "validation": [
+            "required",
+            "minLength"
+          ]
+        }
+      },
+      {
+        "component": "Checkboxes",
+        "id": "create_account_terms_checkboxes",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Terms and conditions",
+              "classes": null
+            }
+          },
+          "hint": "Please read and accept the terms and conditions to create an account.",
+          "name": "terms_and_conditions",
+          "items": [
+            {
+              "text": "I agree to the terms and conditions",
+              "value": "agree",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "create_account_continue_button",
+        "config": {
+          "text": "Continue to create account",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Sign in",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_sign_in",
+        "config": {
+          "text": "Back to sign in",
+          "href": "/sign-in"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "sign_in_h1",
+        "config": {
+          "text": "Sign in to your account",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "sign_in_email_input",
+        "config": {
+          "label": {
+            "text": "Email address",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter your email address to sign in.",
+          "id": "sign_in_email_input",
+          "name": "email",
+          "type": "email",
+          "validation": [
+            "required",
+            "email"
+          ]
+        }
+      },
+      {
+        "component": "PasswordInput",
+        "id": "sign_in_password_input",
+        "config": {
+          "label": {
+            "text": "Password"
+          },
+          "hint": "Enter your password. It should be at least 8 characters long and contain a mix of letters, numbers, and symbols.",
+          "id": "sign_in_password_input",
+          "name": "password",
+          "validation": [
+            "required",
+            "minLength"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "sign_in_continue_button",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "sign_in_forgot_password_text",
+        "config": {
+          "text": "Forgot your password?",
+          "variant": "subtle"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Your company registration application",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_application_overview",
+        "config": {
+          "text": "Back to application overview",
+          "href": "/application-overview"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "application_overview_h1",
+        "config": {
+          "text": "Application Overview",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "TaskList",
+        "id": "application_overview_task_list",
+        "config": {
+          "idPrefix": "application_overview_task_list",
+          "items": [
+            {
+              "title": {
+                "text": "Complete your profile"
+              },
+              "href": "/profile",
+              "hint": {
+                "text": "Make sure all fields are filled out."
+              },
+              "status": {
+                "text": "In progress",
+                "tag": {
+                  "text": "warning",
+                  "classes": "govuk-tag--orange"
+                }
+              }
+            },
+            {
+              "title": {
+                "text": "Submit your application"
+              },
+              "href": "/application/submit",
+              "hint": {
+                "text": "Don’t forget to review your application before submitting."
+              },
+              "status": {
+                "text": "Not started",
+                "tag": {
+                  "text": "info",
+                  "classes": "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              "title": {
+                "text": "Schedule your interview"
+              },
+              "href": "/interview/schedule",
+              "hint": {
+                "text": "Choose a convenient time."
+              },
+              "status": {
+                "text": "Not started",
+                "tag": {
+                  "text": "info",
+                  "classes": "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              "title": {
+                "text": "Receive confirmation"
+              },
+              "href": "/confirmation",
+              "hint": {
+                "text": "Check your email for updates."
+              },
+              "status": {
+                "text": "Not started",
+                "tag": {
+                  "text": "info",
+                  "classes": "govuk-tag--blue"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "title": "About the company",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_about_company",
+        "config": {
+          "text": "Back",
+          "href": "/about/company"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "about_company_h1",
+        "config": {
+          "text": "About Us",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "company_name_input",
+        "config": {
+          "label": {
+            "text": "Company name",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the full legal name of your company.",
+          "id": "company_name_input_label",
+          "name": "company_name",
+          "type": "text",
+          "validation": [
+            "required",
+            "minLength",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "Select",
+        "id": "company_structure_select",
+        "config": {
+          "label": {
+            "text": "Select your company structure"
+          },
+          "hint": "Choose the option that best describes your organization's legal structure.",
+          "id": "company_structure_select",
+          "name": "company_structure",
+          "items": [
+            {
+              "text": "Sole trader",
+              "value": "sole_trader",
+              "selected": null
+            },
+            {
+              "text": "Partnership",
+              "value": "partnership",
+              "selected": null
+            },
+            {
+              "text": "Limited company",
+              "value": "limited_company",
+              "selected": null
+            },
+            {
+              "text": "LLC",
+              "value": "llc",
+              "selected": null
+            },
+            {
+              "text": "Charity",
+              "value": "charity",
+              "selected": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "company_trading_name_input",
+        "config": {
+          "label": {
+            "text": "Company Trading Name",
+            "classes": "govuk-label--m",
+            "isPageHeading": false
+          },
+          "hint": "Enter the name under which your company conducts business.",
+          "id": "company_trading_name_input",
+          "name": "company_trading_name",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "company_existing_business_radios",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Is your company an existing business?",
+              "classes": "govuk-fieldset__legend"
+            }
+          },
+          "hint": "Select 'Yes' if your company is already registered; otherwise, select 'No'.",
+          "name": "company_existing_business_radios",
+          "items": [
+            {
+              "text": "Yes",
+              "value": "yes",
+              "id": "existing_business_yes",
+              "checked": null
+            },
+            {
+              "text": "No",
+              "value": "no",
+              "id": "existing_business_no",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Details",
+        "id": "company_existing_business_details",
+        "config": {
+          "summaryText": "Provide information about your existing business.",
+          "text": "Please enter the details of your existing business. This may include the business name, type, registration number, and contact information."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "about_company_save_and_continue_button",
+        "config": {
+          "text": "Save and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Button",
+        "id": "about_company_save_and_exit_button",
+        "config": {
+          "text": "Save and Exit",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Registered office address",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_registered_office",
+        "config": {
+          "text": "Back to registered office details",
+          "href": "/registered-office"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "registered_office_h1",
+        "config": {
+          "text": "Registered Office",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "registered_office_address_choice_radios",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Is your registered office address the same as your business address?",
+              "classes": "govuk-fieldset__legend--m"
+            }
+          },
+          "hint": "Select 'Yes' if your registered office address is the same as your business address. Select 'No' if it is different.",
+          "name": "registered_office_address",
+          "items": [
+            {
+              "text": "Yes",
+              "value": "yes",
+              "id": "registered_office_yes",
+              "checked": null
+            },
+            {
+              "text": "No",
+              "value": "no",
+              "id": "registered_office_no",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "registered_office_building_input",
+        "config": {
+          "label": {
+            "text": "Registered office building",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the name of the building where your registered office is located.",
+          "id": "registered_office_building_input",
+          "name": "registered_office_building",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "registered_office_street_input",
+        "config": {
+          "label": {
+            "text": "Registered office street address",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the street name and number where the registered office is located.",
+          "id": "registered_office_street_input",
+          "name": "registered_office_street",
+          "type": "text",
+          "validation": [
+            "required",
+            "minLength",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "registered_office_town_input",
+        "config": {
+          "label": {
+            "text": "Town or city of registered office",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the town or city where the registered office is located.",
+          "id": "registered_office_town_input",
+          "name": "registered_office_town",
+          "type": "text",
+          "validation": [
+            "required",
+            "minLength",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "registered_office_postcode_input",
+        "config": {
+          "label": {
+            "text": "Registered office postcode",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "e.g. SW1A 2AA",
+          "id": "registered_office_postcode_input",
+          "name": "registered_office_postcode",
+          "type": "text",
+          "validation": [
+            "required",
+            "ukPostcode"
+          ]
+        }
+      },
+      {
+        "component": "Details",
+        "id": "registered_office_address_help_details",
+        "config": {
+          "summaryText": "Details about your registered office address",
+          "text": "Please provide the full registered office address for your company. This should include:\n- Address line 1\n- Address line 2 (if applicable)\n- City\n- Postcode\n\nMake sure the address is accurate and matches the one registered with Companies House."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "registered_office_save_and_continue_button",
+        "config": {
+          "text": "Save and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Button",
+        "id": "registered_office_save_and_exit_button",
+        "config": {
+          "text": "Save and exit",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Directors",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_directors_list",
+        "config": {
+          "text": "Back to directors list",
+          "href": "/directors"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "directors_list_h1",
+        "config": {
+          "text": "List of Directors",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "directors_list_inset",
+        "config": {
+          "text": "### Directors List\n\nPlease provide the full names of all directors in your organization. \n\nThis information is essential for compliance and regulatory purposes. Make sure to include:\n- First and last names\n- Current roles or titles\n\nIf there are more than five directors, please use a separate document to list additional names."
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "directors_summary_list",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Director's Name"
+              },
+              "value": {
+                "text": "John Doe",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of Birth"
+              },
+              "value": {
+                "text": "1 January 1980",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Nationality"
+              },
+              "value": {
+                "text": "British",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Address"
+              },
+              "value": {
+                "text": "123 Example St, London, E1 1AA",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Email"
+              },
+              "value": {
+                "text": "johndoe@example.com",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Phone Number"
+              },
+              "value": {
+                "text": "01234 567890",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "directors_add_director_button",
+        "config": {
+          "text": "Add Director",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Button",
+        "id": "directors_continue_button",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Add a director",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_add_director",
+        "config": {
+          "text": "Back to add director",
+          "href": "/add-director"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "add_director_h1",
+        "config": {
+          "text": "Add a director",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "add_director_first_name_input",
+        "config": {
+          "label": {
+            "text": "First name",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the director's first name as it appears on their official documents.",
+          "id": "add_director_first_name_input",
+          "name": "director_first_name",
+          "type": "text",
+          "validation": [
+            "required",
+            "minLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "add_director_last_name_input",
+        "config": {
+          "label": {
+            "text": "Last Name",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "hint": "Enter the director's last name as it appears on official documents.",
+          "id": "add_director_last_name_input",
+          "name": "director_last_name",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "DateInput",
+        "id": "add_director_dob_input",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Date of Birth",
+              "classes": "govuk-fieldset__legend"
+            }
+          },
+          "hint": "Please enter the date your director was born, in the format DD/MM/YYYY.",
+          "id": "add_director_dob_input",
+          "name": "director_dob",
+          "validation": [
+            "required",
+            "validDate",
+            "dateInPast"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "add_director_nationality_input",
+        "config": {
+          "label": {
+            "text": "Director's nationality",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Please enter the nationality of the director, such as British, Canadian, etc.",
+          "id": "add_director_nationality_input",
+          "name": "director_nationality",
+          "type": "text",
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "add_director_occupation_input",
+        "config": {
+          "label": {
+            "text": "Occupation",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the occupation of the director",
+          "id": "add_director_occupation_input",
+          "name": "director_occupation",
+          "type": "text",
+          "validation": [
+            "required",
+            "minLength",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "add_director_service_address_building_input",
+        "config": {
+          "label": {
+            "text": "Building name or number",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the building name or number where the director resides or is based.",
+          "id": "add_director_service_address_building_label",
+          "name": "building",
+          "type": "text",
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "add_director_service_address_street_input",
+        "config": {
+          "label": {
+            "text": "Street address",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the street address of the director's service address.",
+          "id": "add_director_service_address_street_input",
+          "name": "director_service_address_street",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "add_director_service_address_town_input",
+        "config": {
+          "label": {
+            "text": "Town or city",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the name of the town or city for the service address.",
+          "id": "add_director_service_address_town_input",
+          "name": "add_director_service_address_town",
+          "type": "text",
+          "validation": [
+            "required",
+            "minLength",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "add_director_service_address_postcode_input",
+        "config": {
+          "label": {
+            "text": "Postcode",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the postcode of the director's service address.",
+          "id": "add_director_service_address_postcode_input",
+          "name": "director_service_address_postcode",
+          "type": "text",
+          "validation": [
+            "required",
+            "pattern"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "add_director_is_also_psc_radios",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Is the director also a Person of Significant Control (PSC)?",
+              "classes": null
+            }
+          },
+          "hint": "Select 'Yes' if the director is also a PSC. Otherwise, select 'No'.",
+          "name": "add_director_is_also_psc_radios",
+          "items": [
+            {
+              "text": "Yes",
+              "value": "yes",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "No",
+              "value": "no",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "add_director_save_and_continue_button",
+        "config": {
+          "text": "Save and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Button",
+        "id": "add_director_save_and_add_another_button",
+        "config": {
+          "text": "Save and add another director",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "People with significant control (PSC)",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_psc_list",
+        "config": {
+          "text": "Back to previous page",
+          "href": "/previous-page"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "psc_list_h1",
+        "config": {
+          "text": "Heading 1",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "psc_list_inset",
+        "config": {
+          "text": "### Important Information\n\nPlease ensure that you read the following guidelines carefully. This section will provide essential context for completing the application form."
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "psc_summary_list",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Name"
+              },
+              "value": {
+                "text": "John Doe",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Address"
+              },
+              "value": {
+                "text": "123 Main St, London, UK",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of Birth"
+              },
+              "value": {
+                "text": "January 1, 1990",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Email"
+              },
+              "value": {
+                "text": "john.doe@example.com",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Phone Number"
+              },
+              "value": {
+                "text": "(123) 456-7890",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "psc_add_psc_button",
+        "config": {
+          "text": "Add PSC",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Button",
+        "id": "psc_continue_button",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Details",
+        "id": "psc_help_details",
+        "config": {
+          "summaryText": "Help details for the Personal Service Company guidance.",
+          "text": "These details provide essential information on how personal service companies operate, including regulations and compliance requirements. This section helps users understand their obligations and rights."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Add a person with significant control",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_add_psc",
+        "config": {
+          "text": "Back to previous page",
+          "href": "/previous-page"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "add_psc_h1",
+        "config": {
+          "text": "Add a PSC",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "add_psc_type_radios",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Please select the type of PSC (Persons of Significant Control) information you want to add:",
+              "classes": null
+            }
+          },
+          "hint": "Choose one option that best describes the type of PSC.",
+          "name": "psc_type",
+          "items": [
+            {
+              "text": "Individual PSC",
+              "value": "individual",
+              "id": "psc_individual",
+              "checked": null
+            },
+            {
+              "text": "Corporate PSC",
+              "value": "corporate",
+              "id": "psc_corporate",
+              "checked": null
+            },
+            {
+              "text": "Limited Partnership PSC",
+              "value": "limited_partnership",
+              "id": "psc_limited_partnership",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "add_psc_name_input",
+        "config": {
+          "label": {
+            "text": "Name of the Person of Significant Control (PSC)",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the full name as it appears on official documents.",
+          "id": "add_psc_name_input",
+          "name": "psc_name",
+          "type": "text",
+          "validation": [
+            "required",
+            "minLength"
+          ]
+        }
+      },
+      {
+        "component": "DateInput",
+        "id": "add_psc_dob_input",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Date of Birth",
+              "classes": null
+            }
+          },
+          "hint": "Please enter your date of birth in the format DD/MM/YYYY.",
+          "id": "add_psc_dob_input",
+          "name": "dob",
+          "validation": [
+            "required",
+            "validDate",
+            "dateInPast"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "add_psc_nature_of_control_input",
+        "config": {
+          "label": {
+            "text": "Nature of control",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Please describe the nature of your control over the entity.",
+          "id": "add_psc_nature_of_control_input",
+          "name": "nature_of_control",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "add_psc_service_address_building_input",
+        "config": {
+          "label": {
+            "text": "Building name or number",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the name or number of the building where the service is located.",
+          "id": "building_name_hint",
+          "name": "building_name",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "add_psc_service_address_street_input",
+        "config": {
+          "label": {
+            "text": "Street address",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the street address of the service.",
+          "id": "add_psc_service_address_street_input_label",
+          "name": "serviceAddressStreet",
+          "type": "text",
+          "validation": [
+            "required",
+            "minLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "add_psc_service_address_town_input",
+        "config": {
+          "label": {
+            "text": "Town or city",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "hint": "Enter the town or city of the service address.",
+          "id": "add_psc_service_address_town_input",
+          "name": "psc_service_address_town",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "add_psc_service_address_postcode_input",
+        "config": {
+          "label": {
+            "text": "Postcode",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the postcode for the service address.",
+          "id": "add_psc_service_address_postcode_input_label",
+          "name": "postcode",
+          "type": "text",
+          "validation": [
+            "required",
+            "pattern"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "add_psc_save_and_continue_button",
+        "config": {
+          "text": "Save and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Button",
+        "id": "add_psc_save_and_add_another_button",
+        "config": {
+          "text": "Save and add another",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Share capital",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_share_capital",
+        "config": {
+          "text": "Back to share capital details",
+          "href": "/share-capital"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "share_capital_h1",
+        "config": {
+          "text": "Share Capital",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "share_capital_total_shares_input",
+        "config": {
+          "label": {
+            "text": "Total shares issued",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the total number of shares that have been issued by the company.",
+          "id": "share_capital_total_shares_input_label",
+          "name": "total_shares",
+          "type": "text",
+          "validation": [
+            "required",
+            "numeric"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "share_capital_share_value_input",
+        "config": {
+          "label": {
+            "text": "Share value",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the value of shares in GBP.",
+          "id": "share_value_hint",
+          "name": "share_value",
+          "type": "text",
+          "validation": [
+            "required",
+            "numeric"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "share_capital_currency_radios",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Select the currency for share capital",
+              "classes": null
+            }
+          },
+          "hint": "Please choose the relevant currency from the options below.",
+          "name": "share_capital_currency",
+          "items": [
+            {
+              "text": "British Pound (GBP)",
+              "value": "GBP",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Euro (EUR)",
+              "value": "EUR",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "US Dollar (USD)",
+              "value": "USD",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "share_classes_summary_list",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Class A shares"
+              },
+              "value": {
+                "text": "10,000",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Class B shares"
+              },
+              "value": {
+                "text": "15,000",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Class C shares"
+              },
+              "value": {
+                "text": "5,000",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Class D shares"
+              },
+              "value": {
+                "text": "2,000",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "share_capital_add_share_class_button",
+        "config": {
+          "text": "Add share class",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Button",
+        "id": "share_capital_save_and_continue_button",
+        "config": {
+          "text": "Save and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Add a share class",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_add_share_class",
+        "config": {
+          "text": "Back",
+          "href": "/previous-page"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "add_share_class_h1",
+        "config": {
+          "text": "Add Share Class",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "add_share_class_name_input",
+        "config": {
+          "label": {
+            "text": "Share class name",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "hint": "Enter the name of the share class you are adding.",
+          "id": "add_share_class_name_input",
+          "name": "share_class_name",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "add_share_class_number_of_shares_input",
+        "config": {
+          "label": {
+            "text": "Number of shares",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the total number of shares to be issued for this share class.",
+          "id": "add_share_class_number_of_shares_input",
+          "name": "number_of_shares",
+          "type": "number",
+          "validation": [
+            "required",
+            "numeric",
+            "minLength",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "add_share_class_share_value_input",
+        "config": {
+          "label": {
+            "text": "Share class value",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the value of the share class in pounds and pence, e.g., 100.00.",
+          "id": "add_share_class_share_value_input",
+          "name": "share_value",
+          "type": "text",
+          "validation": [
+            "required",
+            "numeric",
+            "minLength",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "Textarea",
+        "id": "add_share_class_rights_textarea",
+        "config": {
+          "label": {
+            "text": "Add share class rights",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": {
+            "text": "Provide details regarding the rights associated with different share classes."
+          },
+          "id": "add_share_class_rights_textarea",
+          "name": "add_share_class_rights",
+          "rows": 5,
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "add_share_class_save_and_continue_button",
+        "config": {
+          "text": "Save and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Button",
+        "id": "add_share_class_save_and_add_another_button",
+        "config": {
+          "text": "Save and add another",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Standard constitution (model articles)",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_model_articles",
+        "config": {
+          "text": "Go back",
+          "href": "/previous-page"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "model_articles_h1",
+        "config": {
+          "text": "Model Articles H1",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "model_articles_choice_radios",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Select your preferred article model",
+              "classes": "govuk-fieldset__legend--m"
+            }
+          },
+          "hint": "Choose one option from the list below.",
+          "name": "model_articles",
+          "items": [
+            {
+              "text": "Model A",
+              "value": "model_a",
+              "id": "model_a",
+              "checked": null
+            },
+            {
+              "text": "Model B",
+              "value": "model_b",
+              "id": "model_b",
+              "checked": null
+            },
+            {
+              "text": "Model C",
+              "value": "model_c",
+              "id": "model_c",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Details",
+        "id": "model_articles_what_are_details",
+        "config": {
+          "summaryText": "Details component allows for expandable content sections, providing a way to hide or reveal additional information either within a page or within modals.",
+          "text": "### Details Component Configuration\n\n#### Labels\n- **Summary Label**: A concise and informative label that summarizes the content, e.g., \"More information about our services.\"\n\n#### Hints\n- **Hint Text**: A brief instruction or description of what the user can expect when they click on the summary. Keep it under 100 characters for clarity, e.g., \"Click to expand and read more about our services.\"\n\n#### Validations\n- **Required Validation**: Ensure the summary is not left blank. Display a message if the summary field is empty.\n\n#### Default Values\n- **Expandable State**: The component should default to 'collapsed' to reduce initial information overload. \n- **Content Display**: Optional content to be displayed when expanded; ensure this is instructive and useful for users."
+        }
+      },
+      {
+        "component": "FileUpload",
+        "id": "model_articles_upload_file",
+        "config": {
+          "label": {
+            "text": "Upload your article file"
+          },
+          "hint": "Please upload a PDF or Word document. Maximum file size is 5MB.",
+          "id": "model_articles_upload_file",
+          "name": "model_articles_upload_file",
+          "validation": [
+            "required",
+            "fileType",
+            "fileSize"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "model_articles_save_and_continue_button",
+        "config": {
+          "text": "Save and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Business activity",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_business_activity",
+        "config": {
+          "text": "Back to business activity",
+          "href": "/business-activity"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "business_activity_h1",
+        "config": {
+          "text": "Business Activity",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "business_activity_description_input",
+        "config": {
+          "label": {
+            "text": "Business activity description",
+            "classes": "govuk-label--m",
+            "isPageHeading": null
+          },
+          "hint": "Provide a brief description of your business activities, including primary functions and services.",
+          "id": "business_activity_description_input",
+          "name": "business_activity_description",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "business_activity_sic_code_input",
+        "config": {
+          "label": {
+            "text": "SIC code",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the Standard Industrial Classification (SIC) code for your business activity.",
+          "id": "business_activity_sic_code_input",
+          "name": "business_activity_sic_code",
+          "type": "text",
+          "validation": [
+            "required",
+            "pattern"
+          ]
+        }
+      },
+      {
+        "component": "Details",
+        "id": "business_activity_sic_help_details",
+        "config": {
+          "summaryText": "Learn more about the business activity classification and Standard Industrial Classification (SIC) codes.",
+          "text": "The Standard Industrial Classification (SIC) system is used to categorize the primary business activities of companies. This helps in collecting, analyzing, and publishing statistical data related to the economy. Each type of business activity has a specific SIC code, which is a 5- or 6-digit number. Knowing the right SIC code for your business is essential for compliance, regulatory purposes, and data reporting."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "business_activity_save_and_continue_button",
+        "config": {
+          "text": "Save and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Check your answers",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_check_answers",
+        "config": {
+          "text": "Back to check your answers",
+          "href": "/check-answers"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "check_answers_h1",
+        "config": {
+          "text": "Check your answers",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "check_answers_company_details_summary",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Company Name"
+              },
+              "value": {
+                "text": "Tech Innovations Ltd",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Company Registration Number"
+              },
+              "value": {
+                "text": "12345678",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Registered Address"
+              },
+              "value": {
+                "text": "123 Tech Lane, Innovation City, IT1 2AB",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Contact Email"
+              },
+              "value": {
+                "text": "info@techinnovations.com",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Phone Number"
+              },
+              "value": {
+                "text": "01234 567890",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "check_answers_registered_office_summary",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Registered office address"
+              },
+              "value": {
+                "text": "123 Example Street, London, E1 1ES",
+                "html": "<p>123 Example Street, London, E1 1ES</p>"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "check_answers_directors_summary",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Director's Name"
+              },
+              "value": {
+                "text": "John Doe",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Position"
+              },
+              "value": {
+                "text": "Managing Director",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Company Name"
+              },
+              "value": {
+                "text": "Example Ltd",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Registration Number"
+              },
+              "value": {
+                "text": "12345678",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of Birth"
+              },
+              "value": {
+                "text": "01 January 1980",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Nationality"
+              },
+              "value": {
+                "text": "British",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "check_answers_psc_summary",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Full name"
+              },
+              "value": {
+                "text": "John Doe",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of birth"
+              },
+              "value": {
+                "text": "1 January 1990",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Address"
+              },
+              "value": {
+                "text": "123 Main Street, Anytown, AT1 1AA",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Email address"
+              },
+              "value": {
+                "text": "john.doe@example.com",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Phone number"
+              },
+              "value": {
+                "text": "(123) 456-7890",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Nationality"
+              },
+              "value": {
+                "text": "British",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Occupation"
+              },
+              "value": {
+                "text": "Software Developer",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "check_answers_share_capital_summary",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Share capital: Ordinary shares"
+              },
+              "value": {
+                "text": "100,000 GBP",
+                "html": "<span class=\"govuk-summary-list__value\">100,000 GBP</span>"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "check_answers_business_activity_summary",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Business name"
+              },
+              "value": {
+                "text": "Example Ltd",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Business address"
+              },
+              "value": {
+                "text": "123 Example St, Example City, EX1 2AB",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Business activity"
+              },
+              "value": {
+                "text": "Retail of electronics",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of establishment"
+              },
+              "value": {
+                "text": "1 January 2020",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "VAT registration number"
+              },
+              "value": {
+                "text": "GB123456789",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Contact email"
+              },
+              "value": {
+                "text": "info@example.com",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "check_answers_confirm_and_continue_button",
+        "config": {
+          "text": "Check your answers and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Declaration",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_declaration",
+        "config": {
+          "text": "Back",
+          "href": "/previous-page"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "declaration_h1",
+        "config": {
+          "text": "Declaration",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "declaration_inset",
+        "config": {
+          "text": "### Declaration\n\nPlease read the following declaration carefully. You must agree to the terms and conditions outlined below before proceeding. Make sure you understand your responsibilities and the implications of your actions."
+        }
+      },
+      {
+        "component": "Checkboxes",
+        "id": "declaration_confirm_checkboxes",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Declaration",
+              "classes": null
+            }
+          },
+          "hint": "Please confirm your agreement to the terms and conditions.",
+          "name": "declaration_confirm",
+          "items": [
+            {
+              "text": "I confirm that the information I have provided is correct and I agree to the terms and conditions.",
+              "value": "terms_agree",
+              "id": null,
+              "checked": false
+            },
+            {
+              "text": "I consent to the use of my data as described in the privacy policy.",
+              "value": "data_consent",
+              "id": null,
+              "checked": false
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "declaration_signatory_name_input",
+        "config": {
+          "label": {
+            "text": "Name of the signatory",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "hint": "Enter the full name of the person signing the declaration.",
+          "id": "declaration_signatory_name_input",
+          "name": "declaration_signatory_name",
+          "type": "text",
+          "validation": [
+            "required",
+            "minLength",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "declaration_signatory_role_input",
+        "config": {
+          "label": {
+            "text": "Declaration signatory role",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "hint": "Please specify the role of the person signing the declaration.",
+          "id": "declaration_signatory_role_input",
+          "name": "declaration_signatory_role",
+          "type": "text",
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "declaration_accept_and_continue_button",
+        "config": {
+          "text": "Accept and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Application fee",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_application_fee",
+        "config": {
+          "text": "Back to application fee",
+          "href": "/application_fee"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "application_fee_h1",
+        "config": {
+          "text": "Application Fee",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "application_fee_amount_inset",
+        "config": {
+          "text": "The application fee is required to process your application. Please ensure you provide the correct amount to avoid delays. The current application fee is £50."
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "application_fee_payment_method_radios",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Select your payment method for the application fee",
+              "classes": "govuk-fieldset__legend--l"
+            }
+          },
+          "hint": "Choose the payment method you prefer to use for your application fee.",
+          "name": "application_fee_payment_method",
+          "items": [
+            {
+              "text": "Credit Card",
+              "value": "credit_card",
+              "id": "payment_method_credit_card",
+              "checked": null
+            },
+            {
+              "text": "Debit Card",
+              "value": "debit_card",
+              "id": "payment_method_debit_card",
+              "checked": null
+            },
+            {
+              "text": "Bank Transfer",
+              "value": "bank_transfer",
+              "id": "payment_method_bank_transfer",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "application_fee_pay_now_button",
+        "config": {
+          "text": "Pay Now",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Button",
+        "id": "application_fee_save_and_pay_later_button",
+        "config": {
+          "text": "Save and pay later",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Payment confirmation",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "back_payment_confirmation",
+        "config": {
+          "text": "Back to payment confirmation",
+          "href": "/payment-confirmation"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "payment_confirmation_h1",
+        "config": {
+          "text": "Payment Confirmation",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Panel",
+        "id": "payment_confirmation_panel",
+        "config": {
+          "titleText": "Payment Confirmation",
+          "html": "<h2>Payment Confirmation</h2><p>Thank you for your payment. Your transaction has been successfully processed.</p><p>Please keep this confirmation for your records.</p><h3>Transaction Details:</h3><ul><li><strong>Amount:</strong> £100.00</li><li><strong>Transaction ID:</strong> 123456789</li><li><strong>Date:</strong> 1st January 2023</li></ul><p>If you have any questions about your payment, please contact our support team.</p>"
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "payment_confirmation_summary_list",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Payment amount"
+              },
+              "value": {
+                "text": "£100.00",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Payment method"
+              },
+              "value": {
+                "text": "Credit Card",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Transaction ID"
+              },
+              "value": {
+                "text": "ABC1234567890",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Payment date"
+              },
+              "value": {
+                "text": "1 October 2023",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Status"
+              },
+              "value": {
+                "text": "Confirmed",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "payment_confirmation_submit_application_button",
+        "config": {
+          "text": "Submit application",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Application submitted",
+    "components": [
+      {
+        "component": "Panel",
+        "id": "application_submitted_panel",
+        "config": {
+          "titleText": "Application Submitted",
+          "html": "<div class='govuk-panel govuk-panel--confirmation'>\n  <h1 class='govuk-panel__title'>Thank you for your application</h1>\n  <div class='govuk-panel__body'>\n    Your application has been submitted successfully. You will receive a confirmation email shortly.\n  </div>\n  <h2 class='govuk-heading-m'>Next steps</h2>\n  <p class='govuk-body'>\n    If you have any questions, please contact our support team at <a href='mailto:support@example.com'>support@example.com</a>.\n  </p>\n</div>"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "application_submitted_what_happens_next_h2",
+        "config": {
+          "text": "What happens next?",
+          "variant": "h2"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "application_submitted_body_text",
+        "config": {
+          "text": "Thank you for submitting your application. We will review it and notify you of the outcome as soon as possible. If you have any questions, please refer to our FAQ page or contact our support team.",
+          "variant": "body"
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "application_submitted_reference_summary",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Application reference number"
+              },
+              "value": {
+                "text": "ABC123XYZ",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Submitted on"
+              },
+              "value": {
+                "text": "1 October 2023",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Status"
+              },
+              "value": {
+                "text": "Submitted",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Expected processing time"
+              },
+              "value": {
+                "text": "3 weeks",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "application_submitted_download_copy_button",
+        "config": {
+          "text": "Download your application copy",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Button",
+        "id": "application_submitted_return_to_account_button",
+        "config": {
+          "text": "Return to your account",
+          "element": "button",
+          "href": null,
+          "disabled": null
+        }
+      }
+    ]
+  }
+]

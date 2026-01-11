@@ -17,7 +17,7 @@
 		"test:components": "npx playwright test e2e/Components.test.ts",
 		"test:journeys": "npx playwright test e2e/journeys/Journeys.test.ts",
 		"test:recordings": "npx playwright test recordings",
-		"gen": "npx tsx ./src/lib/ai/gen.ts"
+		"gen": "npx tsx ./src/lib/ai/main.ts run"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
@@ -42,6 +42,7 @@
 	},
 	"dependencies": {
 		"chalk": "^5.6.2",
+		"cli-progress": "^3.12.0",
 		"commander": "^14.0.2",
 		"dotenv": "^17.2.3",
 		"govuk-frontend": "^5.13.0",

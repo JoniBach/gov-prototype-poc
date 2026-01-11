@@ -5,5 +5,19 @@
     "departmentId": "HMRC",
     "departmentName": "Her Majesty's Revenue and Customs",
     "description": "An online service that allows users to calculate their approximate income tax liabilities based on their income, deductions, and applicable allowances. This tool aims to provide clarity and transparency around tax obligations, helping individuals manage their finances effectively."
+  },
+  {
+    "id": "register_company_service",
+    "name": "Register a New Company",
+    "departmentId": "business_services",
+    "departmentName": "Business Registration Services",
+    "description": "A service that allows individuals and organizations to register a new company within the regulatory framework."
+  },
+  {
+    "id": "1",
+    "name": "Driving Test Application Service",
+    "departmentId": "transport",
+    "departmentName": "Department of Transport",
+    "description": "A service allowing users to apply for a driving test online, manage their applications, and receive updates about test schedules and results."
   }
 ]
