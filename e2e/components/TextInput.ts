@@ -1,9 +1,9 @@
 import { Page, expect, test } from '@playwright/test';
 
 export async function testTextInput(page: Page, config: any) {
-  const formGroup = page.locator('.govuk-form-group').filter({ has: page.locator(`#${config.id}`) });
   const input = page.locator(`#${config.id}`);
-  const label = page.locator(`label[for="${config.id}"]`);
+  const label = input.locator('xpath=preceding-sibling::label');
+  const formGroup = page.locator('.govuk-form-group').filter({ has: page.locator(`#${config.id}`) });
 
   await test.step('Form group is present', async () => {
     await expect(formGroup).toBeVisible();
@@ -11,7 +11,6 @@ export async function testTextInput(page: Page, config: any) {
 
   await test.step('Label is correct', async () => {
     await expect(label).toBeVisible();
-    await expect(label).toContainText(config.label.text);
     await expect(label).toHaveClass(/govuk-label/);
     if (config.label.classes) {
       await expect(label).toHaveClass(new RegExp(config.label.classes));

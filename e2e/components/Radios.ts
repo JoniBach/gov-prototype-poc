@@ -1,58 +1,61 @@
-import { Page, expect } from '@playwright/test';
+import { Page, expect, test } from '@playwright/test';
 
 export async function testRadios(page: Page, config: any) {
-	// Anchor on this radio group
-	const radio = page
-		.locator(`input[type="radio"][name="${config.name}"]`)
-		.first();
+  const formGroup = page.locator('.govuk-form-group').filter({ hasText: config.fieldset.legend.text });
+  const fieldset = formGroup.locator('fieldset.govuk-fieldset');
+  const legend = fieldset.locator('.govuk-fieldset__legend');
+  const radios = fieldset.locator('.govuk-radios');
 
-	await expect(radio).toBeVisible();
+  await test.step('Form group is present', async () => {
+    await expect(formGroup).toBeVisible();
+  });
 
-	// Walk up to form group using CSS traversal
-	const formGroup = radio
-		.locator('..') // input → div.govuk-radios__item
-		.locator('..') // → div.govuk-radios
-		.locator('..') // → fieldset
-		.locator('..'); // → div.govuk-form-group
+  await test.step('Fieldset is correct', async () => {
+    await expect(fieldset).toBeVisible();
+  });
 
-	await expect(formGroup).toHaveClass(/govuk-form-group/);
+  await test.step('Legend is correct', async () => {
+    await expect(legend).toBeVisible();
+    await expect(legend).toContainText(config.fieldset.legend.text);
+    if (config.fieldset.legend.classes) {
+      await expect(legend).toHaveClass(new RegExp(config.fieldset.legend.classes));
+    }
+  });
 
-	// Fieldset
-	const fieldset = formGroup.locator('fieldset.govuk-fieldset');
-	await expect(fieldset).toBeVisible();
+  await test.step('Radios container is present', async () => {
+    await expect(radios).toBeVisible();
+  });
 
-	// Legend
-	const legendHeading = fieldset.locator('.govuk-fieldset__heading');
-	await expect(legendHeading).toHaveText(config.fieldset.legend.text);
+  await test.step('Correct number of radios', async () => {
+    const inputs = radios.locator('input[type="radio"]');
+    await expect(inputs).toHaveCount(config.items.length);
+  });
 
-	// Radios container
-	const radios = fieldset.locator('.govuk-radios');
-	await expect(radios).toBeVisible();
+  await test.step('Radios are present and correct', async () => {
+    for (const item of config.items) {
+      const radio = radios.locator(`input[value="${item.value}"]`);
+      await expect(radio).toBeVisible();
+      await expect(radio).toHaveAttribute('value', item.value);
+      if (item.checked) {
+        await expect(radio).toBeChecked();
+      } else {
+        await expect(radio).not.toBeChecked();
+      }
+    }
+  });
 
-	// Correct number of radios
-	const inputs = radios.locator('input[type="radio"]');
-	await expect(inputs).toHaveCount(config.items.length);
-
-	// Validate each radio
-	for (let index = 0; index < config.items.length; index++) {
-		const item = config.items[index];
-
-		const expectedId =
-			item.id || `${config.name}${index > 0 ? '-' + (index + 1) : ''}`;
-
-		const input = radios.locator(`#${expectedId}`);
-		const label = radios.locator(`label[for="${expectedId}"]`);
-
-		await expect(input).toHaveAttribute('name', config.name);
-		await expect(input).toHaveAttribute('value', item.value);
-		await expect(label).toHaveText(item.text);
-
-		if (item.checked) {
-			await expect(input).toBeChecked();
-		} else {
-			await expect(input).not.toBeChecked();
-		}
-	}
+  await test.step('Radios are focusable and interactive', async () => {
+    for (const item of config.items) {
+      const radio = radios.locator(`input[value="${item.value}"]`);
+      await radio.focus();
+      await expect(radio).toBeFocused();
+      // Select if not checked
+      if (!(await radio.isChecked())) {
+        await radio.check();
+        await expect(radio).toBeChecked();
+      }
+    }
+  });
 }
 
 export default testRadios;

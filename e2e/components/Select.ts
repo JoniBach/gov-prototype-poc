@@ -1,9 +1,9 @@
 import { Page, expect } from '@playwright/test';
 
 export async function testSelect(page: Page, config: any) {
-	const select = page.locator(`#${config.id}`);
-	const formGroup = page.locator('.govuk-form-group').filter({ has: page.locator(`#${config.id}`) });
-	const label = page.locator(`label[for="${config.id}"]`);
+	const select = page.getByLabel(config.label.text);
+	const label = select.locator('xpath=preceding-sibling::label');
+	const formGroup = page.locator('.govuk-form-group').filter({ hasText: config.label.text });
 
 	await expect(formGroup).toBeVisible();
 

@@ -1,8 +1,8 @@
 import { Page, expect, test } from '@playwright/test';
 
 export async function testTextarea(page: Page, config: any) {
-  const formGroup = page.locator('.govuk-form-group').filter({ has: page.locator(`#${config.id}`) });
   const textarea = page.locator(`#${config.id}`);
+  const formGroup = page.locator('.govuk-form-group').filter({ has: page.locator(`#${config.id}`) });
   const label = page.locator(`label[for="${config.id}"]`);
   const hint = config.hint ? page.locator(`#${config.id}-hint`) : null;
 

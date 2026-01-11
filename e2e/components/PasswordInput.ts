@@ -1,9 +1,9 @@
 import { Page, expect, test } from '@playwright/test';
 
 export async function testPasswordInput(page: Page, config: any) {
+  const input = page.getByLabel(config.label.text);
+  const label = input.locator('xpath=preceding-sibling::label');
   const formGroup = page.locator('.govuk-form-group').filter({ has: page.locator(`#${config.id}`) });
-  const input = page.locator(`#${config.id}`);
-  const label = page.locator(`label[for="${config.id}"]`);
 
   await test.step('Form group is present', async () => {
     await expect(formGroup).toBeVisible();

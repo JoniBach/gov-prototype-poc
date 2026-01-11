@@ -2,7 +2,7 @@ import { Page, expect, test } from '@playwright/test';
 
 export async function testDateInput(page: Page, config: any) {
   const actualConfig = Array.isArray(config) ? config[0] : config;
-  const formGroup = page.locator('.govuk-form-group').filter({ has: page.locator(`#${actualConfig.id}`) });
+  const formGroup = page.locator('.govuk-form-group').filter({ hasText: actualConfig.fieldset.legend.text });
   const fieldset = page.locator('fieldset.govuk-fieldset').filter({ has: page.locator(`#${actualConfig.id}`) });
   const legend = fieldset.locator('.govuk-fieldset__legend');
   const heading = fieldset.locator('.govuk-fieldset__heading');
