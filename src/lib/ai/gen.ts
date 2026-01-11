@@ -7,6 +7,7 @@ import {
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 import ora from 'ora';
+import { spawn } from 'child_process';
 
 /**
  * Configuration for the prototype generation pipeline
@@ -175,6 +176,41 @@ export const prototypeSteps: StepConfig[] = [
         totalComponents: totalComponents,
         filePath: `static/journeys/${journeyIndex.id}.json`
       };
+    }
+  },
+
+  {
+    name: 'test',
+    description: 'Run e2e tests for the generated journey',
+    handler: async (context) => {
+      const summary = context.summary;
+      
+      if (!summary?.journeyId) {
+        throw new Error('No journey ID found from summary');
+      }
+      
+      console.log(chalk.cyan('\n━━━ Step 4: Testing Journey ━━━'));
+      
+      const spinner = ora('Running e2e tests...').start();
+      
+      return new Promise<void>((resolve, reject) => {
+        const child = spawn('npm', ['run', 'test:journey', summary.journeyId], { stdio: 'inherit' });
+        
+        child.on('close', (code) => {
+          if (code === 0) {
+            spinner.succeed(chalk.green('Tests passed!'));
+            resolve();
+          } else {
+            spinner.fail(chalk.red('Tests failed!'));
+            reject(new Error(`Tests failed with code ${code}`));
+          }
+        });
+        
+        child.on('error', (error) => {
+          spinner.fail(chalk.red('Test execution failed'));
+          reject(error);
+        });
+      });
     }
   }
 ];

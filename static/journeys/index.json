@@ -19,5 +19,19 @@
     "departmentId": "transport",
     "departmentName": "Department of Transport",
     "description": "A service allowing users to apply for a driving test online, manage their applications, and receive updates about test schedules and results."
+  },
+  {
+    "id": "alcohol-duties-calculator",
+    "name": "Alcohol Duties Calculator",
+    "departmentId": "HMRC",
+    "departmentName": "Her Majesty's Revenue and Customs",
+    "description": "A digital tool for UK citizens and businesses to calculate the alcohol duties owed on their products based on the type and volume of alcohol being produced or imported."
+  },
+  {
+    "id": "1d4e36d1-a8de-48bc-b7bb-8748404872e1",
+    "name": "Apply for Universal Credit",
+    "departmentId": "d5e1e694-51dc-4dbd-a2ff-5ef327bf47e7",
+    "departmentName": "Department for Work and Pensions (DWP)",
+    "description": "A digital service that allows users to apply for Universal Credit online, providing a user-friendly experience and support throughout the application process."
   }
 ]

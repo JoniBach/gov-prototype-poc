@@ -10,7 +10,8 @@ import {
   createJson, 
   fetchJsonFile, 
   getObjectById, 
-  removeObjectsByKeys 
+  removeObjectsByKeys,
+  addJourneyToJourneysMap
 } from './files.ts';
 import ora from 'ora';
 import chalk from 'chalk';
@@ -205,6 +206,9 @@ export async function generateLowLevelJourney(journeyId: string) {
     const saveSpinner = ora('Saving complete journey...').start();
     createJson(`static/journeys/${journeyId}.json`, lowLevelJourney);
     saveSpinner.succeed(chalk.green('Journey saved to disk'));
+
+    // Update the journeys map
+    addJourneyToJourneysMap(journeyId);
 
     return lowLevelJourney;
   } catch (error) {

@@ -70,7 +70,7 @@ export function removeObjectByKey<T extends Record<string, any>>(
   key: keyof T,
   value: any
 ): T[] {
-  return _.reject(array, { [key]: value } as Partial<T>);
+  return array.filter(item => item[key] !== value);
 }
 
 
@@ -91,4 +91,65 @@ export function removeObjectsByKeys(
       return result;
     }
   );
+}
+
+export function addJourneyToJourneysMap(journeyId: string): void {
+  const journeysFilePath = path.resolve('e2e/journeys/journeys.ts');
+
+  // Read the file
+  const content = fs.readFileSync(journeysFilePath, 'utf-8');
+
+  // Generate variable name: journey + camelCase(journeyId)
+  const variableName = 'journey' + journeyId.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('');
+
+  // Import line
+  const importLine = `import ${variableName} from "../../static/journeys/${journeyId}.json" with { type: "json" };`;
+
+  // Split into lines
+  const lines = content.split('\n');
+
+  // Find the last import line
+  let lastImportIndex = -1;
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].startsWith('import ') && lines[i].includes('from "../../static/journeys/')) {
+      lastImportIndex = i;
+    }
+  }
+  if (lastImportIndex === -1) {
+    throw new Error('No journey imports found in journeys.ts');
+  }
+
+  // Insert the new import after the last import
+  lines.splice(lastImportIndex + 1, 0, importLine);
+
+  // Find the journeys object
+  let objectStart = -1;
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].includes('export const journeys: Record<string, any> = {')) {
+      objectStart = i + 1; // Line after the opening {
+      break;
+    }
+  }
+  if (objectStart === -1) {
+    throw new Error('Journeys object not found');
+  }
+
+  // Find the last entry before the closing }
+  let lastEntryIndex = -1;
+  for (let i = objectStart; i < lines.length; i++) {
+    if (lines[i].trim() === '};') {
+      lastEntryIndex = i - 1;
+      break;
+    }
+  }
+  if (lastEntryIndex === -1) {
+    throw new Error('Closing } of journeys object not found');
+  }
+
+  // Insert the new entry before the closing }
+  const entryLine = `    "${journeyId}": ${variableName},`;
+  lines.splice(lastEntryIndex + 1, 0, entryLine);
+
+  // Write back to file
+  fs.writeFileSync(journeysFilePath, lines.join('\n'));
 }

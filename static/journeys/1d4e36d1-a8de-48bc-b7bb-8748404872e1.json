@@ -1,0 +1,2622 @@
+[
+  {
+    "title": "Start - Apply for Universal Credit",
+    "components": [
+      {
+        "component": "SkipLink",
+        "id": "skipLink-uc-start",
+        "config": {
+          "text": "Skip to main content",
+          "href": "/#main-content"
+        }
+      },
+      {
+        "component": "Breadcrumbs",
+        "id": "breadcrumbs-uc-start",
+        "config": {
+          "items": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "Documents",
+              "href": "/documents"
+            },
+            {
+              "text": "Guides",
+              "href": "/documents/guides"
+            },
+            {
+              "text": "Breadcrumbs",
+              "href": "/documents/guides/breadcrumbs"
+            }
+          ]
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typography-uc-start-heading",
+        "config": {
+          "text": "Start heading",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typography-uc-start-intro",
+        "config": {
+          "text": "Introduction",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "insetText-uc-start-eligibility-note",
+        "config": {
+          "text": "Eligibility note: You may be eligible for support programs based on your current situation. Please review the criteria carefully before proceeding."
+        }
+      },
+      {
+        "component": "TaskList",
+        "id": "taskList-uc-start-overview",
+        "config": {
+          "idPrefix": "taskList-uc-start-overview",
+          "items": [
+            {
+              "title": {
+                "text": "Complete online registration"
+              },
+              "href": "/register",
+              "hint": {
+                "text": "This should take about 10 minutes."
+              },
+              "status": {
+                "text": null,
+                "tag": null
+              }
+            },
+            {
+              "title": {
+                "text": "Submit required documents"
+              },
+              "href": "/documents",
+              "hint": {
+                "text": "Make sure to upload all necessary files."
+              },
+              "status": {
+                "text": null,
+                "tag": null
+              }
+            },
+            {
+              "title": {
+                "text": "Review your application"
+              },
+              "href": "/review",
+              "hint": {
+                "text": "Double-check for any errors before submitting."
+              },
+              "status": {
+                "text": null,
+                "tag": null
+              }
+            },
+            {
+              "title": {
+                "text": "Final submission"
+              },
+              "href": "/submit",
+              "hint": null,
+              "status": {
+                "text": "Ready to submit",
+                "tag": {
+                  "text": "Ready",
+                  "classes": "govuk-tag"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-uc-start-begin-application",
+        "config": {
+          "text": "Start application",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-uc-start-before-you-apply",
+        "config": {
+          "summaryText": "Before you apply for a government service, ensure you have all the necessary information and documents ready to expedite the process.",
+          "text": "### Start Before You Apply\n\nTo prepare for your application, please ensure you have the following ready:\n\n- Your National Insurance number\n- Proof of identity (e.g., passport or driving license)\n- Relevant documents that support your application (e.g., pay slips, proof of residency)\n- Any prior application reference numbers, if applicable\n\nHaving these ready can make your application smoother and quicker. If you're unsure about what to include, please refer to the specific guidance for the service you are applying for."
+        }
+      },
+      {
+        "component": "WarningText",
+        "id": "warningText-uc-start-fraud",
+        "config": {
+          "text": "Warning: Fraudulent activities have been detected in your account. Please review your recent transactions and report any suspicious activity immediately.",
+          "iconFallbackText": "Important warning icon"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Check you can apply",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "backLink-uc-check-eligibility",
+        "config": {
+          "text": "Back",
+          "href": "/previous-page"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typography-uc-check-eligibility-heading",
+        "config": {
+          "text": "Check your eligibility",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "insetText-uc-check-eligibility-summary",
+        "config": {
+          "text": "## Check your eligibility\n\nYou can check your eligibility for various services and benefits on GOV.UK. Ensure that you have all the necessary information to fill out the forms accurately. If you're unsure about something, please refer to the guidance documents linked below."
+        }
+      },
+      {
+        "component": "Fieldset",
+        "id": "fieldset-uc-check-basic-questions",
+        "config": {
+          "legend": {
+            "text": "Please answer the following questions:",
+            "classes": "govuk-fieldset__legend",
+            "isPageHeading": true
+          }
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-check-age",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Check your age",
+              "classes": null
+            }
+          },
+          "hint": "Please select the option that applies to you.",
+          "name": "age-verification",
+          "items": [
+            {
+              "text": "Under 18",
+              "value": "under-18",
+              "id": "age-under-18",
+              "checked": null
+            },
+            {
+              "text": "18 or over",
+              "value": "over-18",
+              "id": "age-over-18",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-check-living-uk",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Do you currently live in the UK?",
+              "classes": null
+            }
+          },
+          "hint": "Select 'Yes' if you live in the UK, otherwise select 'No'.",
+          "name": "living_in_uk",
+          "items": [
+            {
+              "text": "Yes",
+              "value": "yes",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "No",
+              "value": "no",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-check-savings",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Choose your savings account type",
+              "classes": "govuk-fieldset__legend--m"
+            }
+          },
+          "hint": "Select the type of savings account you would like to apply for.",
+          "name": "savings-account-type",
+          "items": [
+            {
+              "text": "Standard Savings Account",
+              "value": "standard",
+              "id": null,
+              "checked": false
+            },
+            {
+              "text": "High-Interest Savings Account",
+              "value": "high-interest",
+              "id": null,
+              "checked": false
+            },
+            {
+              "text": "Joint Savings Account",
+              "value": "joint",
+              "id": null,
+              "checked": false
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-uc-check-more-about-eligibility",
+        "config": {
+          "summaryText": "Check more about eligibility",
+          "text": "Find out the detailed eligibility criteria for this service or payment. Make sure you understand the qualifications required before proceeding."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-uc-check-continue",
+        "config": {
+          "text": "Check and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Create an account or sign in",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "backLink-uc-account",
+        "config": {
+          "text": "Back",
+          "href": "/previous-page"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typography-uc-account-heading",
+        "config": {
+          "text": "Account heading",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-account-choice",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Choose your account type",
+              "classes": null
+            }
+          },
+          "hint": "Please select one option that best describes your account type.",
+          "name": "account-type",
+          "items": [
+            {
+              "text": "Individual",
+              "value": "individual",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Business",
+              "value": "business",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Non-profit",
+              "value": "nonprofit",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Fieldset",
+        "id": "fieldset-uc-signin-existing",
+        "config": {
+          "legend": {
+            "text": "Sign in to your existing account",
+            "classes": "govuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "textInput-uc-signin-username",
+        "config": {
+          "label": {
+            "text": "Username",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter your username as it appears on the sign-in page.",
+          "id": "textInput-uc-signin-username",
+          "name": "username",
+          "type": "text",
+          "validation": [
+            "required",
+            "minLength",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "PasswordInput",
+        "id": "passwordInput-uc-signin-password",
+        "config": {
+          "label": {
+            "text": "Password"
+          },
+          "hint": "Your password must be at least 8 characters long and include a mix of letters and numbers.",
+          "id": "passwordInput-uc-signin-password",
+          "name": "password",
+          "validation": [
+            "required",
+            "minLength"
+          ]
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-uc-signin-forgot-details",
+        "config": {
+          "summaryText": "Provide options for users who have forgotten their sign-in details, ensuring clarity and accessibility.",
+          "text": "### Forgotten Details\n- **Label:** Forgot your details?\n- **Hint:** If you can't remember your sign-in details, you can recover them by verifying your identity.\n- **Validation:** Ensure the user can input their registered email address or username.\n- **Default Values:** Leave the input fields empty by default."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-uc-signin-continue",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Fieldset",
+        "id": "fieldset-uc-create-account",
+        "config": {
+          "legend": {
+            "text": "Create your account",
+            "classes": null,
+            "isPageHeading": true
+          }
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "textInput-uc-create-email",
+        "config": {
+          "label": {
+            "text": "Email address",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "hint": "Please enter a valid email address for account creation.",
+          "id": "text-input-email",
+          "name": "email",
+          "type": "email",
+          "validation": [
+            "required",
+            "email"
+          ]
+        }
+      },
+      {
+        "component": "PasswordInput",
+        "id": "passwordInput-uc-create-password",
+        "config": {
+          "label": {
+            "text": "Create a password"
+          },
+          "hint": "Your password must be at least 8 characters long and include a mix of letters and numbers.",
+          "id": "passwordInput-uc-create-password",
+          "name": "createPassword",
+          "validation": [
+            "required",
+            "minLength"
+          ]
+        }
+      },
+      {
+        "component": "PasswordInput",
+        "id": "passwordInput-uc-create-password-confirm",
+        "config": {
+          "label": {
+            "text": "Confirm your password"
+          },
+          "hint": "Re-enter your password to confirm it matches the original.",
+          "id": "passwordInput-uc-create-password-confirm",
+          "name": "confirmPassword",
+          "validation": [
+            "required",
+            "minLength"
+          ]
+        }
+      },
+      {
+        "component": "Checkboxes",
+        "id": "checkboxes-uc-create-terms",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Terms and Conditions",
+              "classes": null
+            }
+          },
+          "hint": "Please read and accept our terms and conditions to proceed.",
+          "name": "terms-conditions",
+          "items": [
+            {
+              "text": "I agree to the Terms and Conditions",
+              "value": "agree",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "I want to receive newsletters and updates",
+              "value": "newsletter",
+              "id": null,
+              "checked": false
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-uc-create-account-continue",
+        "config": {
+          "text": "Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Your progress",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "backLink-uc-progress",
+        "config": {
+          "text": "Back to previous page",
+          "href": "/previous-page"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typography-uc-progress-heading",
+        "config": {
+          "text": "Progress Heading",
+          "variant": "h2"
+        }
+      },
+      {
+        "component": "TaskList",
+        "id": "taskList-uc-progress-main",
+        "config": {
+          "idPrefix": "taskList-uc-progress-main",
+          "items": [
+            {
+              "title": {
+                "text": "Complete registration form"
+              },
+              "href": "/registration",
+              "hint": {
+                "text": "Ensure all required fields are filled out."
+              },
+              "status": {
+                "text": "In progress",
+                "tag": {
+                  "text": "Ongoing",
+                  "classes": "govuk-tag"
+                }
+              }
+            },
+            {
+              "title": {
+                "text": "Verify email address"
+              },
+              "href": "/verify-email",
+              "hint": {
+                "text": "Check your inbox for the verification link."
+              },
+              "status": {
+                "text": "Not started",
+                "tag": {
+                  "text": "Pending",
+                  "classes": "govuk-tag--grey"
+                }
+              }
+            },
+            {
+              "title": {
+                "text": "Submit application"
+              },
+              "href": "/submit-application",
+              "hint": {
+                "text": "Review all information before submission."
+              },
+              "status": {
+                "text": "Not started",
+                "tag": {
+                  "text": "Pending",
+                  "classes": "govuk-tag--grey"
+                }
+              }
+            },
+            {
+              "title": {
+                "text": "Receive confirmation"
+              },
+              "href": "/confirmation",
+              "hint": null,
+              "status": {
+                "text": "Not started",
+                "tag": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "insetText-uc-progress-deadline",
+        "config": {
+          "text": "## Important deadline for UC progress\n\nPlease be aware that the deadline for updating your Universal Credit progress is on **March 31st**. Ensure all changes are submitted before this date to avoid any interruptions in your benefits. If you need assistance, visit our help section or contact support."
+        }
+      }
+    ]
+  },
+  {
+    "title": "About you - personal details",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "backLink-uc-personal-details",
+        "config": {
+          "text": "Back to personal details",
+          "href": "/personal-details"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typography-uc-personal-details-heading",
+        "config": {
+          "text": "Personal details",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Fieldset",
+        "id": "fieldset-uc-personal-name",
+        "config": {
+          "legend": {
+            "text": "Personal details",
+            "classes": "govuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "textInput-uc-first-name",
+        "config": {
+          "label": {
+            "text": "First name",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter your first name as it appears on your official documents.",
+          "id": "first-name",
+          "name": "firstName",
+          "type": "text",
+          "validation": [
+            "required",
+            "minLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "textInput-uc-last-name",
+        "config": {
+          "label": {
+            "text": "Last name",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter your family name as it appears on your official documents.",
+          "id": "textInput-uc-last-name",
+          "name": "last_name",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "DateInput",
+        "id": "dateInput-uc-dob",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Date of birth",
+              "classes": null
+            }
+          },
+          "hint": "Please enter your date of birth in the format DD/MM/YYYY.",
+          "id": "dateInput-uc-dob",
+          "name": "dateOfBirth",
+          "validation": [
+            "required",
+            "validDate"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-gender",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Select your gender",
+              "classes": "govuk-fieldset__legend--l"
+            }
+          },
+          "hint": "Please select one option.",
+          "name": "gender",
+          "items": [
+            {
+              "text": "Male",
+              "value": "male",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Female",
+              "value": "female",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Non-binary",
+              "value": "non-binary",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Prefer not to say",
+              "value": "prefer_not_to_say",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "textInput-uc-ni-number",
+        "config": {
+          "label": {
+            "text": "Unique Number",
+            "classes": "govuk-label--m",
+            "isPageHeading": false
+          },
+          "hint": "Enter your unique number; it should be numeric and exactly 6 digits long.",
+          "id": "textInput-uc-ni-number",
+          "name": "unique_number",
+          "type": "text",
+          "validation": [
+            "required",
+            "numeric",
+            "exactLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "textInput-uc-phone",
+        "config": {
+          "label": {
+            "text": "Enter your UK phone number",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Format: 01234 567890",
+          "id": "textInput-uc-phone",
+          "name": "ukPhoneNumber",
+          "type": "text",
+          "validation": [
+            "required",
+            "ukPhone"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "textInput-uc-email",
+        "config": {
+          "label": {
+            "text": "Email address",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Please provide your email address. We'll use it to contact you.",
+          "id": "emailHint",
+          "name": "email",
+          "type": "email",
+          "validation": [
+            "required",
+            "email"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-uc-personal-details-save-continue",
+        "config": {
+          "text": "Save and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Where you live",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "backLink-uc-address",
+        "config": {
+          "text": "Back",
+          "href": "/previous-page"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typography-uc-address-heading",
+        "config": {
+          "text": "Address",
+          "variant": "h2"
+        }
+      },
+      {
+        "component": "Fieldset",
+        "id": "fieldset-uc-address-lookup",
+        "config": {
+          "legend": {
+            "text": "Address Lookup",
+            "classes": "govuk-fieldset__legend",
+            "isPageHeading": true
+          }
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "textInput-uc-postcode",
+        "config": {
+          "label": {
+            "text": "Enter your postcode",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "For example, SW1A 1AA",
+          "id": "textInput-uc-postcode",
+          "name": "postcode",
+          "type": "text",
+          "validation": [
+            "required",
+            "pattern"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-uc-find-address",
+        "config": {
+          "text": "Find address",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-uc-enter-address-manually",
+        "config": {
+          "summaryText": "Enter your address manually if it can't be found automatically.",
+          "text": "Please fill out the fields below to provide your address details. Make sure to enter accurate information to avoid any issues."
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "textInput-uc-address-line1",
+        "config": {
+          "label": {
+            "text": "Address line 1",
+            "classes": "govuk-label--m",
+            "isPageHeading": false
+          },
+          "hint": "Enter the first line of your address, including house number and street name.",
+          "id": "textInput-uc-address-line1",
+          "name": "address-line1",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "textInput-uc-address-line2",
+        "config": {
+          "label": {
+            "text": "Address line 2",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Optional",
+          "id": "textInput-uc-address-line2",
+          "name": "address_line_2",
+          "type": "text",
+          "validation": [
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "textInput-uc-address-town",
+        "config": {
+          "label": {
+            "text": "Town or city",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "hint": "Enter the town or city where you live.",
+          "id": "textInput-uc-address-town",
+          "name": "town",
+          "type": "text",
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Select",
+        "id": "select-uc-address-country",
+        "config": {
+          "label": {
+            "text": "Country"
+          },
+          "hint": null,
+          "id": "select-uc-address-country",
+          "name": "country",
+          "items": [
+            {
+              "text": "United Kingdom",
+              "value": "GB",
+              "selected": false
+            },
+            {
+              "text": "United States",
+              "value": "US",
+              "selected": false
+            },
+            {
+              "text": "Canada",
+              "value": "CA",
+              "selected": false
+            },
+            {
+              "text": "Australia",
+              "value": "AU",
+              "selected": false
+            },
+            {
+              "text": "Other",
+              "value": "OT",
+              "selected": false
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-housing-type",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Select your type of housing",
+              "classes": "govuk-fieldset__legend--m"
+            }
+          },
+          "hint": "Please choose one option that best describes your housing type.",
+          "name": "housing-type",
+          "items": [
+            {
+              "text": "Detached house",
+              "value": "detached",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Semi-detached house",
+              "value": "semi-detached",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Terraced house",
+              "value": "terraced",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Flat or apartment",
+              "value": "flat",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Other",
+              "value": "other",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-homeless",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Are you or someone you know experiencing homelessness?",
+              "classes": null
+            }
+          },
+          "hint": null,
+          "name": "homeless-status",
+          "items": [
+            {
+              "text": "Yes",
+              "value": "yes",
+              "id": "homeless-yes",
+              "checked": null
+            },
+            {
+              "text": "No",
+              "value": "no",
+              "id": "homeless-no",
+              "checked": null
+            },
+            {
+              "text": "Not sure",
+              "value": "not-sure",
+              "id": "homeless-not-sure",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-uc-address-save-continue",
+        "config": {
+          "text": "Save and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Your household",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "backLink-uc-household",
+        "config": {
+          "text": "Back",
+          "href": "/previous-page"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typography-uc-household-heading",
+        "config": {
+          "text": "Household Heading",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-partner",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Select your partner status",
+              "classes": "govuk-fieldset__legend"
+            }
+          },
+          "hint": "Please choose one option that best describes your partnership status.",
+          "name": "partner-status",
+          "items": [
+            {
+              "text": "I am a partner",
+              "value": "partner",
+              "id": "partner-yes",
+              "checked": null
+            },
+            {
+              "text": "I am not a partner",
+              "value": "not-partner",
+              "id": "partner-no",
+              "checked": null
+            },
+            {
+              "text": "Prefer not to say",
+              "value": "prefer-not-to-say",
+              "id": "partner-prefer-no",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-children",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Do you have children?",
+              "classes": null
+            }
+          },
+          "hint": "Select one option that best describes your situation.",
+          "name": "children",
+          "items": [
+            {
+              "text": "Yes",
+              "value": "yes",
+              "id": "children-yes",
+              "checked": null
+            },
+            {
+              "text": "No",
+              "value": "no",
+              "id": "children-no",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-uc-children-explainer",
+        "config": {
+          "summaryText": "Learn more about the details regarding children in this section.",
+          "text": "This section provides additional information that may not be immediately apparent. Expand to reveal details specific to children's services, eligibility criteria, and how to register."
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-caring-responsibilities",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Do you have caring responsibilities?",
+              "classes": null
+            }
+          },
+          "hint": "Select 'Yes' if you provide regular care for someone due to their illness, disability, or old age.",
+          "name": "caring_responsibilities",
+          "items": [
+            {
+              "text": "Yes",
+              "value": "yes",
+              "id": "caring-responsibilities-yes",
+              "checked": null
+            },
+            {
+              "text": "No",
+              "value": "no",
+              "id": "caring-responsibilities-no",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-uc-household-save-continue",
+        "config": {
+          "text": "Save and Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Your health and disabilities",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "backLink-uc-health",
+        "config": {
+          "text": "Back",
+          "href": "/previous-page"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typography-uc-health-heading",
+        "config": {
+          "text": "Health Services",
+          "variant": "h2"
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-health-condition",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "What is your current health condition?",
+              "classes": null
+            }
+          },
+          "hint": "Please select the option that best describes your health condition.",
+          "name": "health-condition",
+          "items": [
+            {
+              "text": "No health issues",
+              "value": "no-health-issues",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Minor health issues",
+              "value": "minor-health-issues",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Major health issues",
+              "value": "major-health-issues",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Prefer not to say",
+              "value": "prefer-not-to-say",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Textarea",
+        "id": "textarea-uc-health-details",
+        "config": {
+          "label": {
+            "text": "Health details",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "hint": {
+            "text": "Provide any relevant health information that may impact your care."
+          },
+          "id": "textarea-uc-health-details",
+          "name": "health-details",
+          "rows": 5,
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-terminal-illness",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Select a terminal illness option",
+              "classes": "govuk-fieldset__legend--m"
+            }
+          },
+          "hint": "Please choose one option that applies to your situation.",
+          "name": "terminal-illness",
+          "items": [
+            {
+              "text": "Cancer",
+              "value": "cancer",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Motor Neurone Disease",
+              "value": "mnd",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Heart Disease",
+              "value": "heart-disease",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Other",
+              "value": "other",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-fitness-for-work-note",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Do you have a fitness for work note?",
+              "classes": null
+            }
+          },
+          "hint": "Select 'Yes' if you have a note from your doctor confirming your fitness for work.",
+          "name": "fitness-for-work",
+          "items": [
+            {
+              "text": "Yes",
+              "value": "yes",
+              "id": "fitness-yes",
+              "checked": null
+            },
+            {
+              "text": "No",
+              "value": "no",
+              "id": "fitness-no",
+              "checked": null
+            },
+            {
+              "text": "Not applicable",
+              "value": "not-applicable",
+              "id": "fitness-not-applicable",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-uc-health-save-continue",
+        "config": {
+          "text": "Save and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Your work and earnings",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "backLink-uc-work",
+        "config": {
+          "text": "Back",
+          "href": "/previous-page"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typography-uc-work-heading",
+        "config": {
+          "text": "Work",
+          "variant": "heading-2"
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-currently-working",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Are you currently working?",
+              "classes": null
+            }
+          },
+          "hint": "Please select yes if you are currently in employment.",
+          "name": "currently_working",
+          "items": [
+            {
+              "text": "Yes",
+              "value": "yes",
+              "id": "currently-working-yes",
+              "checked": null
+            },
+            {
+              "text": "No",
+              "value": "no",
+              "id": "currently-working-no",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-self-employed",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Are you self-employed?",
+              "classes": "govuk-fieldset__legend--l"
+            }
+          },
+          "hint": "Please select 'Yes' or 'No'.",
+          "name": "self-employed",
+          "items": [
+            {
+              "text": "Yes",
+              "value": "yes",
+              "id": "self-employed-yes",
+              "checked": null
+            },
+            {
+              "text": "No",
+              "value": "no",
+              "id": "self-employed-no",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Textarea",
+        "id": "textarea-uc-work-details",
+        "config": {
+          "label": {
+            "text": "Work details",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": {
+            "text": "Provide details about your current work situation."
+          },
+          "id": "textarea-uc-work-details",
+          "name": "workDetails",
+          "rows": 5,
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-redundant-or-hours-reduced",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Select one of the following options regarding your work hours reduction:",
+              "classes": "govuk-fieldset__legend--s"
+            }
+          },
+          "hint": "Choose whether your hours have been reduced or if you're redundant.",
+          "name": "redundancy-or-hours-reduced",
+          "items": [
+            {
+              "text": "My hours have been reduced",
+              "value": "hours-reduced",
+              "id": "option-hours-reduced",
+              "checked": null
+            },
+            {
+              "text": "I am redundant",
+              "value": "redundant",
+              "id": "option-redundant",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-uc-work-save-continue",
+        "config": {
+          "text": "Save and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Your income and savings",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "backLink-uc-income",
+        "config": {
+          "text": "Back",
+          "href": "/previous-page"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typography-uc-income-heading",
+        "config": {
+          "text": "Your Income Details",
+          "variant": "h1"
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-other-benefits",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Select the benefits you receive",
+              "classes": null
+            }
+          },
+          "hint": "Please choose one or more benefits from the options below.",
+          "name": "other-benefits",
+          "items": [
+            {
+              "text": "Jobseeker's Allowance",
+              "value": "jobseekers-allowance",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Universal Credit",
+              "value": "universal-credit",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Housing Benefit",
+              "value": "housing-benefit",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "None of the above",
+              "value": "none",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-pensions",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Select a pension option",
+              "classes": "govuk-fieldset__legend--l"
+            }
+          },
+          "hint": "Choose the pension plan that applies to you.",
+          "name": "pension-options",
+          "items": [
+            {
+              "text": "State Pension",
+              "value": "state-pension",
+              "id": null,
+              "checked": false
+            },
+            {
+              "text": "Private Pension",
+              "value": "private-pension",
+              "id": null,
+              "checked": false
+            },
+            {
+              "text": "Employer Pension",
+              "value": "employer-pension",
+              "id": null,
+              "checked": false
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-savings-over-threshold",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Are your savings over the threshold?",
+              "classes": null
+            }
+          },
+          "hint": "Please select one option to indicate whether your savings exceed the specified limit.",
+          "name": "savings_threshold",
+          "items": [
+            {
+              "text": "Yes, my savings are over the threshold",
+              "value": "yes",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "No, my savings are not over the threshold",
+              "value": "no",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Textarea",
+        "id": "textarea-uc-income-details",
+        "config": {
+          "label": {
+            "text": "Income details",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "hint": {
+            "text": "Please provide details of all your sources of income."
+          },
+          "id": "textarea-uc-income-details",
+          "name": "income-details",
+          "rows": 5,
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-uc-income-save-continue",
+        "config": {
+          "text": "Save and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Your housing costs",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "backLink-uc-housing-costs",
+        "config": {
+          "text": "Back to housing costs",
+          "href": "/housing-costs"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typography-uc-housing-costs-heading",
+        "config": {
+          "text": "Housing Costs",
+          "variant": "h2"
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-rent-or-own",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Do you rent or own your home?",
+              "classes": null
+            }
+          },
+          "hint": "Select one option below to indicate your housing situation.",
+          "name": "housing_status",
+          "items": [
+            {
+              "text": "Rent",
+              "value": "rent",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "Own",
+              "value": "own",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "textInput-uc-rent-amount",
+        "config": {
+          "label": {
+            "text": "Rent Amount",
+            "classes": null,
+            "isPageHeading": false
+          },
+          "hint": "Enter the total rent amount you pay each month.",
+          "id": "textInput-uc-rent-amount",
+          "name": "rentAmount",
+          "type": "number",
+          "validation": [
+            "required",
+            "numeric",
+            "minLength"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-rent-frequency",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "How often do you pay rent?",
+              "classes": "govuk-fieldset__legend--m"
+            }
+          },
+          "hint": "Select one option that best describes your rent payment frequency.",
+          "name": "rent-frequency",
+          "items": [
+            {
+              "text": "Weekly",
+              "value": "weekly",
+              "id": "rent-frequency-weekly",
+              "checked": null
+            },
+            {
+              "text": "Fortnightly",
+              "value": "fortnightly",
+              "id": "rent-frequency-fortnightly",
+              "checked": null
+            },
+            {
+              "text": "Monthly",
+              "value": "monthly",
+              "id": "rent-frequency-monthly",
+              "checked": null
+            },
+            {
+              "text": "Annually",
+              "value": "annually",
+              "id": "rent-frequency-annually",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Radios",
+        "id": "radios-uc-shared-accommodation",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "Select your shared accommodation preference",
+              "classes": null
+            }
+          },
+          "hint": "Please choose one option that best describes your accommodation preference.",
+          "name": "shared_accommodation",
+          "items": [
+            {
+              "text": "Private room",
+              "value": "private_room",
+              "id": "shared_private_room",
+              "checked": null
+            },
+            {
+              "text": "Shared room",
+              "value": "shared_room",
+              "id": "shared_shared_room",
+              "checked": null
+            },
+            {
+              "text": "No preference",
+              "value": "no_preference",
+              "id": "shared_no_preference",
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-uc-housing-costs-save-continue",
+        "config": {
+          "text": "Save and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Bank details",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "backLink-uc-bank-details",
+        "config": {
+          "text": "Back to bank details",
+          "href": "/bank-details"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typography-uc-bank-details-heading",
+        "config": {
+          "text": "Bank details",
+          "variant": "h2"
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "textInput-uc-bank-account-name",
+        "config": {
+          "label": {
+            "text": "Bank account name",
+            "classes": "govuk-label--s",
+            "isPageHeading": false
+          },
+          "hint": "Enter the name as it appears on the bank account.",
+          "id": "bank-account-name",
+          "name": "bankAccountName",
+          "type": "text",
+          "validation": [
+            "required",
+            "maxLength"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "textInput-uc-bank-sort-code",
+        "config": {
+          "label": {
+            "text": "Bank sort code",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "hint": "Enter your 6-digit bank sort code.",
+          "id": "textInput-uc-bank-sort-code",
+          "name": "bankSortCode",
+          "type": "text",
+          "validation": [
+            "required",
+            "pattern"
+          ]
+        }
+      },
+      {
+        "component": "TextInput",
+        "id": "textInput-uc-bank-account-number",
+        "config": {
+          "label": {
+            "text": "Bank account number",
+            "classes": null,
+            "isPageHeading": null
+          },
+          "hint": "Enter your 8-digit bank account number.",
+          "id": "textInput-uc-bank-account-number",
+          "name": "bank-account-number",
+          "type": "text",
+          "validation": [
+            "required",
+            "numeric",
+            "exactLength"
+          ]
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "insetText-uc-bank-alternative-payment",
+        "config": {
+          "text": "### Alternative Payment Methods\n\nWe understand that not everyone can use a UK bank account for payments. If you require alternative payment methods, please contact our support team for assistance. We offer options such as credit cards and PayPal for your convenience."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-uc-bank-details-save-continue",
+        "config": {
+          "text": "Save and continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Upload supporting evidence",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "backLink-uc-evidence",
+        "config": {
+          "text": "Back",
+          "href": "/previous-page"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typography-uc-evidence-heading",
+        "config": {
+          "text": "Evidence",
+          "variant": "heading"
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "insetText-uc-evidence-what-you-need",
+        "config": {
+          "text": "### What you need to provide\n\nTo support your application, please ensure you have the following evidence ready to upload:\n\n- **Identification Documents**: A recent photo ID or passport.\n- **Proof of Address**: Utility bill or bank statement dated within the last three months.\n- **Income Verification**: Latest payslip or tax return.\n\nMake sure all documents are clear and legible. You can upload files in JPEG, PNG, or PDF formats."
+        }
+      },
+      {
+        "component": "FileUpload",
+        "id": "fileUpload-uc-evidence-identity",
+        "config": {
+          "label": {
+            "text": "Upload your proof of identity"
+          },
+          "hint": "Accepted formats: PDF, JPG, PNG. Max size: 10MB.",
+          "id": "file-upload-identity",
+          "name": "evidence_identity",
+          "validation": [
+            "required",
+            "fileType",
+            "fileSize"
+          ]
+        }
+      },
+      {
+        "component": "FileUpload",
+        "id": "fileUpload-uc-evidence-housing",
+        "config": {
+          "label": {
+            "text": "Upload evidence for housing"
+          },
+          "hint": "Please upload relevant documents such as tenancy agreements or utility bills.",
+          "id": "fileUpload-uc-evidence-housing",
+          "name": "housingEvidence",
+          "validation": [
+            "required",
+            "fileType",
+            "fileSize"
+          ]
+        }
+      },
+      {
+        "component": "Details",
+        "id": "details-uc-evidence-other-ways",
+        "config": {
+          "summaryText": "Other ways to provide evidence",
+          "text": "If you cannot provide evidence through the standard methods listed, please describe alternative ways you can submit the necessary information. You can either upload documents, provide links to supporting materials, or explain your situation in detail."
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-uc-evidence-save-continue",
+        "config": {
+          "text": "Save and Continue",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Check your answers",
+    "components": [
+      {
+        "component": "BackLink",
+        "id": "backLink-uc-check-answers",
+        "config": {
+          "text": "Back to check your answers",
+          "href": "/check-your-answers"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typography-uc-check-answers-heading",
+        "config": {
+          "text": "Check your answers",
+          "variant": "heading-1"
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "summaryList-uc-personal",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Full Name"
+              },
+              "value": {
+                "text": null,
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of Birth"
+              },
+              "value": {
+                "text": null,
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Address"
+              },
+              "value": {
+                "text": null,
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Email"
+              },
+              "value": {
+                "text": null,
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Phone Number"
+              },
+              "value": {
+                "text": null,
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "summaryList-uc-address",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Address"
+              },
+              "value": {
+                "text": "123 Government St, London, UK",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Postcode"
+              },
+              "value": {
+                "text": "SW1A 2AA",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Country"
+              },
+              "value": {
+                "text": "United Kingdom",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "summaryList-uc-household",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Household Size"
+              },
+              "value": {
+                "text": "4 people",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Address"
+              },
+              "value": {
+                "text": "123 Example Street, London, UK",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Primary Contact Name"
+              },
+              "value": {
+                "text": "John Doe",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Contact Phone Number"
+              },
+              "value": {
+                "text": "020 1234 5678",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Email"
+              },
+              "value": {
+                "text": "john.doe@example.com",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "summaryList-uc-work",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Full name"
+              },
+              "value": {
+                "text": "John Doe",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of birth"
+              },
+              "value": {
+                "text": "1 January 1990",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Occupation"
+              },
+              "value": {
+                "text": "Software Developer",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Address"
+              },
+              "value": {
+                "text": "123 Main Street, Anytown, AT1 1AA",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Phone number"
+              },
+              "value": {
+                "text": "01234 567890",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Email"
+              },
+              "value": {
+                "text": "john.doe@example.com",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "summaryList-uc-income",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Annual income"
+              },
+              "value": {
+                "text": "£25,000",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Job title"
+              },
+              "value": {
+                "text": "Software Engineer",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Employer"
+              },
+              "value": {
+                "text": "Tech Solutions Ltd",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Work address"
+              },
+              "value": {
+                "text": "123 Tech Lane, London, SW1A 1AA",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Contact number"
+              },
+              "value": {
+                "text": "020 1234 5678",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "summaryList-uc-housing",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Property Address"
+              },
+              "value": {
+                "text": "123 Example Street",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Owner Name"
+              },
+              "value": {
+                "text": "John Doe",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Property Type"
+              },
+              "value": {
+                "text": "Residential",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of Purchase"
+              },
+              "value": {
+                "text": "1st January 2020",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Current Value"
+              },
+              "value": {
+                "text": "£250,000",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Mortgage Status"
+              },
+              "value": {
+                "text": "Paid Off",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "summaryList-uc-bank",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Bank Name"
+              },
+              "value": {
+                "text": "National Bank",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Account Number"
+              },
+              "value": {
+                "text": "12345678",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Sort Code"
+              },
+              "value": {
+                "text": "12-34-56",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Account Holder Name"
+              },
+              "value": {
+                "text": "John Doe",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Account Type"
+              },
+              "value": {
+                "text": "Current Account",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "summaryList-uc-evidence",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Full name of the evidence provider"
+              },
+              "value": {
+                "text": null,
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date of evidence provision"
+              },
+              "value": {
+                "text": null,
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Type of evidence"
+              },
+              "value": {
+                "text": null,
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Status of evidence"
+              },
+              "value": {
+                "text": null,
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "Checkboxes",
+        "id": "checkboxes-uc-declaration",
+        "config": {
+          "fieldset": {
+            "legend": {
+              "text": "User Consent Declaration",
+              "classes": null
+            }
+          },
+          "hint": "Please select all applicable statements below to confirm your consent.",
+          "name": "user-consent-declaration",
+          "items": [
+            {
+              "text": "I confirm that I am over 18 years of age.",
+              "value": "age-confirmation",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "I agree to the terms and conditions.",
+              "value": "terms-agreement",
+              "id": null,
+              "checked": null
+            },
+            {
+              "text": "I consent to the processing of my personal data as described in the privacy policy.",
+              "value": "data-consent",
+              "id": null,
+              "checked": null
+            }
+          ],
+          "validation": [
+            "required"
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-uc-submit-application",
+        "config": {
+          "text": "Submit application",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  },
+  {
+    "title": "Application submitted",
+    "components": [
+      {
+        "component": "Panel",
+        "id": "panel-uc-confirmation-success",
+        "config": {
+          "titleText": "Success Confirmation",
+          "html": "<div class='panel panel-success'>\n  <div class='panel-heading'>\n    <h3 class='panel-title'>Action Completed Successfully</h3>\n  </div>\n  <div class='panel-body'>\n    <p>Your request has been successfully processed. Thank you for your submission.</p>\n    <p>If you need further assistance, please contact our support team.</p>\n  </div>\n</div>"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typography-uc-confirmation-next-steps-heading",
+        "config": {
+          "text": "Next steps",
+          "variant": "h2"
+        }
+      },
+      {
+        "component": "Typography",
+        "id": "typography-uc-confirmation-next-steps-body",
+        "config": {
+          "text": "Next steps after your confirmation are outlined below. Please ensure to follow each step carefully to complete the process.",
+          "variant": "body"
+        }
+      },
+      {
+        "component": "InsetText",
+        "id": "insetText-uc-confirmation-contact",
+        "config": {
+          "text": "### Confirmation contact\n\nIf you have any questions regarding your application or need further assistance, please contact us at:\n\n- **Email**: support@gov.uk\n- **Phone**: 0800 123 4567\n\nOur team is available Monday to Friday, 9 AM to 5 PM."
+        }
+      },
+      {
+        "component": "SummaryList",
+        "id": "summaryList-uc-confirmation-reference",
+        "config": {
+          "rows": [
+            {
+              "key": {
+                "text": "Confirmation reference"
+              },
+              "value": {
+                "text": "12345ABCD",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Service name"
+              },
+              "value": {
+                "text": "Tax return",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Date submitted"
+              },
+              "value": {
+                "text": "1 January 2023",
+                "html": null
+              }
+            },
+            {
+              "key": {
+                "text": "Next steps"
+              },
+              "value": {
+                "text": "You will receive a notification when your return is processed.",
+                "html": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "component": "Button",
+        "id": "button-uc-confirmation-signout",
+        "config": {
+          "text": "Sign out",
+          "element": "button",
+          "href": null,
+          "disabled": false
+        }
+      }
+    ]
+  }
+]

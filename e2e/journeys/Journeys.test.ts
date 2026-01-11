@@ -1,19 +1,72 @@
 import { Page, test } from '@playwright/test';
-import chalk from 'chalk';
-import cliProgress from 'cli-progress';
-import ora from 'ora';
 
 import journeysIndex from "../../static/journeys/index.json" with { type: "json" };
 import { components, componentConfigs } from '../componentUtils';
 import { journeys } from './journeys';
 
+// Filter journeys if JOURNEY_ID is set
+let filteredJourneys = journeysIndex;
+if (process.env.JOURNEY_ID) {
+  const journey = journeysIndex.find(j => j.id === process.env.JOURNEY_ID);
+  if (!journey) {
+    console.error(`Journey ${process.env.JOURNEY_ID} not found`);
+    process.exit(1);
+  }
+  filteredJourneys = [journey];
+}
+
 // Test statistics
 let currentJourneyIndex = 0;
-const totalJourneys = journeysIndex.length;
+const totalJourneys = filteredJourneys.length;
 let totalPagesTested = 0;
 let totalComponentsTested = 0;
 let totalComponentsSkipped = 0;
 let totalErrors = 0;
+
+// Global progress display variables
+let currentJourney = 0;
+let currentPage = 0;
+let currentComponent = 0;
+let journeyTotalPages = 0;
+let journeyTotalComponents = 0;
+let globalTotalComponents = 0;
+let globalCurrentComponent = 0;
+let issues: string[] = [];
+let positionSaved = false;
+
+/**
+ * Generate an ASCII progress bar
+ */
+function progressBar(percent: number): string {
+    const width = 10;
+    const filled = Math.round((percent / 100) * width);
+    const bar = '='.repeat(filled) + '_'.repeat(width - filled);
+    return `<${bar}>`;
+}
+
+/**
+ * Render the progress display, overwriting previous output
+ */
+function renderProgress() {
+    if (positionSaved) {
+        // Move cursor up 7 lines to overwrite the previous display
+        process.stderr.write('\x1b[7A');
+    } else {
+        positionSaved = true;
+    }
+
+    process.stderr.write('testing\n');
+    process.stderr.write(`Journey:          ${currentJourney}/${totalJourneys}  ${progressBar((currentJourney / totalJourneys) * 100)}\n`);
+    process.stderr.write(`Page:             ${currentPage}/${journeyTotalPages} ${progressBar(journeyTotalPages > 0 ? (currentPage / journeyTotalPages) * 100 : 0)}\n`);
+    process.stderr.write(`Component:        ${currentComponent}/${journeyTotalComponents} ${progressBar(journeyTotalComponents > 0 ? (currentComponent / journeyTotalComponents) * 100 : 0)}\n`);
+    process.stderr.write(`journey progress: ${journeyTotalPages > 0 ? Math.round((currentPage / journeyTotalPages) * 100) : 0}% ${progressBar(journeyTotalPages > 0 ? Math.round((currentPage / journeyTotalPages) * 100) : 0)}\n`);
+    process.stderr.write(`full progress:    ${globalTotalComponents > 0 ? Math.round((globalCurrentComponent / globalTotalComponents) * 100) : 0}% ${progressBar(globalTotalComponents > 0 ? Math.round((globalCurrentComponent / globalTotalComponents) * 100) : 0)}\n\n`);
+
+    if (issues.length > 0) {
+        process.stderr.write('issues:\n');
+        issues.forEach(issue => process.stderr.write(issue + '\n'));
+    }
+}
 
 /**
  * Visit the journey URL and run all component tests for all pages
@@ -30,46 +83,35 @@ async function testJourney(page: Page, journey: any) {
         sum + p.components.length, 0
     );
 
-    console.log(chalk.cyan(`\n━━━ Testing: ${chalk.bold(journey.id)} ━━━`));
-    console.log(chalk.gray(`   ${totalPages} pages • ${totalComponents} components\n`));
+    // Initialize journey progress
+    currentJourney++;
+    currentPage = 0;
+    currentComponent = 0;
+    journeyTotalPages = totalPages;
+    journeyTotalComponents = totalComponents;
 
-    // Create single progress bar that updates with current status
-    const progressBar = new cliProgress.SingleBar({
-        clearOnComplete: false,
-        hideCursor: true,
-        format: '   {bar} | {percentage}% | Page {currentPage}/{totalPages} | {pageName}',
-        barCompleteChar: '█',
-        barIncompleteChar: '░',
-    }, cliProgress.Presets.shades_classic);
+    // Calculate global total components across all journeys
+    globalTotalComponents = filteredJourneys.reduce((sum, j) => {
+        const jData = journeys[j.id];
+        return sum + jData.reduce((pSum: number, p: any) => pSum + p.components.length, 0);
+    }, 0);
 
-    progressBar.start(totalPages, 0, { 
-        currentPage: 0,
-        totalPages: totalPages,
-        pageName: 'Starting...'
-    });
+    // Initial render
+    renderProgress();
 
-    try {
-        let totalProcessedComponents = 0;
+    let totalProcessedComponents = 0;
 
-        for (const [index, pageDef] of fullJourney.entries()) {
+    for (const [index, pageDef] of fullJourney.entries()) {
             const pageNumber = index + 1;
             
-            // Update to show we're loading this page
-            progressBar.update(index, { 
-                currentPage: pageNumber,
-                totalPages: totalPages,
-                pageName: `Loading: ${pageDef.title}`
-            });
+            // Update page progress
+            currentPage = pageNumber;
 
             // Go to the specific page
             await page.goto(`/journey/${journey.id}?page=${index}`);
 
-            // Update to show we're testing this page
-            progressBar.update(index, { 
-                currentPage: pageNumber,
-                totalPages: totalPages,
-                pageName: `Testing: ${pageDef.title}`
-            });
+            // Update progress for testing this page
+            renderProgress();
 
             let pageComponentsPassed = 0;
             let pageComponentsSkipped = 0;
@@ -81,7 +123,9 @@ async function testJourney(page: Page, journey: any) {
                 if (!testComponent) {
                     pageComponentsSkipped++;
                     totalComponentsSkipped++;
-                    totalProcessedComponents++;
+                    currentComponent++;
+                    globalCurrentComponent++;
+                    renderProgress();
                     continue;
                 }
 
@@ -89,7 +133,9 @@ async function testJourney(page: Page, journey: any) {
                 const componentConfig = config ?? componentConfigs[component];
 
                 if (!componentConfig) {
-                    progressBar.stop();
+                    issues.push(`journey ${currentJourney} - page ${pageNumber} - component ${component} (${id}): no config`);
+                    totalErrors++;
+                    renderProgress();
                     throw new Error(`No config found for component "${component}" (${id})`);
                 }
 
@@ -97,34 +143,22 @@ async function testJourney(page: Page, journey: any) {
                     await testComponent(page, componentConfig);
                     pageComponentsPassed++;
                     totalComponentsTested++;
-                    totalProcessedComponents++;
+                    currentComponent++;
+                    globalCurrentComponent++;
+                    renderProgress();
                 } catch (error) {
-                    progressBar.stop();
-                    console.error(chalk.red(`\n   ✗ Failed: ${component} (${id})`));
-                    console.error(chalk.red(`     ${error instanceof Error ? error.message : error}`));
+                    issues.push(`journey ${currentJourney} - page ${pageNumber} - component ${component} (${id}): ${error instanceof Error ? error.message : error}`);
                     totalErrors++;
+                    currentComponent++;
+                    globalCurrentComponent++;
+                    renderProgress();
                     throw error;
                 }
             }
 
-            // Move progress bar forward
-            progressBar.increment(1, { 
-                currentPage: pageNumber,
-                totalPages: totalPages,
-                pageName: `✓ ${pageDef.title} (${pageComponentsPassed} tested${pageComponentsSkipped > 0 ? `, ${pageComponentsSkipped} skipped` : ''})`
-            });
-            
             totalPagesTested++;
         }
 
-        progressBar.stop();
-        
-        console.log(chalk.green(`\n   ✓ Complete: ${totalPages} pages • ${totalProcessedComponents} components\n`));
-
-    } catch (error) {
-        progressBar.stop();
-        throw error;
-    }
 }
 
 /**
@@ -133,38 +167,14 @@ async function testJourney(page: Page, journey: any) {
 
 // Display header before all tests
 test.beforeAll(() => {
-    console.log(chalk.cyan('\n╔════════════════════════════════════════╗'));
-    console.log(chalk.cyan('║  ') + chalk.cyan.bold('Playwright E2E Test Suite') + chalk.cyan('         ║'));
-    console.log(chalk.cyan('╚════════════════════════════════════════╝\n'));
-    
-    console.log(chalk.bold('  Test Plan:'));
-    console.log(chalk.gray('  ───────────────────────────────────────'));
-    
-    journeysIndex.forEach((journey, index) => {
-        const journeyData = journeys[journey.id];
-        const pageCount = journeyData?.length || 0;
-        const componentCount = journeyData?.reduce((sum: number, p: any) => 
-            sum + p.components.length, 0) || 0;
-        
-        const prefix = index === journeysIndex.length - 1 ? '  └─' : '  ├─';
-        console.log(chalk.gray(`${prefix} ${chalk.white(journey.id)}`));
-        console.log(chalk.gray(`     ${pageCount} pages • ${componentCount} components`));
-    });
-    
-    console.log(chalk.gray('  ───────────────────────────────────────'));
-    console.log(chalk.gray(`  Total: ${chalk.white(totalJourneys)} journey(s)\n`));
+    // Initial progress display
+    renderProgress();
 });
 
-for (const journey of journeysIndex) {
+for (const journey of filteredJourneys) {
     test.describe(`${journey.id} Journey`, () => {
         test(`should render and function correctly`, async ({ page }) => {
             currentJourneyIndex++;
-            
-            console.log(chalk.blue(`\n[${currentJourneyIndex}/${totalJourneys}] `) + chalk.bold(journey.id));
-            
-            if (journey.title) {
-                console.log(chalk.gray(`   ${journey.title}`));
-            }
             
             await testJourney(page, journey);
         });
@@ -173,26 +183,24 @@ for (const journey of journeysIndex) {
 
 // Display summary after all tests
 test.afterAll(() => {
-    console.log(chalk.cyan('\n╔════════════════════════════════════════╗'));
-    console.log(chalk.cyan('║  ') + chalk.green.bold('✓ Test Suite Complete!') + chalk.cyan('             ║'));
-    console.log(chalk.cyan('╚════════════════════════════════════════╝\n'));
+    // Clear screen and show final results
+    process.stderr.write('\x1b[2J\x1b[H');
+    process.stderr.write('testing complete\n');
     
-    console.log(chalk.bold('  Final Results:'));
-    console.log(chalk.gray('  ───────────────────────────────────────'));
-    console.log(`  ${chalk.bold('Journeys:')}    ${chalk.green(totalJourneys)} tested`);
-    console.log(`  ${chalk.bold('Pages:')}       ${chalk.green(totalPagesTested)} tested`);
-    console.log(`  ${chalk.bold('Components:')}  ${chalk.green(totalComponentsTested)} tested${totalComponentsSkipped > 0 ? `, ${chalk.yellow(totalComponentsSkipped)} skipped` : ''}`);
+    process.stderr.write(`Journeys:    ${totalJourneys} tested\n`);
+    process.stderr.write(`Pages:       ${totalPagesTested} tested\n`);
+    process.stderr.write(`Components:  ${totalComponentsTested} tested${totalComponentsSkipped > 0 ? `, ${totalComponentsSkipped} skipped` : ''}\n`);
     
     if (totalErrors > 0) {
-        console.log(`  ${chalk.bold('Errors:')}      ${chalk.red(totalErrors)} failed`);
+        process.stderr.write(`Errors:      ${totalErrors} failed\n`);
     }
     
-    console.log(chalk.gray('  ───────────────────────────────────────\n'));
+    process.stderr.write('\n');
     
     // Success/failure message
     if (totalErrors === 0) {
-        console.log(chalk.green.bold('  All tests passed! 🎉\n'));
+        process.stderr.write('All tests passed! 🎉\n');
     } else {
-        console.log(chalk.red.bold('  Some tests failed ❌\n'));
+        process.stderr.write('Some tests failed ❌\n');
     }
 });
