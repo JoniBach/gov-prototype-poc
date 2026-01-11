@@ -115,10 +115,10 @@ export function addJourneyToJourneysMap(journeyId: string): void {
     // Add the import
     const lines = content.split('\n');
 
-    // Find the last import line
+    // Find the last import line (including commented ones)
     let lastImportIndex = -1;
     for (let i = 0; i < lines.length; i++) {
-      if (lines[i].startsWith('import ') && lines[i].includes('from "../../static/journeys/')) {
+      if ((lines[i].startsWith('import ') || lines[i].includes('// eg import ')) && lines[i].includes('from "../../static/journeys/')) {
         lastImportIndex = i;
       }
     }

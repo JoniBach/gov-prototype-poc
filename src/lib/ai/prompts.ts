@@ -16,7 +16,9 @@ import {
 import ora from 'ora';
 import chalk from 'chalk';
 import cliProgress from 'cli-progress';
-import { nanoid } from 'nanoid';
+import { customAlphabet } from 'nanoid';
+
+const nanoid = customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', 6);
 
 /**
  * Generate the journey index/blueprint from a description

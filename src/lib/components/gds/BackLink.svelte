@@ -5,8 +5,17 @@
 	const { config } = BackLinkSchema.parse(raw);
 
 	function handleClick(event: MouseEvent) {
+		event.preventDefault();
 		onBackLinkClicked?.({ href: config.href });
 	}
+
+	function handleKeydown(event: KeyboardEvent) {
+		if (event.key === 'Enter' || event.key === ' ') {
+			event.preventDefault();
+			onBackLinkClicked?.({ href: config.href });
+		}
+	}
 </script>
-<!-- href={config.href} -->
-<a  class="govuk-back-link" onclick={handleClick}>{config.text}</a>
+
+<!-- svelte-ignore a11y_invalid_attribute -->
+<a href="#" class="govuk-back-link" onclick={handleClick} onkeydown={handleKeydown} role="button" tabindex="0">{config.text}</a>
