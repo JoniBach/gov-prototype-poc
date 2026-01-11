@@ -1,9 +1,9 @@
 [
   {
-    "id": "passport-application-service-blueprint",
-    "name": "Passport Application Service Blueprint",
-    "departmentId": "home-office",
-    "departmentName": "Home Office",
-    "description": "A comprehensive service blueprint outlining the end-to-end process for applying for a UK passport, detailing user interactions, back-office processes, and various touchpoints involved in the service delivery. The blueprint aims to enhance user experience, ensure clarity in steps, and streamline operations."
+    "id": "income-tax-calculator",
+    "name": "Income Tax Calculator",
+    "departmentId": "HMRC",
+    "departmentName": "Her Majesty's Revenue and Customs",
+    "description": "An online service that allows users to calculate their approximate income tax liabilities based on their income, deductions, and applicable allowances. This tool aims to provide clarity and transparency around tax obligations, helping individuals manage their finances effectively."
   }
 ]
