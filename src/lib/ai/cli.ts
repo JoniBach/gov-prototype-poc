@@ -38,6 +38,7 @@ export async function runCLI(options: CLIOptions) {
     .option('-s, --steps <steps>', 'Comma-separated step names to run (runs all enabled steps if not specified)')
     .option('-i, --interactive', 'Interactively select which steps to run')
     .option('--skip <steps>', 'Comma-separated step names to skip')
+    .option('-m, --multi <count>', 'Run the pipeline multiple times sequentially (default: 1)', '1')
     .action(async (description, cmdOptions) => {
       cmdOptions.description = description;
       await runPipeline(options.steps, cmdOptions);
@@ -58,93 +59,109 @@ export async function runCLI(options: CLIOptions) {
  * Run the pipeline with selected steps
  */
 async function runPipeline(steps: StepConfig[], cmdOptions: any) {
-  const context: Record<string, any> = {};
-  context.cmdOptions = cmdOptions; // Add cmdOptions to context for handlers to access
-  let stepsToRun = steps.filter(s => s.enabled !== false);
-
-  // Interactive mode - let user select steps
-  if (cmdOptions.interactive) {
-    const { selectedSteps } = await inquirer.prompt([
-      {
-        type: 'checkbox',
-        name: 'selectedSteps',
-        message: 'Select steps to run:',
-        choices: steps.map(s => ({
-          name: `${s.name} - ${s.description}`,
-          value: s.name,
-          checked: s.enabled !== false
-        }))
-      }
-    ]);
-    stepsToRun = steps.filter(s => selectedSteps.includes(s.name));
-  }
-  // Run specific steps
-  else if (cmdOptions.steps) {
-    const stepNames = cmdOptions.steps.split(',').map((s: string) => s.trim());
-    stepsToRun = steps.filter(s => stepNames.includes(s.name));
-    
-    // Validate step names
-    const validNames = steps.map(s => s.name);
-    const invalidNames = stepNames.filter(name => !validNames.includes(name));
-    if (invalidNames.length > 0) {
-      console.error(chalk.red(`\n❌ Invalid step names: ${invalidNames.join(', ')}`));
-      console.log(chalk.gray('Run "list" command to see available steps\n'));
-      process.exit(1);
-    }
-  }
-  // Skip specific steps
-  else if (cmdOptions.skip) {
-    const skipNames = cmdOptions.skip.split(',').map((s: string) => s.trim());
-    stepsToRun = stepsToRun.filter(s => !skipNames.includes(s.name));
-  }
-
-  if (stepsToRun.length === 0) {
-    console.log(chalk.yellow('\n⚠️  No steps selected to run\n'));
-    return;
-  }
-
-  // Execute the pipeline
-  console.log(chalk.blue(`\n🚀 Running ${stepsToRun.length} step(s)...\n`));
+  const multiCount = parseInt(cmdOptions.multi) || 1;
   
-  for (const step of stepsToRun) {
-    if (step.interactive) {
-      // Interactive steps don't use spinner to avoid interference
-      try {
-        const result = await step.handler(context);
-        context[step.name] = result;
-        console.log(chalk.green(`✓ ${step.name}`));
-      } catch (error) {
-        console.error(chalk.red(`✗ ${step.name} failed`));
-        if (error instanceof Error) {
-          console.error(chalk.red(`\n  Error: ${error.message}\n`));
-        } else {
-          console.error(chalk.red('\n  Unknown error occurred\n'));
+  if (multiCount > 1) {
+    console.log(chalk.blue(`\n🔄 Running pipeline ${multiCount} time(s) sequentially...\n`));
+  }
+
+  for (let iteration = 1; iteration <= multiCount; iteration++) {
+    if (multiCount > 1) {
+      console.log(chalk.cyan(`\n━━━ Iteration ${iteration}/${multiCount} ━━━\n`));
+    }
+
+    const context: Record<string, any> = {};
+    context.cmdOptions = cmdOptions; // Add cmdOptions to context for handlers to access
+    let stepsToRun = steps.filter(s => s.enabled !== false);
+
+    // Interactive mode - let user select steps
+    if (cmdOptions.interactive) {
+      const { selectedSteps } = await inquirer.prompt([
+        {
+          type: 'checkbox',
+          name: 'selectedSteps',
+          message: 'Select steps to run:',
+          choices: steps.map(s => ({
+            name: `${s.name} - ${s.description}`,
+            value: s.name,
+            checked: s.enabled !== false
+          }))
         }
-        process.exit(1);
-      }
-    } else {
-      const spinner = ora({
-        text: step.description,
-        color: 'cyan'
-      }).start();
+      ]);
+      stepsToRun = steps.filter(s => selectedSteps.includes(s.name));
+    }
+    // Run specific steps
+    else if (cmdOptions.steps) {
+      const stepNames = cmdOptions.steps.split(',').map((s: string) => s.trim());
+      stepsToRun = steps.filter(s => stepNames.includes(s.name));
       
-      try {
-        const result = await step.handler(context);
-        context[step.name] = result;
-        spinner.succeed(chalk.green(step.name));
-      } catch (error) {
-        spinner.fail(chalk.red(`${step.name} failed`));
-        if (error instanceof Error) {
-          console.error(chalk.red(`\n  Error: ${error.message}\n`));
-        } else {
-          console.error(chalk.red('\n  Unknown error occurred\n'));
-        }
+      // Validate step names
+      const validNames = steps.map(s => s.name);
+      const invalidNames = stepNames.filter(name => !validNames.includes(name));
+      if (invalidNames.length > 0) {
+        console.error(chalk.red(`\n❌ Invalid step names: ${invalidNames.join(', ')}`));
+        console.log(chalk.gray('Run "list" command to see available steps\n'));
         process.exit(1);
       }
     }
+    // Skip specific steps
+    else if (cmdOptions.skip) {
+      const skipNames = cmdOptions.skip.split(',').map((s: string) => s.trim());
+      stepsToRun = stepsToRun.filter(s => !skipNames.includes(s.name));
+    }
+
+    if (stepsToRun.length === 0) {
+      console.log(chalk.yellow('\n⚠️  No steps selected to run\n'));
+      continue; // Skip this iteration instead of returning
+    }
+
+    // Execute the pipeline
+    console.log(chalk.blue(`\n🚀 Running ${stepsToRun.length} step(s)...\n`));
+    
+    for (const step of stepsToRun) {
+      if (step.interactive) {
+        // Interactive steps don't use spinner to avoid interference
+        try {
+          const result = await step.handler(context);
+          context[step.name] = result;
+          console.log(chalk.green(`✓ ${step.name}`));
+        } catch (error) {
+          console.error(chalk.red(`✗ ${step.name} failed`));
+          if (error instanceof Error) {
+            console.error(chalk.red(`\n  Error: ${error.message}\n`));
+          } else {
+            console.error(chalk.red('\n  Unknown error occurred\n'));
+          }
+          process.exit(1);
+        }
+      } else {
+        const spinner = ora({
+          text: step.description,
+          color: 'cyan'
+        }).start();
+        
+        try {
+          const result = await step.handler(context);
+          context[step.name] = result;
+          spinner.succeed(chalk.green(step.name));
+        } catch (error) {
+          spinner.fail(chalk.red(`${step.name} failed`));
+          if (error instanceof Error) {
+            console.error(chalk.red(`\n  Error: ${error.message}\n`));
+          } else {
+            console.error(chalk.red('\n  Unknown error occurred\n'));
+          }
+          process.exit(1);
+        }
+      }
+    }
+
+    console.log(chalk.green.bold('\n✅ Pipeline completed successfully!\n'));
   }
 
-  console.log(chalk.green.bold('\n✅ Pipeline completed successfully!\n'));
+  if (multiCount > 1) {
+    console.log(chalk.green.bold(`\n🎉 All ${multiCount} iteration(s) completed successfully!\n`));
+  }
 }
 
 /**

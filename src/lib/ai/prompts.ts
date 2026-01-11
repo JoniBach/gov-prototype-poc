@@ -83,7 +83,7 @@ export async function generateHighLevelJourney(journeyId: string) {
     spinner.text = 'Calling AI to design page flows and layouts...';
     
     const response = await useOpenAI({
-      model: 'gpt-5.1',
+      model: 'gpt-4o-mini',
       system: `You are an interaction designer defining page flows, information hierarchy, and interaction patterns for a GOV.UK service prototype, deciding pages, layouts, and component placements. 
       IMPORTANT OUTPUT RULES (MUST FOLLOW):
       - Every component must have an "id" string.
