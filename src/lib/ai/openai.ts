@@ -4,13 +4,14 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { zodTextFormat } from "openai/helpers/zod";
+import { z } from 'zod';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
 
-export async function useOpenAI({ model, system, user, schema } = { schema: MultiPageSchema, model: 'gpt-4o-mini', system: "You are a helpful assistant that generates GOV.UK style form journeys using the Design System components.", user: "Create a sample journey for an application" }): Promise<any> {
+export async function useOpenAI({ model, system, user, schema }: { model: string, system: string, user: string, schema: z.ZodSchema<any> }): Promise<any> {
     const client = new OpenAI({
         apiKey: process.env.OPENAI_API_KEY,
         organization: process.env.OPENAI_ORG_ID,
