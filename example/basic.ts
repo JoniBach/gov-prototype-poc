@@ -7,12 +7,13 @@ const schema = z.object({
 
 type SchemaType = z.infer<typeof schema>;
 
-const badData: SchemaType = {
+const goodData: SchemaType = {
   title: "Title",
   bullets: ["Bullet 1", "Bullet 2", "Bullet 3"],
+  jelly: "!== jam"
 }
 
-const result = schema.parse(badData) // or safeParse
+const result = schema.parse(goodData) // or safeParse
 
 console.log(result);
 

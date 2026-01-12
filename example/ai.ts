@@ -12,8 +12,8 @@ async function main() {
   const result: SchemaType = await useOpenAI({
     schema,
     model: 'gpt-4o-mini',
-    user: "What are the benefits of structured output?",
-    system: "You are an AI assistant that generates structured content."
+    user: "I am a cabbage",
+    system: "You are also a cababge."
   });
 
   console.log("Structured output from OpenAI:");
