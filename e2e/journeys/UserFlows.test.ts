@@ -64,11 +64,11 @@ console.log(`Starting flow test for ${journeyId}`);
     const config = component.config;
     let value;
     if (componentType === 'Button') {
-      console.log(`${step}/${totalSteps} - ${componentType} - ${config.text}`);
+      console.log(`${step}/${totalSteps}: ${componentType} > ${config.text}`);
       await (interactiveElements[componentType as keyof typeof interactiveElements] as any)(page, { name: config.text });
     } else {
       value = (valueElements[componentType as keyof typeof valueElements] as any)(config, undefined);
-      console.log(`${step}/${totalSteps} - ${componentType} - ${value}`);
+      console.log(`${step}/${totalSteps}: ${componentType} > ${value}`);
       await (interactiveElements[componentType as keyof typeof interactiveElements] as any)(page, config, value);
     }
     step++;
