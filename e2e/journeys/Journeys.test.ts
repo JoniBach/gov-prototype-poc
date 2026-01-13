@@ -119,7 +119,7 @@ async function testJourney(page: Page, journey: any) {
 
             for (const componentDef of pageDef.components) {
                 const { component, id, config } = componentDef;
-                const testComponent = components[component];
+                const testComponent = components[component as keyof typeof components];
 
                 currentComponentName = component;
 
@@ -133,7 +133,7 @@ async function testJourney(page: Page, journey: any) {
                 }
 
                 // Use journey config first, fall back to mock component config
-                const componentConfig = config ?? componentConfigs[component];
+                const componentConfig = config ?? componentConfigs[component as keyof typeof componentConfigs];
 
                 if (!componentConfig) {
                     issues.push(`journey ${currentJourney} - page ${pageNumber} - component ${component} (${id}): no config`);

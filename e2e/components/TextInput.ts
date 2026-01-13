@@ -51,4 +51,21 @@ export async function testTextInput(page: Page, config: any) {
   });
 }
 
+export async function useTextInput(page: Page, config: any, value: any) {
+  const input = page.locator(`#${config.id}`);
+  await input.fill(value);
+}
+
+export const valueForTextInput = (config: any, value: any) => {
+  if (config.validation.includes('required')) {
+    return value || 'Test input value';
+  }
+}
+
 export default testTextInput;
+
+export const TextInput = {
+  test: testTextInput,
+  use: useTextInput,
+  value: valueForTextInput
+}

@@ -55,4 +55,21 @@ export async function testCharacterCount(page: Page, config: any) {
   });
 }
 
+export async function useCharacterCount(page: Page, config: any, value: any) {
+  const input = page.locator(`#${config.id}`);
+  await input.fill(value);
+}
+
+export const valueForCharacterCount = (config: any, value: any) => {
+  if (config.validation && config.validation.includes('required')) {
+    return value || 'Test character count value';
+  }
+}
+
 export default testCharacterCount;
+
+export const CharacterCount = {
+  test: testCharacterCount,
+  use: useCharacterCount,
+  value: valueForCharacterCount
+}

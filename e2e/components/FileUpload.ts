@@ -40,4 +40,21 @@ export async function testFileUpload(page: Page, config: any) {
   });
 }
 
+export async function useFileUpload(page: Page, config: any, files: string[]) {
+  const fileInput = page.locator(`input[type="file"]`);
+  await fileInput.setInputFiles(files);
+}
+
+export const valueForFileUpload = (config: any, value: any) => {
+  if (config.validation && config.validation.includes('required')) {
+    return value || ['test-file.txt'];
+  }
+}
+
 export default testFileUpload;
+
+export const FileUpload = {
+  test: testFileUpload,
+  use: useFileUpload,
+  value: valueForFileUpload
+}

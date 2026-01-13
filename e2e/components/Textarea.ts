@@ -60,4 +60,21 @@ export async function testTextarea(page: Page, config: any) {
   });
 }
 
+export async function useTextarea(page: Page, config: any, value: any) {
+  const textarea = page.locator(`#${config.id}`);
+  await textarea.fill(value);
+}
+
+export const valueForTextarea = (config: any, value: any) => {
+  if (config.validation && config.validation.includes('required')) {
+    return value || 'Test textarea value';
+  }
+}
+
 export default testTextarea;
+
+export const Textarea = {
+  test: testTextarea,
+  use: useTextarea,
+  value: valueForTextarea
+}

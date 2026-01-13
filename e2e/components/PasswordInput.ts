@@ -42,4 +42,21 @@ export async function testPasswordInput(page: Page, config: any) {
   });
 }
 
+export async function usePasswordInput(page: Page, config: any, value: any) {
+  const input = page.locator(`#${config.id}`);
+  await input.fill(value);
+}
+
+export const valueForPasswordInput = (config: any, value: any) => {
+  if (config.validation && config.validation.includes('required')) {
+    return value || 'Test password value';
+  }
+}
+
 export default testPasswordInput;
+
+export const PasswordInput = {
+  test: testPasswordInput,
+  use: usePasswordInput,
+  value: valueForPasswordInput
+}

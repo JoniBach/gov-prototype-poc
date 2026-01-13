@@ -58,4 +58,22 @@ export async function testRadios(page: Page, config: any) {
   });
 }
 
+export async function useRadios(page: Page, config: any, value: string) {
+  const radios = page.locator('.govuk-radios');
+  const radio = radios.locator(`input[value="${value}"]`);
+  await radio.check();
+}
+
+export const valueForRadios = (config: any, value: any) => {
+  if (config.validation && config.validation.includes('required')) {
+    return value || (config.items && config.items.length > 0 ? config.items[0].value : '');
+  }
+}
+
 export default testRadios;
+
+export const Radios = {
+  test: testRadios,
+  use: useRadios,
+  value: valueForRadios
+}

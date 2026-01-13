@@ -58,4 +58,24 @@ export async function testCheckboxes(page: Page, config: any) {
   });
 }
 
+export async function useCheckboxes(page: Page, config: any, values: string[]) {
+  const checkboxes = page.locator('.govuk-checkboxes');
+  for (const value of values) {
+    const checkbox = checkboxes.locator(`input[value="${value}"]`);
+    await checkbox.check();
+  }
+}
+
+export const valueForCheckboxes = (config: any, value: any) => {
+  if (config.validation && config.validation.includes('required')) {
+    return value || (config.items && config.items.length > 0 ? [config.items[0].value] : []);
+  }
+}
+
 export default testCheckboxes;
+
+export const Checkboxes = {
+  test: testCheckboxes,
+  use: useCheckboxes,
+  value: valueForCheckboxes
+}

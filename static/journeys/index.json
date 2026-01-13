@@ -1,3 +1,9 @@
 [
-  
+  {
+    "id": "basic-income-tax-calculator-1HqNA9",
+    "name": "Basic Income Tax Calculator",
+    "departmentId": "HMRC",
+    "departmentName": "Her Majesty's Revenue and Customs",
+    "description": "A user-friendly online tool that allows individuals to calculate their income tax obligations based on their income, tax code, and applicable allowances."
+  }
 ]

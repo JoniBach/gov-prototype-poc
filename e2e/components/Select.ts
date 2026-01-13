@@ -34,4 +34,21 @@ export async function testSelect(page: Page, config: any) {
 	// After tab, focus should move away
 }
 
+export async function useSelect(page: Page, config: any, value: string) {
+  const select = page.locator(`#${config.id}`);
+  await select.selectOption(value);
+}
+
+export const valueForSelect = (config: any, value: any) => {
+  if (config.validation && config.validation.includes('required')) {
+    return value || (config.items && config.items.length > 0 ? config.items[0].value : '');
+  }
+}
+
 export default testSelect;
+
+export const Select = {
+  test: testSelect,
+  use: useSelect,
+  value: valueForSelect
+}

@@ -117,4 +117,25 @@ export async function testDateInput(page: Page, config: any) {
   });
 }
 
+export async function useDateInput(page: Page, config: any, value: { day: string; month: string; year: string }) {
+  const dayInput = page.locator(`#${config.id}-day`);
+  const monthInput = page.locator(`#${config.id}-month`);
+  const yearInput = page.locator(`#${config.id}-year`);
+  await dayInput.fill(value.day);
+  await monthInput.fill(value.month);
+  await yearInput.fill(value.year);
+}
+
+export const valueForDateInput = (config: any, value: any) => {
+  if (config.validation && config.validation.includes('required')) {
+    return value || { day: '01', month: '01', year: '2000' };
+  }
+}
+
 export default testDateInput;
+
+export const DateInput = {
+  test: testDateInput,
+  use: useDateInput,
+  value: valueForDateInput
+}
