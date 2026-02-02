@@ -3,6 +3,17 @@
 </script>
 
 <GovUKPage title="Home">
-<a href="/components" class="govuk-link">View components</a>
+<div class='links'>
+	<a href="/components" class="govuk-link">View components</a>
+	<a href="/journey" class="govuk-link">View generated journeys</a>
+</div>
 
 </GovUKPage>
+
+<style>
+	.links {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+</style>
