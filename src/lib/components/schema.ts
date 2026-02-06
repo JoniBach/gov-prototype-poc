@@ -414,6 +414,27 @@ const inputSchemas = {
 	Textarea: TextareaSchema,
 }
 
+
+
+export const valueSchemas = {
+	CharacterCount: z.string(),
+	Checkboxes: z.array(z.string()),
+	DateInput: z.object({
+		day: z.string(),
+		month: z.string(),
+		year: z.string(),
+	}),
+	FileUpload: z.any(),
+	PasswordInput: z.string(),
+	Radios: z.string(),
+	Select: z.string(),
+	TextInput: z.string(),
+	Textarea: z.string(),
+}
+export const valueSchemaList = Object.keys(valueSchemas)
+export const valueSchemaEnum = z.enum(valueSchemaList)
+
+
 const genericSchemas = {
 	Accordion: AccordionSchema,
 	Breadcrumbs: BreadcrumbsSchema,
